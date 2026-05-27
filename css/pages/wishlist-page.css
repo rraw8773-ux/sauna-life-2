@@ -1,0 +1,7 @@
+/*
+ * Назначение: Главная точка входа для стилей страницы "Избранное"
+ * Собирает независимые блоки через нативные @import
+ */
+
+@import "./wishlist/wishlist-empty.css";
+@import "./wishlist/wishlist-list.css";
