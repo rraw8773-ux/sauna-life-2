@@ -138,12 +138,67 @@
 }
 
 .promo-block__timer {
-  font-size: 14px;
-  color: var(--color-dark);
+  margin-left: auto;
 }
-.promo-block__timer strong {
+
+/* Элегантный, спокойный дизайн таймера акции (в строчку) */
+.promo-timer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.promo-timer__label {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-gray);
+}
+
+.promo-timer__grid {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.promo-timer__item {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.promo-timer__digit {
   font-size: 20px;
+  font-weight: 600;
+  color: var(--color-dark);
   font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.promo-timer__unit {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-gray);
+  line-height: 1;
+}
+
+.promo-timer__divider {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--color-gray);
+  opacity: 0.4;
+  line-height: 1;
+  margin: 0 2px;
+}
+
+.promo-timer--expired .promo-timer__digit {
+  color: var(--color-gray);
+}
+
+.promo-timer--expired .promo-timer__unit {
+  color: var(--color-gray);
+  opacity: 0.7;
 }
 
 @media (max-width: 767px) {
@@ -164,6 +219,9 @@
     gap: 16px;
   }
   .promo-block__timer {
-    text-align: center;
+    margin-left: 0;
+  }
+  .promo-timer {
+    align-items: center;
   }
 }

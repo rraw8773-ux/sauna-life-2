@@ -17,6 +17,7 @@ import { initMobileCatalogMenu } from "./modules/mobile-catalog-menu.js";
 import { initPromoMover } from "./modules/promo-mover.js";
 import { initStickySidebar } from "./modules/sticky-sidebar.js";
 import { initProductDetails } from "./modules/product-details.js";
+import { initPromoTimer } from "./modules/promo-timer.js";
 
 const hasMatch = (root, selector) =>
   Boolean(root?.matches?.(selector) || root?.querySelector?.(selector));
@@ -68,6 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hasMatch(root, ".product-card")) {
       initProductCards(root);
     }
+
+    if (hasMatch(root, ".promo-block__timer, .js-promo-timer")) {
+      initPromoTimer(root);
+    }
   });
 
   // Инициализация кастомных дропдаунов
@@ -104,6 +109,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".catalog__grid")
   ) {
     initPromoMover();
+  }
+
+  // Высокотехнологичный таймер промо-блока
+  if (document.querySelector(".promo-block__timer, .js-promo-timer")) {
+    initPromoTimer();
   }
 
   // Липкий сайдбар каталога
