@@ -1602,28 +1602,27 @@
             <div class="wishlist-list__items">
               <!-- Карточка 1 -->
               <div class="wishlist-card">
-                <a href="#" class="wishlist-card__image-link">
+                <a href="./new-product-pechi.html" class="wishlist-card__image-link">
                   <img
-                    src="https://sauna-life.ru/template/img/14.webp"
-                    alt="Купель"
+                    src="./assets/images/product/prod1-1.jpg"
+                    alt="Печь"
                     class="wishlist-card__image"
                   />
                 </a>
                 <div class="wishlist-card__info">
-                  <a href="#" class="wishlist-card__title"
-                    >Купель овальная, сращенные ламели из лиственницы,
-                    0,76х1,16,</a
+                  <a href="./new-product-pechi.html" class="wishlist-card__title"
+                    >Печь-каменка Гефест Гром 30</a
                   >
                 </div>
                 <div class="wishlist-card__specs">
-                  <div class="wishlist-card__spec">Размер: 1м</div>
+                  <div class="wishlist-card__spec">Мощность: 18 кВт</div>
                   <div class="wishlist-card__spec">
-                    Цвет: лиственница натуральная
+                    Объем парилки: до 30 м³
                   </div>
                 </div>
                 <div class="wishlist-card__price-wrap">
                   <div class="wishlist-card__price-current">134.500 ₽</div>
-                  <div class="wishlist-card__price-old">7400</div>
+                  <div class="wishlist-card__price-old">168.000 ₽</div>
                 </div>
                 <div class="wishlist-card__actions">
                   <button
@@ -1651,17 +1650,17 @@
 
               <!-- Карточка 2 -->
               <div class="wishlist-card">
-                <a href="#" class="wishlist-card__image-link">
+                <a href="./new-product-kupeli.html" class="wishlist-card__image-link">
                   <img
-                    src="https://sauna-life.ru/template/img/14.webp"
+                    src="./assets/images/product/kupel-1.png"
                     alt="Купель"
                     class="wishlist-card__image"
                   />
                 </a>
                 <div class="wishlist-card__info">
-                  <a href="#" class="wishlist-card__title"
+                  <a href="./new-product-kupeli.html" class="wishlist-card__title"
                     >Купель овальная, сращенные ламели из лиственницы,
-                    0,76х1,16,</a
+                    0,76х1,16</a
                   >
                 </div>
                 <div class="wishlist-card__specs">
@@ -1671,8 +1670,8 @@
                   </div>
                 </div>
                 <div class="wishlist-card__price-wrap">
-                  <div class="wishlist-card__price-current">134.500 ₽</div>
-                  <div class="wishlist-card__price-old">7400</div>
+                  <div class="wishlist-card__price-current">98.900 ₽</div>
+                  <div class="wishlist-card__price-old">120.000 ₽</div>
                 </div>
                 <div class="wishlist-card__actions">
                   <button
@@ -1700,42 +1699,59 @@
 
               <!-- Карточка 3 -->
               <div class="wishlist-card">
-                <a href="#" class="wishlist-card__image-link">
+                <a href="./new-product-vagonka.html" class="wishlist-card__image-link">
                   <img
-                    src="https://sauna-life.ru/template/img/14.webp"
-                    alt="Купель"
+                    src="./assets/images/product/vagonka-1.jpg"
+                    alt="Вагонка"
                     class="wishlist-card__image"
                   />
                 </a>
                 <div class="wishlist-card__info">
-                  <a href="#" class="wishlist-card__title"
-                    >Купель овальная, сращенные ламели из лиственницы,
-                    0,76х1,16,</a
+                  <a href="./new-product-vagonka.html" class="wishlist-card__title"
+                    >Вагонка из канадского кедра Экстра</a
                   >
                 </div>
                 <div class="wishlist-card__specs">
-                  <div class="wishlist-card__spec">Размер: 1м</div>
+                  <div class="wishlist-card__spec">Размер: 14x90x2130 мм</div>
                   <div class="wishlist-card__spec">
-                    Цвет: лиственница натуральная
+                    Сорт: Экстра
                   </div>
                 </div>
-                <div class="wishlist-card__price-wrap">
-                  <div class="wishlist-card__price-current">134.500 ₽</div>
-                  <div class="wishlist-card__price-old">7400</div>
+                <div class="wishlist-card__prices">
+                  <div class="wishlist-card__price-item">
+                    <span class="wishlist-card__price-label">Цена за упак. (6 шт.)</span>
+                    <div class="wishlist-card__price-wrap">
+                      <div class="wishlist-card__price-current">4 341 ₽</div>
+                      <div class="wishlist-card__price-old">6 610 ₽</div>
+                    </div>
+                  </div>
+                  <div class="wishlist-card__price-item">
+                    <span class="wishlist-card__price-label">Цена за пог.м.</span>
+                    <div class="wishlist-card__price-wrap">
+                      <div class="wishlist-card__price-current">2 732 ₽</div>
+                    </div>
+                  </div>
                 </div>
                 <div class="wishlist-card__actions">
-                  <button
-                    class="button button--primary wishlist-card__cart-btn"
-                  >
-                    <img
-                      src="./assets/icons/interfaces/cart-light.svg"
-                      alt=""
-                      width="16"
-                      height="16"
-                      class="button__icon"
-                    />
-                    В корзину
-                  </button>
+                  <form method="post" class="product" style="flex:1;">
+                    <div class="card-main_buttons goods-2_item-buttons show-hide-qnt in-cart">
+                      <button class="button button--primary button--full product-card__buy-btn js-card-add_item card-main_button-two addtocart in-cart" type="button" data-product-id="12345">
+                        <img src="./assets/icons/interfaces/cart-light.svg" alt="" class="button__icon">
+                        В корзину
+                      </button>
+                      <div class="card-main_calc-form wrap-quantity product-card-counter">
+                        <button class="product-card-counter__btn product-card-counter__btn--dec quantity-minus" type="button" aria-label="Уменьшить количество">    <svg width="14" height="2" viewBox="0 0 14 2" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="13.1923" y1="0.807692" x2="0.807692" y2="0.807691" stroke="black" stroke-width="1.61538" stroke-linecap="round"></line></svg></button>
+                        <input class="product-card-counter__input quantity-input need-calc" type="text" inputmode="numeric" name="quantity[0]" value="1" data-minval="0" aria-label="количество">
+                        <button class="quantity-plus product-card-counter__btn product-card-counter__btn--inc" type="button" aria-label="Увеличить количество">
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="6.73054" y1="0.807692" x2="6.73054" y2="13.1923" stroke="black" stroke-width="1.61538" stroke-linecap="round"></line>
+                            <line x1="13.1923" y1="6.73079" x2="0.807692" y2="6.73079" stroke="black" stroke-width="1.61538" stroke-linecap="round"></line>
+                          </svg>
+                        </button>
+                        <input type="hidden" name="product_id[0]" value="13501">
+                      </div>
+                    </div>
+                  </form>
                   <button class="wishlist-card__like-btn">
                     <img
                       src="./assets/icons/interfaces/like.svg"
@@ -2329,33 +2345,15 @@
     <!-- ==========================================================
          LEGACY JAVASCRIPT (порядок загрузки критичен!)
          ========================================================== -->
-    <script
-      src="./!FILES/catalog-pechi_files/jquery.min.js"
-      type="text/javascript"
-    ></script>
-    <script
-      src="./!FILES/catalog-pechi_files/jquery.maskedinput.min.js"
-      type="text/javascript"
-    ></script>
-    <script
-      src="./!FILES/catalog-pechi_files/jquery-ui.min.js"
-      type="text/javascript"
-    ></script>
+    <script src="./js/legacy/jquery.min.js" type="text/javascript"></script>
+    <script src="./js/legacy/jquery.maskedinput.min.js" type="text/javascript"></script>
+    <script src="./js/legacy/jquery-ui.min.js" type="text/javascript"></script>
     <!-- Slick и Fancybox ДОЛЖНЫ быть загружены ДО вызова .slick() в $(document).ready() -->
-    <script src="./!FILES/catalog-pechi_files/slick.min.js"></script>
-    <script src="./!FILES/catalog-pechi_files/jquery.fancybox.min.js"></script>
-    <script
-      src="./!FILES/catalog-pechi_files/script.js"
-      type="text/javascript"
-    ></script>
-    <script
-      src="./!FILES/catalog-pechi_files/script2.js"
-      type="text/javascript"
-    ></script>
-    <script
-      src="./!FILES/catalog-pechi_files/script3.js"
-      type="text/javascript"
-    ></script>
+    <script src="./js/legacy/slick.min.js"></script>
+    <script src="./js/legacy/jquery.fancybox.min.js"></script>
+    <script src="./js/legacy/script.js" type="text/javascript"></script>
+    <script src="./js/legacy/script2.js" type="text/javascript"></script>
+    <script src="./js/legacy/script3.js" type="text/javascript"></script>
 
     <!-- ===== NEW JS (Swiper, noUiSlider CDN) ===== -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
