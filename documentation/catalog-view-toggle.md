@@ -8,7 +8,7 @@
 
 ## 1. JavaScript (Логика и хранение)
 
-Основная логика находится в модуле `js/modules/view-toggle.js`.
+Основная логика находится в модуле `js/pages/catalog/view-toggle.js`.
 
 **Ключевые особенности:**
 
@@ -24,12 +24,10 @@
 4. Управляет активным классом на кнопках-переключателях (`.is-active`, `.catalog__view-btn--active`).
 5. Навешивает обработчики событий `click` на кнопки, которые обновляют вид и записывают новое значение в `localStorage`.
 
-### Подключение
-
-Модуль инициализируется в главном файле `js/main.js`:
+Модуль инициализируется в файле страницы каталога `js/pages/catalog.js`:
 
 ```javascript
-import { initViewToggle } from "./modules/view-toggle.js";
+import { initViewToggle } from "./catalog/view-toggle.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // ... другой код ...
@@ -99,8 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
 ## Как расширять функционал в будущем
 
 1. **Смена значения по умолчанию:**
-   Достаточно изменить константу `DEFAULT_VIEW` внутри `js/modules/view-toggle.js` с `'grid'` на `'list'`.
+   Достаточно изменить константу `DEFAULT_VIEW` внутри `js/pages/catalog/view-toggle.js` с `'grid'` на `'list'`.
 2. **Добавление нового вида (например, "компактный"):**
    - Добавить кнопку в HTML с классом `.catalog__view-btn--compact`.
    - В CSS написать стили: `.catalog__grid--compact { ... }`.
-   - В `js/modules/view-toggle.js` нужно будет немного доработать код (добавить `isCompactBtn` и логику `view = "compact"`).
+   - В `js/pages/catalog/view-toggle.js` нужно будет немного доработать код (добавить `isCompactBtn` и логику `view = "compact"`).

@@ -13,6 +13,7 @@
 @import "modules/footer.css";
 @import "modules/buttons.css";
 @import "modules/product-card.css";
+@import "modules/catalog-modal.css";
 @import "modules/forms.css";
 @import "modules/breadcrumbs.css";
 @import "modules/tags.css";
@@ -20,11 +21,9 @@
 @import "modules/inputs.css";
 @import "modules/search.css";
 @import "modules/offcanvas.css";
-@import "modules/catalog-modal.css";
 @import "modules/mobile-nav.css";
 @import "modules/mobile-menu.css";
 @import "modules/mobile-catalog-menu.css";
 @import "modules/pagination.css";
 @import "modules/custom-dropdown.css";
 @import "modules/tooltip.css";
-

@@ -4,7 +4,6 @@
  */
 
 @import "../modules/tabs.css";
-@import "../modules/product-card.css";
 @import "./product/product-hero.css";
 @import "./product/product-addons.css";
 @import "./product/product-promo.css";

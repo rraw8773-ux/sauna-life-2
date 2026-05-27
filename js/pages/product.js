@@ -14,11 +14,13 @@ import { initCatalogModal } from "../modules/catalog-modal.js";
 import { initTabs } from "../modules/tabs.js";
 import { initCustomDropdown } from "../modules/custom-dropdown.js";
 import { initProductCards } from "../modules/product-card.js";
+import { initSliders } from "../modules/sliders.js";
 
 // Локальные страничные модули страницы товара
 import { initProductTabs } from "./product/tabs.js";
 import { initProductSlider } from "./product/slider.js";
 import { initProductsWidget } from "../modules/products-widget.js";
+import { initProductDetails } from "./product/product-details.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Запуск глобальных модулей общего интерфейса
@@ -49,6 +51,17 @@ document.addEventListener("DOMContentLoaded", () => {
   initProductTabs();
   initProductSlider();
   initProductsWidget();
+
+  if (document.querySelector(".js-product-card-slider")) {
+    initSliders();
+  }
+
+  if (
+    document.querySelector(".products-section") ||
+    document.querySelector(".product-tabs, .tabs-section")
+  ) {
+    initProductDetails();
+  }
 
 
   // Интерактивный блок обратной связи (Как вам товар?) с эмоциями-частицами
