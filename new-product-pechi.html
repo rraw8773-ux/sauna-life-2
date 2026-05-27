@@ -1816,157 +1816,169 @@
                   </a>
                 </div>
 
-                <!-- Legacy Опции: Камни -->
-                <div
-                  class="product-hero__addon product-hero-group stones-card card-add_item js-card-add_item"
-                >
-                  <div class="product-hero__addon-title">Камни для печи</div>
-                  <!-- Legacy DOM elements directly embedded to preserve logic -->
+                <div class="product-hero__info-bottom">
+                  <!-- Legacy Опции: Камни -->
                   <div
-                    class="custom-dropdown custom-dropdown--stones"
-                    id="stones-dropdown"
+                    class="product-hero-group stones-card card-add_item js-card-add_item"
                   >
-                    <button
-                      type="button"
-                      class="custom-dropdown__trigger"
-                      aria-haspopup="listbox"
-                      aria-expanded="false"
-                      id="stones-trigger"
+                    <div class="product-hero__addon-title">Камни для печи</div>
+                    <!-- Legacy DOM elements directly embedded to preserve logic -->
+                    <div
+                      class="custom-dropdown custom-dropdown--stones"
+                      id="stones-dropdown"
                     >
-                      <span class="custom-dropdown__value">Выбрать</span>
-                      <div class="custom-dropdown__chevron">
-                        <svg
-                          width="12"
-                          height="8"
-                          viewBox="0 0 12 8"
-                          fill="none"
-                          stroke="#333"
-                          stroke-width="2"
+                      <button
+                        type="button"
+                        class="custom-dropdown__trigger"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        id="stones-trigger"
+                      >
+                        <span class="custom-dropdown__value">Выбрать</span>
+                        <div class="custom-dropdown__chevron">
+                          <svg
+                            width="12"
+                            height="8"
+                            viewBox="0 0 12 8"
+                            fill="none"
+                            stroke="#333"
+                            stroke-width="2"
+                          >
+                            <polyline points="1 1 6 6 11 1"></polyline>
+                          </svg>
+                        </div>
+                      </button>
+                      <ul
+                        class="custom-dropdown__list"
+                        role="listbox"
+                        aria-labelledby="stones-trigger"
+                      >
+                        <li
+                          class="custom-dropdown__option"
+                          role="option"
+                          data-value="5229"
+                          aria-selected="false"
                         >
-                          <polyline points="1 1 6 6 11 1"></polyline>
-                        </svg>
-                      </div>
-                    </button>
-                    <ul
-                      class="custom-dropdown__list"
-                      role="listbox"
-                      aria-labelledby="stones-trigger"
-                    >
-                      <li
-                        class="custom-dropdown__option"
-                        role="option"
-                        data-value="5229"
-                        aria-selected="false"
-                      >
-                        <span class="custom-dropdown__checkbox"></span>
-                        <span class="custom-dropdown__option-text"
-                          >Жадеит колотый 20 кг</span
+                          <span class="custom-dropdown__checkbox"></span>
+                          <span class="custom-dropdown__option-text"
+                            >Жадеит колотый 20 кг</span
+                          >
+                        </li>
+                        <li
+                          class="custom-dropdown__option"
+                          role="option"
+                          data-value="5230"
+                          aria-selected="false"
                         >
-                      </li>
-                      <li
-                        class="custom-dropdown__option"
-                        role="option"
-                        data-value="5230"
-                        aria-selected="false"
+                          <span class="custom-dropdown__checkbox"></span>
+                          <span class="custom-dropdown__option-text"
+                            >Жадеит шлифованный 20 кг</span
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <!-- Скрытые легаси инпуты -->
+                    <div class="product-hero__legacy-hidden">
+                      <label class="checkbox"
+                        ><input
+                          name="product_id[3]"
+                          type="radio"
+                          value="5229"
+                        />
+                        Жадеит колотый</label
                       >
-                        <span class="custom-dropdown__checkbox"></span>
-                        <span class="custom-dropdown__option-text"
-                          >Жадеит шлифованный 20 кг</span
+                      <label class="checkbox"
+                        ><input
+                          name="product_id[3]"
+                          type="radio"
+                          value="5230"
+                        />
+                        Жадеит шлифованный</label
+                      >
+                    </div>
+                  </div>
+                  <div class="product-hero-group product-hero-group--addons">
+                    <!-- Legacy Опции: Установка -->
+                    <div class="product-hero__addon-title">
+                      Добавьте к товару
+                    </div>
+
+                    <div class="product-hero__addon install-card card-add_item">
+                      <label class="checkbox">
+                        <input
+                          class="checkbox__input"
+                          name="product_id[1]"
+                          type="checkbox"
+                          value="5252"
+                        />
+                        <span class="checkbox__box"></span>
+                        <span class="checkbox__text"
+                          >Установка и подключение (10 000 руб)</span
                         >
-                      </li>
-                    </ul>
-                  </div>
-                  <!-- Скрытые легаси инпуты -->
-                  <div class="product-hero__legacy-hidden">
-                    <label class="checkbox"
-                      ><input name="product_id[3]" type="radio" value="5229" />
-                      Жадеит колотый</label
-                    >
-                    <label class="checkbox"
-                      ><input name="product_id[3]" type="radio" value="5230" />
-                      Жадеит шлифованный</label
-                    >
-                  </div>
-                </div>
-                <div class="product-hero-group product-hero-group--addons">
-                  <!-- Legacy Опции: Установка -->
-                  <div class="product-hero__addon-title">Добавьте к товару</div>
+                      </label>
+                    </div>
 
-                  <div class="product-hero__addon install-card card-add_item">
-                    <label class="checkbox">
-                      <input
-                        class="checkbox__input"
-                        name="product_id[1]"
-                        type="checkbox"
-                        value="5252"
-                      />
-                      <span class="checkbox__box"></span>
-                      <span class="checkbox__text"
-                        >Установка и подключение (10 000 руб)</span
+                    <div class="product-hero__addon chimney-card card-add_item">
+                      <label class="checkbox">
+                        <input
+                          class="checkbox__input"
+                          name="product_id[2]"
+                          type="checkbox"
+                          value="chimney_auto"
+                        />
+                        <span class="checkbox__box"></span>
+                        <span class="checkbox__text"
+                          >Дымоход (менеджер подберет)</span
+                        >
+                      </label>
+                    </div>
+                  </div>
+                  <!-- /.product-hero-group -->
+
+                  <!-- Feedback block: Как вам товар? -->
+                  <div class="product-feedback">
+                    <div class="product-feedback__title">Как вам товар?</div>
+                    <div class="product-feedback__options">
+                      <button
+                        type="button"
+                        class="product-feedback__option"
+                        data-feedback="bad"
                       >
-                    </label>
-                  </div>
-
-                  <div class="product-hero__addon chimney-card card-add_item">
-                    <label class="checkbox">
-                      <input
-                        class="checkbox__input"
-                        name="product_id[2]"
-                        type="checkbox"
-                        value="chimney_auto"
-                      />
-                      <span class="checkbox__box"></span>
-                      <span class="checkbox__text"
-                        >Дымоход (менеджер подберет)</span
+                        <img
+                          src="./assets/icons/product/dislike.svg"
+                          alt="плохой"
+                          class="product-feedback__icon"
+                        />
+                        <span class="product-feedback__label">плохой</span>
+                      </button>
+                      <button
+                        type="button"
+                        class="product-feedback__option"
+                        data-feedback="good"
                       >
-                    </label>
-                  </div>
-                </div>
-                <!-- /.product-hero-group -->
-
-                <!-- Feedback block: Как вам товар? -->
-                <div class="product-feedback">
-                  <div class="product-feedback__title">Как вам товар?</div>
-                  <div class="product-feedback__options">
-                    <button
-                      type="button"
-                      class="product-feedback__option"
-                      data-feedback="bad"
-                    >
-                      <img
-                        src="./assets/icons/product/dislike.svg"
-                        alt="плохой"
-                        class="product-feedback__icon"
-                      />
-                      <span class="product-feedback__label">плохой</span>
-                    </button>
-                    <button
-                      type="button"
-                      class="product-feedback__option"
-                      data-feedback="good"
-                    >
-                      <img
-                        src="./assets/icons/product/fine-like.svg"
-                        alt="хороший"
-                        class="product-feedback__icon"
-                      />
-                      <span class="product-feedback__label">хороший</span>
-                    </button>
-                    <button
-                      type="button"
-                      class="product-feedback__option"
-                      data-feedback="excellent"
-                    >
-                      <img
-                        src="./assets/icons/product/great-like.svg"
-                        alt="отлично"
-                        class="product-feedback__icon"
-                      />
-                      <span class="product-feedback__label">отлично</span>
-                    </button>
-                  </div>
-                  <div class="product-feedback__thankyou">
-                    Спасибо за ваш отзыв!
+                        <img
+                          src="./assets/icons/product/fine-like.svg"
+                          alt="хороший"
+                          class="product-feedback__icon"
+                        />
+                        <span class="product-feedback__label">хороший</span>
+                      </button>
+                      <button
+                        type="button"
+                        class="product-feedback__option"
+                        data-feedback="excellent"
+                      >
+                        <img
+                          src="./assets/icons/product/great-like.svg"
+                          alt="отлично"
+                          class="product-feedback__icon"
+                        />
+                        <span class="product-feedback__label">отлично</span>
+                      </button>
+                    </div>
+                    <div class="product-feedback__thankyou">
+                      Спасибо за ваш отзыв!
+                    </div>
                   </div>
                 </div>
               </div>
@@ -2199,38 +2211,40 @@
 
                 <!-- Группа 5: доставки -->
 
-                <div class="product-hero__info-item product-hero-group">
-                  <div class="product-hero__info-icon">
-                    <img src="./assets/icons/interfaces/track.svg" alt="" />
-                  </div>
-                  <div class="product-hero__info-content">
-                    <div class="product-hero__info-title">Доставка</div>
-                    <div class="product-hero__info-badge">
-                      Бесплатная от 100 000 руб
+                <div class="product-hero__bottom">
+                  <div class="product-hero__info-item product-hero-group">
+                    <div class="product-hero__info-icon">
+                      <img src="./assets/icons/interfaces/track.svg" alt="" />
                     </div>
-                    <div class="product-hero__info-desc">
-                      Москва и Московская область<br />ТК по России — от 200
-                      рублей
+                    <div class="product-hero__info-content">
+                      <div class="product-hero__info-title">Доставка</div>
+                      <div class="product-hero__info-badge">
+                        Бесплатная от 100 000 руб
+                      </div>
+                      <div class="product-hero__info-desc">
+                        Москва и Московская область<br />ТК по России — от 200
+                        рублей
+                      </div>
+                    </div>
+                    <div class="product-hero__info-action">
+                      <a href="#" class="product-hero__info-link">Подробнее</a>
                     </div>
                   </div>
-                  <div class="product-hero__info-action">
-                    <a href="#" class="product-hero__info-link">Подробнее</a>
-                  </div>
-                </div>
 
-                <!-- Группа 6: оплата -->
-                <div class="product-hero__info-item">
-                  <div class="product-hero__info-icon">
-                    <img src="./assets/icons/interfaces/wallet.svg" alt="" />
-                  </div>
-                  <div class="product-hero__info-content">
-                    <div class="product-hero__info-title">Оплата</div>
-                    <div class="product-hero__info-desc">
-                      • Наличный расчет<br />• Безналичный расчет<br />• Счет
+                  <!-- Группа 6: оплата -->
+                  <div class="product-hero__info-item">
+                    <div class="product-hero__info-icon">
+                      <img src="./assets/icons/interfaces/wallet.svg" alt="" />
                     </div>
-                  </div>
-                  <div class="product-hero__info-action">
-                    <a href="#" class="product-hero__info-link">Подробнее</a>
+                    <div class="product-hero__info-content">
+                      <div class="product-hero__info-title">Оплата</div>
+                      <div class="product-hero__info-desc">
+                        • Наличный расчет<br />• Безналичный расчет<br />• Счет
+                      </div>
+                    </div>
+                    <div class="product-hero__info-action">
+                      <a href="#" class="product-hero__info-link">Подробнее</a>
+                    </div>
                   </div>
                 </div>
               </div>

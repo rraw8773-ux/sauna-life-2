@@ -163,6 +163,10 @@ body {
   margin-bottom: 0;
 }
 
+.product-hero__info-bottom {
+  margin-top: auto;
+}
+
 .product-hero__addon-title {
   font-size: 12px;
   font-weight: 500;
@@ -399,6 +403,10 @@ body {
 }
 
 /* Группа 5 и 6: Инфо (Доставка, Оплата) */
+.product-hero__bottom {
+  margin-top: auto;
+}
+
 .product-hero__info-item {
   display: grid;
   grid-template-columns: 20px 1fr auto;
