@@ -208,27 +208,41 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Функция скролла к вкладке и её активации
+  function scrollToTab(tabId) {
+    const targetSection = document.querySelector(".product-tabs");
+    if (targetSection) {
+      // Плавный скролл до секции
+      const yOffset = -80; // Красивый отступ сверху
+      const y = targetSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      
+      // Активация вкладки
+      const tabTrigger = targetSection.querySelector(`[data-tab-trigger="${tabId}"]`);
+      if (tabTrigger) {
+        tabTrigger.click();
+      }
+    }
+  }
+
   // Скролл к характеристикам при клике на "Все характеристики" (.spec-link)
   const specLink = document.querySelector(".spec-link");
   if (specLink) {
     specLink.addEventListener("click", (e) => {
       e.preventDefault();
-      
-      const targetSection = document.querySelector(".product-tabs");
-      if (targetSection) {
-        // Плавный скролл до секции
-        const yOffset = -80; // Красивый отступ сверху
-        const y = targetSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-        
-        // Активация вкладки "Характеристики"
-        const specsTabTrigger = targetSection.querySelector('[data-tab-trigger="specs"]');
-        if (specsTabTrigger) {
-          specsTabTrigger.click();
-        }
-      }
+      scrollToTab("specs");
     });
   }
+
+  // Скролл к вкладкам при клике на "Подробнее" в карточках доставки/оплаты в шапке товара
+  const heroInfoLinks = document.querySelectorAll(".product-hero__info-link[data-tab-trigger]");
+  heroInfoLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const tabId = link.getAttribute("data-tab-trigger");
+      scrollToTab(tabId);
+    });
+  });
 
   // Синхронизация новых выпадающих списков (Размер, Цвет) со скрытыми инпутами формы заказа
   document.addEventListener("pc:dropdown-change", (e) => {

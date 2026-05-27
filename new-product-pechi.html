@@ -2227,7 +2227,7 @@
                       </div>
                     </div>
                     <div class="product-hero__info-action">
-                      <a href="#" class="product-hero__info-link">Подробнее</a>
+                      <a href="#" class="product-hero__info-link" data-tab-trigger="delivery">Подробнее</a>
                     </div>
                   </div>
 
@@ -2243,7 +2243,7 @@
                       </div>
                     </div>
                     <div class="product-hero__info-action">
-                      <a href="#" class="product-hero__info-link">Подробнее</a>
+                      <a href="#" class="product-hero__info-link" data-tab-trigger="delivery">Подробнее</a>
                     </div>
                   </div>
                 </div>
@@ -3998,234 +3998,445 @@
           </div>
         </section>
 
-        <!-- REUSABLE PRODUCTS SECTION -->
-        <section class="products-section">
+        <!-- ДОПОЛНИТЕЛЬНЫЕ ТОВАРЫ -->
+        <section
+          class="products-widget products-widget--transparent widget-tabs widget-tabs--pills"
+        >
           <div class="container">
-            <h2 class="products-section__title">
-              У НАС ЕСТЬ ВСЕ ТОВАРЫ ДЛЯ БАНИ
-            </h2>
-            <div class="sl-tabs sl-tabs--pills">
-              <div class="sl-tabs__nav-wrapper">
-                <div class="sl-tabs__nav">
-                  <button
-                    class="sl-tabs__trigger sl-tabs__trigger--active btn-tab"
-                    data-tab-trigger="together"
-                  >
-                    Покупают вместе
-                  </button>
-                  <button
-                    class="sl-tabs__trigger btn-tab"
-                    data-tab-trigger="viewed"
-                  >
-                    Вы смотрели
-                  </button>
-                </div>
+            <h2 class="products-widget__title">У НАС ЕСТЬ ВСЕ ТОВАРЫ ДЛЯ БАНИ</h2>
+
+            <div class="products-widget__tabs-nav widget-tabs__nav-wrapper">
+              <div class="widget-tabs__nav">
+                <button
+                  class="widget-tabs__trigger widget-tabs__trigger--active btn-tab"
+                  data-tab-trigger="upsell-wires"
+                >
+                  Покупают вместе
+                </button>
+                <button
+                  class="widget-tabs__trigger btn-tab"
+                  data-tab-trigger="upsell-tens"
+                >
+                  Вы смотрели
+                </button>
               </div>
             </div>
 
-            <div class="products-section__slider-wrapper">
-              <button
-                class="slider-arrow slider-arrow--prev"
-                aria-label="Предыдущий"
+            <div class="products-widget__content widget-tabs__content">
+              <!-- Panel: Покупают вместе -->
+              <div
+                class="widget-tabs__pane widget-tabs__pane--active"
+                data-tab-panel="upsell-wires"
               >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <line x1="19" y1="12" x2="5" y2="12"></line>
-                  <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-              </button>
+                <div class="products-widget__slider-wrapper">
+                  <button
+                    class="products-widget__slider-arrow products-widget__slider-arrow--prev"
+                    aria-label="Предыдущий"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <line x1="19" y1="12" x2="5" y2="12"></line>
+                      <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                  </button>
 
-              <div class="products-section__slider">
-                <!-- Reusable Product Card 1 -->
-                <article class="product-card">
-                  <a href="#" class="product-card__image-link">
-                    <img
-                      src="https://sauna-life.ru/images/virtuemart/product/resized/provoda-silikon_300x300.jpg"
-                      alt="Увлажнитель воздуха для печи"
-                      class="product-card__img"
-                    />
-                  </a>
-                  <h3 class="product-card__title">
-                    <a href="#">Увлажнитель воздуха для печи</a>
-                  </h3>
-                  <div class="product-card__bottom">
-                    <div class="product-card__prices">
-                      <span class="product-card__price-current">3.800 ₽</span>
-                      <span class="product-card__price-old">7400</span>
-                    </div>
-                    <button
-                      class="product-card__cart-btn"
-                      aria-label="В корзину"
-                    >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <circle cx="9" cy="21" r="1" />
-                        <circle cx="20" cy="21" r="1" />
-                        <path
-                          d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                  <div class="products-widget__slider">
+                    <!-- Card 1 -->
+                    <article class="simple-card">
+                      <a href="#" class="simple-card__image-link">
+                        <img
+                          src="./assets/images/product/prod2-1.jpg"
+                          alt="Термометр для воды Bentwood"
+                          class="simple-card__img"
                         />
-                      </svg>
-                    </button>
-                  </div>
-                </article>
-                <!-- Card 2 -->
-                <article class="product-card">
-                  <a href="#" class="product-card__image-link">
-                    <img
-                      src="https://sauna-life.ru/images/virtuemart/product/resized/provoda-silikon_300x300.jpg"
-                      alt="Защитное ограждение дымовой трубы Harvia Legend WL300"
-                      class="product-card__img"
-                    />
-                  </a>
-                  <h3 class="product-card__title">
-                    <a href="#"
-                      >Защитное ограждение дымовой трубы Harvia Legend WL300</a
-                    >
-                  </h3>
-                  <div class="product-card__bottom">
-                    <div class="product-card__prices">
-                      <span class="product-card__price-current">3.800 ₽</span>
-                      <span class="product-card__price-old">7400</span>
-                    </div>
-                    <button
-                      class="product-card__cart-btn"
-                      aria-label="В корзину"
-                    >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <circle cx="9" cy="21" r="1" />
-                        <circle cx="20" cy="21" r="1" />
-                        <path
-                          d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                      </a>
+                      <h3 class="simple-card__title">
+                        <a href="#">Термометр для воды Bentwood</a>
+                      </h3>
+                      <div class="simple-card__bottom">
+                        <div class="simple-card__prices">
+                          <span class="simple-card__price-current"
+                            >1 200 ₽</span
+                          >
+                          <span class="simple-card__price-old">1 800 ₽</span>
+                        </div>
+                        <button
+                          class="simple-card__cart-btn"
+                          aria-label="В корзину"
+                        >
+                          <img
+                            src="./assets/icons/interfaces/cart-light.svg"
+                            alt=""
+                            width="16"
+                            height="16"
+                          />
+                        </button>
+                      </div>
+                    </article>
+                    <!-- Card 2 -->
+                    <article class="simple-card">
+                      <a href="#" class="simple-card__image-link">
+                        <img
+                          src="./assets/images/product/widget-1.jpg"
+                          alt="Защитный чехол-тент (ПВХ)"
+                          class="simple-card__img"
                         />
-                      </svg>
-                    </button>
-                  </div>
-                </article>
-                <!-- Card 3 -->
-                <article class="product-card">
-                  <a href="#" class="product-card__image-link">
-                    <img
-                      src="https://sauna-life.ru/images/virtuemart/product/resized/provoda-silikon_300x300.jpg"
-                      alt="Увлажнитель воздуха для печи"
-                      class="product-card__img"
-                    />
-                  </a>
-                  <h3 class="product-card__title">
-                    <a href="#">Увлажнитель воздуха для печи</a>
-                  </h3>
-                  <div class="product-card__bottom">
-                    <div class="product-card__prices">
-                      <span class="product-card__price-current">3.800 ₽</span>
-                      <span class="product-card__price-old">7400</span>
-                    </div>
-                    <button
-                      class="product-card__cart-btn"
-                      aria-label="В корзину"
-                    >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <circle cx="9" cy="21" r="1" />
-                        <circle cx="20" cy="21" r="1" />
-                        <path
-                          d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                      </a>
+                      <h3 class="simple-card__title">
+                        <a href="#">Защитный чехол-тент (ПВХ)</a>
+                      </h3>
+                      <div class="simple-card__bottom">
+                        <div class="simple-card__prices">
+                          <span class="simple-card__price-current"
+                            >5 000 ₽</span
+                          >
+                          <span class="simple-card__price-old">7 000 ₽</span>
+                        </div>
+                        <button
+                          class="simple-card__cart-btn"
+                          aria-label="В корзину"
+                        >
+                          <img
+                            src="./assets/icons/interfaces/cart-light.svg"
+                            alt=""
+                            width="16"
+                            height="16"
+                          />
+                        </button>
+                      </div>
+                    </article>
+                    <!-- Card 3 -->
+                    <article class="simple-card">
+                      <a href="#" class="simple-card__image-link">
+                        <img
+                          src="./assets/images/product/controller-1.jpg"
+                          alt="Навесная полочка для напитков"
+                          class="simple-card__img"
                         />
-                      </svg>
-                    </button>
-                  </div>
-                </article>
-                <!-- Card 4 -->
-                <article class="product-card">
-                  <a href="#" class="product-card__image-link">
-                    <img
-                      src="https://sauna-life.ru/images/virtuemart/product/resized/provoda-silikon_300x300.jpg"
-                      alt="Увлажнитель воздуха для печи"
-                      class="product-card__img"
-                    />
-                  </a>
-                  <h3 class="product-card__title">
-                    <a href="#">Увлажнитель воздуха для печи</a>
-                  </h3>
-                  <div class="product-card__bottom">
-                    <div class="product-card__prices">
-                      <span class="product-card__price-current">3.800 ₽</span>
-                      <span class="product-card__price-old">7400</span>
-                    </div>
-                    <button
-                      class="product-card__cart-btn"
-                      aria-label="В корзину"
-                    >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <circle cx="9" cy="21" r="1" />
-                        <circle cx="20" cy="21" r="1" />
-                        <path
-                          d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                      </a>
+                      <h3 class="simple-card__title">
+                        <a href="#">Навесная полочка для напитков</a>
+                      </h3>
+                      <div class="simple-card__bottom">
+                        <div class="simple-card__prices">
+                          <span class="simple-card__price-current"
+                            >2 400 ₽</span
+                          >
+                          <span class="simple-card__price-old">3 200 ₽</span>
+                        </div>
+                        <button
+                          class="simple-card__cart-btn"
+                          aria-label="В корзину"
+                        >
+                          <img
+                            src="./assets/icons/interfaces/cart-light.svg"
+                            alt=""
+                            width="16"
+                            height="16"
+                          />
+                        </button>
+                      </div>
+                    </article>
+                    <!-- Card 4 -->
+                    <article class="simple-card">
+                      <a href="#" class="simple-card__image-link">
+                        <img
+                          src="./assets/images/product/kupel-2-1.jpg"
+                          alt="Деревянная крышка из лиственницы"
+                          class="simple-card__img"
                         />
-                      </svg>
-                    </button>
+                      </a>
+                      <h3 class="simple-card__title">
+                        <a href="#">Деревянная крышка из лиственницы</a>
+                      </h3>
+                      <div class="simple-card__bottom">
+                        <div class="simple-card__prices">
+                          <span class="simple-card__price-current"
+                            >12 500 ₽</span
+                          >
+                          <span class="simple-card__price-old">16 000 ₽</span>
+                        </div>
+                        <button
+                          class="simple-card__cart-btn"
+                          aria-label="В корзину"
+                        >
+                          <img
+                            src="./assets/icons/interfaces/cart-light.svg"
+                            alt=""
+                            width="16"
+                            height="16"
+                          />
+                        </button>
+                      </div>
+                    </article>
+                    <!-- Card 5 -->
+                    <article class="simple-card">
+                      <a href="#" class="simple-card__image-link">
+                        <img
+                          src="./assets/images/product/prod1-1.jpg"
+                          alt="Ступень приставная двухъярусная"
+                          class="simple-card__img"
+                        />
+                      </a>
+                      <h3 class="simple-card__title">
+                        <a href="#">Ступень приставная двухъярусная</a>
+                      </h3>
+                      <div class="simple-card__bottom">
+                        <div class="simple-card__prices">
+                          <span class="simple-card__price-current"
+                            >6 800 ₽</span
+                          >
+                          <span class="simple-card__price-old">9 000 ₽</span>
+                        </div>
+                        <button
+                          class="simple-card__cart-btn"
+                          aria-label="В корзину"
+                        >
+                          <img
+                            src="./assets/icons/interfaces/cart-light.svg"
+                            alt=""
+                            width="16"
+                            height="16"
+                          />
+                        </button>
+                      </div>
+                    </article>
                   </div>
-                </article>
+
+                  <button
+                    class="products-widget__slider-arrow products-widget__slider-arrow--next"
+                    aria-label="Следующий"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </button>
+                </div>
               </div>
 
-              <button
-                class="slider-arrow slider-arrow--next"
-                aria-label="Следующий"
-              >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </button>
+              <!-- Panel: Вы смотрели -->
+              <div class="widget-tabs__pane" data-tab-panel="upsell-tens">
+                <div class="products-widget__slider-wrapper">
+                  <button
+                    class="products-widget__slider-arrow products-widget__slider-arrow--prev"
+                    aria-label="Предыдущий"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <line x1="19" y1="12" x2="5" y2="12"></line>
+                      <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                  </button>
+
+                  <div class="products-widget__slider">
+                    <!-- Card 1 -->
+                    <article class="simple-card">
+                      <a href="#" class="simple-card__image-link">
+                        <img
+                          src="./assets/images/product/prod2-2.jpg"
+                          alt="Деревянная шайка Bentwood 10л"
+                          class="simple-card__img"
+                        />
+                      </a>
+                      <h3 class="simple-card__title">
+                        <a href="#">Деревянная шайка Bentwood 10л</a>
+                      </h3>
+                      <div class="simple-card__bottom">
+                        <div class="simple-card__prices">
+                          <span class="simple-card__price-current"
+                            >3 500 ₽</span
+                          >
+                          <span class="simple-card__price-old">4 800 ₽</span>
+                        </div>
+                        <button
+                          class="simple-card__cart-btn"
+                          aria-label="В корзину"
+                        >
+                          <img
+                            src="./assets/icons/interfaces/cart-light.svg"
+                            alt=""
+                            width="16"
+                            height="16"
+                          />
+                        </button>
+                      </div>
+                    </article>
+                    <!-- Card 2 -->
+                    <article class="simple-card">
+                      <a href="#" class="simple-card__image-link">
+                        <img
+                          src="./assets/images/product/prod1-2.jpg"
+                          alt="Подвесной душ-обливание из лиственницы"
+                          class="simple-card__img"
+                        />
+                      </a>
+                      <h3 class="simple-card__title">
+                        <a href="#">Подвесной душ-обливание из лиственницы</a>
+                      </h3>
+                      <div class="simple-card__bottom">
+                        <div class="simple-card__prices">
+                          <span class="simple-card__price-current"
+                            >8 900 ₽</span
+                          >
+                          <span class="simple-card__price-old">11 500 ₽</span>
+                        </div>
+                        <button
+                          class="simple-card__cart-btn"
+                          aria-label="В корзину"
+                        >
+                          <img
+                            src="./assets/icons/interfaces/cart-light.svg"
+                            alt=""
+                            width="16"
+                            height="16"
+                          />
+                        </button>
+                      </div>
+                    </article>
+                    <!-- Card 3 -->
+                    <article class="simple-card">
+                      <a href="#" class="simple-card__image-link">
+                        <img
+                          src="./assets/images/product/vagonka-1.jpg"
+                          alt="Облицовочная рейка из термососны"
+                          class="simple-card__img"
+                        />
+                      </a>
+                      <h3 class="simple-card__title">
+                        <a href="#">Облицовочная рейка из термососны</a>
+                      </h3>
+                      <div class="simple-card__bottom">
+                        <div class="simple-card__prices">
+                          <span class="simple-card__price-current"
+                            >450 ₽</span
+                          >
+                          <span class="simple-card__price-old">600 ₽</span>
+                        </div>
+                        <button
+                          class="simple-card__cart-btn"
+                          aria-label="В корзину"
+                        >
+                          <img
+                            src="./assets/icons/interfaces/cart-light.svg"
+                            alt=""
+                            width="16"
+                            height="16"
+                          />
+                        </button>
+                      </div>
+                    </article>
+                    <!-- Card 4 -->
+                    <article class="simple-card">
+                      <a href="#" class="simple-card__image-link">
+                        <img
+                          src="./assets/images/product/controller-2.jpg"
+                          alt="Светодиодная подсветка RGB для купели"
+                          class="simple-card__img"
+                        />
+                      </a>
+                      <h3 class="simple-card__title">
+                        <a href="#">Светодиодная подсветка RGB для купели</a>
+                      </h3>
+                      <div class="simple-card__bottom">
+                        <div class="simple-card__prices">
+                          <span class="simple-card__price-current"
+                            >7 200 ₽</span
+                          >
+                          <span class="simple-card__price-old">9 500 ₽</span>
+                        </div>
+                        <button
+                          class="simple-card__cart-btn"
+                          aria-label="В корзину"
+                        >
+                          <img
+                            src="./assets/icons/interfaces/cart-light.svg"
+                            alt=""
+                            width="16"
+                            height="16"
+                          />
+                        </button>
+                      </div>
+                    </article>
+                    <!-- Card 5 -->
+                    <article class="simple-card">
+                      <a href="#" class="simple-card__image-link">
+                        <img
+                          src="./assets/images/product/kupel-1-1.jpg"
+                          alt="Купель овальная деревянная"
+                          class="simple-card__img"
+                        />
+                      </a>
+                      <h3 class="simple-card__title">
+                        <a href="#">Купель овальная деревянная</a>
+                      </h3>
+                      <div class="simple-card__bottom">
+                        <div class="simple-card__prices">
+                          <span class="simple-card__price-current"
+                            >142 000 ₽</span
+                          >
+                          <span class="simple-card__price-old">165 000 ₽</span>
+                        </div>
+                        <button
+                          class="simple-card__cart-btn"
+                          aria-label="В корзину"
+                        >
+                          <img
+                            src="./assets/icons/interfaces/cart-light.svg"
+                            alt=""
+                            width="16"
+                            height="16"
+                          />
+                        </button>
+                      </div>
+                    </article>
+                  </div>
+
+                  <button
+                    class="products-widget__slider-arrow products-widget__slider-arrow--next"
+                    aria-label="Следующий"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </section>

@@ -109,7 +109,7 @@
 .product-card__image-frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1;
   background-color: var(--color-light);
   overflow: hidden;
   cursor: zoom-in;
