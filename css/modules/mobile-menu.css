@@ -1,0 +1,207 @@
+/*
+ * Назначение файла: Стили для мобильного меню (slide-in панель)
+ */
+
+/* Корневой контейнер — покрывает весь экран, но невидим по умолчанию */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.mobile-menu.is-open {
+  pointer-events: all;
+  visibility: visible;
+}
+
+/* Тёмный полупрозрачный оверлей */
+.mobile-menu__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.55);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu.is-open .mobile-menu__overlay {
+  opacity: 1;
+}
+
+/* Панель — выезжает справа */
+.mobile-menu__panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 340px;
+  height: 100%;
+  background-color: var(--color-light);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  transform: translateX(-100%);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu.is-open .mobile-menu__panel {
+  transform: translateX(0);
+}
+
+/* ── Шапка панели ─────────────────────────────────── */
+.mobile-menu__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  flex-shrink: 0;
+}
+
+.mobile-menu__logo img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+.mobile-menu__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  border-radius: var(--radius-base);
+  cursor: pointer;
+  color: var(--color-gray);
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.mobile-menu__close:hover {
+  background-color: #f5f5f5;
+}
+
+.mobile-menu__close img {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Навигация ────────────────────────────────────── */
+.mobile-menu__nav {
+  flex-shrink: 0;
+}
+
+.mobile-menu__nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-menu__nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.mobile-menu__nav-link:hover {
+  color: var(--color-accent);
+  background-color: #fafafa;
+}
+
+.mobile-menu__nav-link--sale {
+  color: var(--color-accent);
+}
+
+.mobile-menu__nav-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Разделитель внутри навигации (между основными и инфо ссылками) */
+.mobile-menu__nav-divider {
+  height: 1px;
+  background-color: var(--color-border, #eaeaea);
+  margin: 4px 20px;
+}
+
+/* ── Контакты ─────────────────────────────────────── */
+.mobile-menu__contacts {
+  margin-top: auto;
+  padding: 20px;
+  flex-shrink: 0;
+}
+
+.mobile-menu__telegram {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-dark);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.mobile-menu__telegram:hover {
+  color: var(--color-accent);
+}
+
+.mobile-menu__telegram img {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.mobile-menu__phones {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.mobile-menu__phone-main,
+.mobile-menu__phone-sub {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-dark);
+  text-decoration: none;
+  line-height: 1.3;
+}
+
+.mobile-menu__phone-sub {
+  margin-top: 6px;
+}
+
+.mobile-menu__phone-label {
+  font-size: 12px;
+  color: var(--color-gray);
+  margin-top: 2px;
+  line-height: 1.3;
+}
+
+.mobile-menu__schedule {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-gray);
+  margin-bottom: 20px;
+}
+
+.mobile-menu__cta {
+  width: 100%;
+  gap: 8px;
+}

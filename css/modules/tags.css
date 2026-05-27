@@ -1,0 +1,193 @@
+/*
+ * Назначение файла: Стили для списков тегов и кнопок-тегов
+ */
+
+/* .tags {} */
+
+.tags__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-left: -8px;
+}
+
+@media (max-width: 767px) {
+  /* Форсируем перезапись для мобильных устройств на случай специфичности */
+  div.tags > ul.tags__list {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important; /* Firefox */
+    margin-left: 0;
+  }
+
+  div.tags > ul.tags__list::-webkit-scrollbar {
+    display: none !important; /* Safari and Chrome */
+  }
+}
+
+.tags__item--hidden {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .tags__item--hidden {
+    display: inline-flex !important; /* На мобильных игнорируем класс hidden от JS, так как у нас горизонтальный скролл */
+  }
+}
+
+.tags__item {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.tags__link,
+.tags__more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 4px 8px;
+  background-color: var(--color-bg);
+  border: var(--border-base);
+  border-radius: var(--radius-base);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-dark);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  line-height: inherit;
+}
+
+.tags__icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 8px;
+  object-fit: contain;
+}
+
+.tags__link:hover,
+.tags__more-btn:hover {
+  border-color: var(--color-gray);
+}
+
+.tags__list--brands {
+  margin-top: 12px;
+}
+
+.tags__link--brand {
+  text-transform: uppercase;
+}
+
+.tags__more-text {
+  background: none;
+  border: none;
+  color: #3e94c1;
+  font-family: inherit;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px 8px;
+  min-height: 40px;
+  transition: color 0.3s ease;
+}
+
+.tags__more-text:hover {
+  color: var(--color-accent);
+}
+
+@media (max-width: 767px) {
+  /* Перебиваем любую специфичность для инлайн скрытия */
+  div.tags > ul.tags__list > li.tags__item--more,
+  li.tags__item--more {
+    display: none !important;
+  }
+}
+
+.tags__all-btn {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .tags__all-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 4px 12px;
+    background-color: var(--color-light); /* Или другой цвет */
+    border: none;
+    border-radius: var(--radius-base);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-dark);
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+
+  .tags__all-btn:active {
+    background-color: #f5f5f5;
+  }
+}
+
+/* ============================================
+   Вертикальный список тегов в оффканвасе
+   ============================================ */
+.tags-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tags-menu__item {
+  border: var(--border-base);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.tags-menu__item:last-child {
+  margin-bottom: 0;
+}
+
+.tags-menu__link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-inline: 8px;
+  min-height: 40px;
+  color: var(--color-dark, #1a1a1a);
+  text-decoration: none;
+  font-size: 12px;
+  transition: background-color 0.15s ease;
+}
+
+.tags-menu__link:active {
+  background-color: #f7f7f7;
+}
+
+.tags-menu__icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background-color: var(--color-bg);
+  padding: 4px;
+  object-fit: contain;
+}
+
+/* Плейсхолдер для элементов без иконки (бренды) */
+.tags-menu__icon-placeholder {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background-color: var(--color-bg);
+}

@@ -1,0 +1,145 @@
+/*
+ * Назначение: Стили промо-баннера «Покупайте у лучших»
+ */
+
+/* ─── Секция ──────────────────────────────────────────────── */
+.product-usp-promo {
+  background-color: var(--color-blue);
+  color: var(--color-light);
+  padding: 16px 0;
+}
+
+/* ─── Внутренний контейнер ────────────────────────────────── */
+.product-usp-promo__inner {
+  display: grid;
+  grid-template-columns: 3fr 1px 9fr; /* title | divider | features */
+  align-items: center;
+  gap: 20px;
+}
+
+/* ─── Колонка с заголовком ────────────────────────────────── */
+.product-usp-promo__title-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.product-usp-promo__title-main {
+  font-size: 26px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+  z-index: 2;
+  position: relative;
+}
+
+.product-usp-promo__title-badge {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: #fff;
+  padding: 4px 20px;
+  border-radius: var(--radius-base);
+  font-size: 26px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transform: rotate(-10deg) translate(70px, 12px);
+}
+
+/* ─── Вертикальный разделитель ────────────────────────────── */
+.product-usp-promo__divider {
+  width: 1px;
+  height: 110px;
+  background-color: #4aa0cb;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+/* ─── Блок с инфо-карточками ──────────────────────────────── */
+.product-usp-promo__features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-left: 40px; /* 40px от разделителя до фичей */
+}
+
+/* ─── Одна инфо-карточка ──────────────────────────────────── */
+.product-usp-promo__feature {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ─── Иконка ──────────────────────────────────────────────── */
+.product-usp-promo__icon {
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.product-usp-promo__icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* ─── Текст инфо-карточки ─────────────────────────────────── */
+.product-usp-promo__text {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ПЛАНШЕТ — до 1023px
+   Сетка: заголовок (3 col) | разделитель скрыт | фичи (3 в строку)
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 1023px) {
+  .product-usp-promo {
+    padding: 24px 0;
+  }
+  .product-usp-promo__inner {
+    grid-template-columns: 1fr;
+  }
+
+  /* Скрываем вертикальный разделитель */
+  .product-usp-promo__divider {
+    height: 1px;
+    width: 100%;
+  }
+
+  /* Заголовок без наклона */
+  .product-usp-promo__title-badge {
+    transform: none;
+  }
+
+  .product-usp-promo__title-col {
+    padding-right: 0;
+    flex-direction: initial;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Фичи — 3 в строку на планшете */
+  .product-usp-promo__features {
+    padding-left: 0;
+  }
+
+  .product-usp-promo__text {
+    font-size: 16px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   МОБИЛЬНАЯ ВЕРСИЯ
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  .product-usp-promo__features {
+    grid-template-columns: 1fr;
+  }
+}

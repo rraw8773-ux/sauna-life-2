@@ -1,0 +1,117 @@
+/* ======================================================
+   ВИД КАТАЛОГА: СПИСОК (LIST VIEW)
+   ====================================================== */
+.catalog__grid--list {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+}
+
+.catalog__grid--list .product-card {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr) 260px;
+  gap: 20px;
+  padding: 20px;
+  overflow: initial;
+}
+@media (max-width: 1539px) {
+  .catalog__grid--list .product-card {
+    grid-template-columns: 200px minmax(0, 1fr) 200px;
+  }
+}
+@media (max-width: 1023px) {
+  .catalog__grid--list .product-card {
+    grid-template-columns: 180px minmax(0, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .catalog__grid--list .product-card {
+    gap: 10px;
+    padding: 12px;
+  }
+}
+@media (max-width: 479px) {
+  .catalog__grid--list .product-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Общие переопределения для элементов карты в list view */
+.catalog__grid--list .product-card__header,
+.catalog__grid--list .product-card__content {
+  min-width: 0;
+}
+
+.catalog__grid--list .product-card__gallery {
+  margin: 0;
+}
+
+.catalog__grid--list .product-card__description {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  height: auto;
+}
+
+@media (max-width: 479px) {
+  .catalog__grid--list .product-card__features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Селекторы (выбор характеристик) в list view */
+.catalog__grid--list .product-card__selectors {
+  order: 1;
+  margin-bottom: 0;
+}
+.catalog__grid--list .product-card-field__label {
+  color: var(--color-dark);
+}
+@media (max-width: 767px) {
+  .catalog__grid--list .product-card-field__label {
+    font-size: 10px;
+  }
+}
+/* Футер и цены в list view */
+.catalog__grid--list .product-card__footer,
+.product-card__footer form.product {
+  margin-top: unset;
+}
+@media (max-width: 1023px) {
+  .catalog__grid--list .product-card__footer {
+    grid-column: 2;
+  }
+}
+@media (max-width: 479px) {
+  .catalog__grid--list .product-card__footer {
+    grid-column: auto;
+  }
+}
+
+.catalog__grid--list .product-card__prices {
+  border-bottom: var(--border-base);
+  padding-bottom: 5px;
+}
+@media (max-width: 1023px) {
+  .catalog__grid--list .product-card__prices {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+.catalog__grid--list .product-card__price {
+  font-size: 24px;
+  color: var(--color-dark);
+}
+@media (max-width: 1023px) {
+  .catalog__grid--list .product-card__price {
+    font-size: 18px;
+  }
+}
+
+.catalog__grid--list .product-card__price-old {
+  font-size: 16px;
+}
+@media (max-width: 1023px) {
+  .catalog__grid--list .product-card__price-old {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,169 @@
+/* ======================================================
+   ПРОМО-БЛОК (АКЦИИ И Т.Д.)
+   ====================================================== */
+.promo-block {
+  grid-column: 1 / -1;
+  background-color: var(--color-light);
+  border-radius: var(--radius-base);
+  box-shadow: var(--shadow-soft);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.promo-block--span-1 {
+  grid-column: span 1;
+}
+.promo-block--span-2 {
+  grid-column: span 2;
+}
+.promo-block--span-3 {
+  grid-column: span 3;
+}
+.promo-block--span-4 {
+  grid-column: span 4;
+}
+
+@media (max-width: 1539px) {
+  .promo-block--lg-1 {
+    grid-column: span 1;
+  }
+  .promo-block--lg-2 {
+    grid-column: span 2;
+  }
+  .promo-block--lg-3 {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 1023px) {
+  .promo-block--md-1 {
+    grid-column: span 1;
+  }
+  .promo-block--md-2 {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 767px) {
+  .promo-block[class*="--span-"],
+  .promo-block[class*="--lg-"],
+  .promo-block[class*="--md-"] {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+.promo-block__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 16px;
+}
+.promo-block__badge-icon {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 1023px) {
+  .promo-block__title {
+    font-size: 28px;
+  }
+}
+
+.promo-block__body {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.promo-block__image-wrapper {
+  width: 200px;
+  flex-shrink: 0;
+}
+.promo-block__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.promo-block__info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.promo-block__discount {
+  margin-bottom: 12px;
+}
+
+.promo-block__product-title {
+  font-size: 24px;
+  margin-bottom: 16px;
+  max-width: 400px;
+}
+@media (max-width: 767px) {
+  .promo-block__product-title {
+    font-size: 20px;
+  }
+}
+
+.promo-block__prices {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.promo-block__price {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-blue);
+}
+.promo-block__price-old {
+  font-size: 16px;
+  color: var(--color-gray);
+  text-decoration: line-through;
+}
+
+.promo-block__actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.promo-block__buy-btn {
+  flex-shrink: 0;
+}
+
+.promo-block__timer {
+  font-size: 14px;
+  color: var(--color-dark);
+}
+.promo-block__timer strong {
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 767px) {
+  .promo-block__body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .promo-block__image-wrapper {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+  .promo-block__actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 16px;
+  }
+  .promo-block__timer {
+    text-align: center;
+  }
+}

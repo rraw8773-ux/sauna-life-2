@@ -1,0 +1,234 @@
+/*
+ * Назначение: Универсальный виджет товаров (слайдер с табами)
+ * Блок: products-widget
+ */
+
+.products-widget {
+  padding: 60px 0;
+  background-color: var(--color-light);
+  overflow: hidden;
+}
+
+.products-widget--transparent {
+  background-color: transparent;
+}
+
+.products-widget__title {
+  margin-bottom: 24px;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.products-widget__tabs-nav {
+  margin-bottom: 24px;
+}
+
+/* Слайдер (настроен под Slick) */
+.products-widget__slider-wrapper {
+  position: relative;
+}
+
+.products-widget__slider {
+  margin: 0 -10px;
+  padding: 16px 2px; /* Отступы для теней карточек */
+}
+
+.products-widget__slider .slick-list {
+  margin: -16px -2px;
+  padding: 16px 2px;
+}
+
+.products-widget__slider .slick-track {
+  display: flex !important;
+}
+
+.products-widget__slider .slick-slide {
+  height: auto;
+  margin: 0 10px;
+}
+
+.products-widget__slider-arrow {
+  width: 32px;
+  height: 32px;
+  background: var(--color-light);
+  border: none;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-accent);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.products-widget__slider-arrow:hover {
+  color: var(--color-accent-hover);
+}
+
+.products-widget__slider-arrow--prev {
+  left: -40px;
+}
+
+.products-widget__slider-arrow--next {
+  right: -40px;
+}
+
+.products-widget__slider-arrow.slick-disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   ЭЛЕМЕНТ: Карточка товара (simple-card)
+   Используется только внутри виджета
+   ========================================================================== */
+.simple-card {
+  height: 100%;
+  border-radius: var(--radius-base, 8px);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-light, #ffffff);
+  transition: box-shadow 0.2s ease;
+  /* border: var(--border-base, 1px solid #e3e3e6); */
+}
+
+.slick-initialized .simple-card.slick-slide {
+  display: flex;
+}
+
+.simple-card:hover {
+  box-shadow: var(--shadow-soft, 0 4px 20px rgba(0, 0, 0, 0.06));
+}
+
+.simple-card__image-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 160px;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e3e3e6;
+}
+
+.simple-card__img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.simple-card__title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  line-height: 1;
+  flex-grow: 1;
+}
+
+.simple-card__title a {
+  color: var(--color-dark, #0a0a0a);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.simple-card__title a:hover {
+  color: var(--color-accent, #ff2e47);
+}
+
+.simple-card__bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.simple-card__prices {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.simple-card__price-current {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-dark, #0a0a0a);
+  white-space: nowrap;
+}
+
+.simple-card__price-old {
+  font-size: 12px;
+  color: var(--color-gray);
+  text-decoration: line-through;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.simple-card__cart-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background-color: var(--color-accent, #ff2e47);
+  color: var(--color-light, #ffffff);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.simple-card__cart-btn img {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.simple-card__cart-btn:hover {
+  background-color: var(--color-accent-hover, #e6233b);
+}
+
+/* Адаптивность */
+@media (max-width: 1300px) {
+  .products-widget__slider-arrow--prev {
+    left: -10px;
+  }
+  .products-widget__slider-arrow--next {
+    right: -10px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .products-widget__title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .products-widget {
+    padding: 40px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .products-widget__title {
+    font-size: 24px;
+  }
+  .products-widget__slider-arrow {
+    display: none !important;
+  }
+  .products-widget__slider {
+    padding: 16px 0;
+  }
+}

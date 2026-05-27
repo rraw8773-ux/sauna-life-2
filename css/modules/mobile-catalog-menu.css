@@ -1,0 +1,324 @@
+/*
+ * Назначение файла: Стили для мобильного полноэкранного меню каталога (drill-down)
+ */
+
+/* ================== OVERLAY ================== */
+.mcm {
+  position: fixed;
+  /* top выставляется через JS: --mcm-top = header.getBoundingClientRect().bottom */
+  top: var(--mcm-top, 0px);
+  /* top: 0; */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1050; /* Ниже mobile-nav (1060), поэтому плашка остаётся видимой */
+  background-color: var(--color-light);
+  display: flex;
+  flex-direction: column;
+  transform: translateY(110%);
+  visibility: hidden;
+  transition:
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.35s;
+  padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
+  will-change: transform;
+}
+
+.mcm.is-open {
+  transform: translateY(0);
+  visibility: visible;
+}
+
+/* Показываем только на мобилке */
+@media (min-width: 768px) {
+  .mcm {
+    display: none !important;
+  }
+}
+
+/* ── Drag handle (для свайпа вниз) ── */
+.mcm__drag-handle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  flex-shrink: 0;
+  cursor: grab;
+  touch-action: none; /* отдаём управление в JS */
+}
+
+.mcm__drag-handle::after {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 4px;
+  background-color: var(--border-color-base);
+  border-radius: 2px;
+}
+
+/* ================== HEADER ================== */
+.mcm__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 10px;
+  padding-top: 0;
+  flex-shrink: 0;
+  border-bottom: var(--border-base);
+}
+
+.mcm__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin: 0;
+}
+
+.mcm__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  border-radius: var(--radius-base);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.mcm__close:active {
+  background-color: #f0f0f0;
+}
+
+.mcm__close img {
+  width: 18px;
+  height: 18px;
+}
+
+/* ================== TABS ================== */
+.mcm__tabs {
+  display: flex;
+  flex-shrink: 0;
+  /* border-bottom: 1px solid var(--border-color-base); */
+  padding: 0 10px;
+  gap: 0;
+}
+
+.mcm__tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-gray);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.mcm__tab.is-active {
+  color: var(--color-dark);
+  border-bottom-color: var(--color-accent);
+}
+
+/* ================== BODY (tab panels) ================== */
+.mcm__body {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.mcm__tab-panel {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.mcm__tab-panel.is-active {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================== DRILL-DOWN PAGES CONTAINER ================== */
+.mcm__pages {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.mcm__page {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background-color: var(--color-light);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Состояния анимации drill-down */
+.mcm__page--enter-right {
+  transform: translateX(100%);
+}
+
+.mcm__page--active {
+  transform: translateX(0);
+}
+
+.mcm__page--exit-left {
+  transform: translateX(-30%);
+}
+
+.mcm__page--hidden-left {
+  transform: translateX(-100%);
+}
+
+/* ================== BACK BUTTON ================== */
+.mcm__back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-gray);
+  background: none;
+  border: none;
+
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.15s ease;
+}
+
+.mcm__back:active {
+  background-color: #f5f5f5;
+}
+
+.mcm__back-icon {
+  width: 16px;
+  height: 16px;
+  transform: rotate(180deg);
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+/* Заголовок уровня (показывается в подкатегориях) */
+.mcm__page-title {
+  padding: 14px 16px 8px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ================== CATEGORY LIST ================== */
+.mcm__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* .mcm__list-item {
+  border-bottom: 1px solid #f0f0f2;
+} */
+
+.mcm__list-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: var(--color-dark);
+  font-size: 15px;
+  font-weight: 500;
+  transition: background-color 0.15s ease;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.mcm__list-link:active {
+  background-color: var(--color-gray-lighter);
+}
+
+/* Accent style for Акции */
+.mcm__list-link--accent {
+  color: var(--color-accent);
+}
+
+.mcm__list-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.mcm__list-text {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.mcm__list-count {
+  display: none;
+  font-size: 13px;
+  color: var(--color-gray);
+  flex-shrink: 0;
+}
+
+.mcm__list-chevron {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  opacity: 0.3;
+}
+
+/* ================== SERVICES LIST (фиксированный) ================== */
+.mcm__services-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-top: 20px;
+}
+
+/* .mcm__services-list li {
+  border-bottom: 1px solid #f0f0f2;
+} */
+
+.mcm__service-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: var(--color-dark);
+  font-size: 15px;
+  font-weight: 500;
+  transition: background-color 0.15s ease;
+}
+
+.mcm__service-link:active {
+  background-color: var(--color-gray-lighter);
+}
+
+/* ================== CONTACTS TAB ================== */
+.mcm__contacts {
+  /* padding: 20px 16px; */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}

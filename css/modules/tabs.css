@@ -1,0 +1,155 @@
+/*
+ * Назначение: Универсальный BEM-компонент табов (Universal Tabs Component)
+ */
+
+.widget-tabs {
+  width: 100%;
+}
+
+/* Обертка для скролла на мобильных устройствах */
+.widget-tabs__nav-wrapper {
+  border-bottom: 1px solid var(--border-color, #e2e8f0);
+  margin-bottom: 32px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.widget-tabs__nav-wrapper::-webkit-scrollbar {
+  display: none; /* Скрываем дефолтный скроллбар */
+}
+
+/* Навигационная панель */
+.widget-tabs__nav {
+  display: flex;
+  gap: 32px;
+  white-space: nowrap;
+}
+
+/* Триггер / Кнопка таба */
+.widget-tabs__trigger {
+  background: none;
+  border: none;
+  padding: 0 0 16px 0;
+  font-family: var(--font-family-primary, inherit);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-color-secondary, #718096);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+  outline: none;
+}
+
+.widget-tabs__trigger:hover {
+  color: var(--text-color-primary, #1a202c);
+}
+
+/* Активный триггер */
+.widget-tabs__trigger--active {
+  color: var(--text-color-primary, #1a202c);
+}
+
+.widget-tabs__trigger--active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-accent, #ff6b00);
+}
+
+/* Счетчик количества (опционально) */
+.widget-tabs__count {
+  color: var(--text-color-secondary, #718096);
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+/* Контейнеры контента */
+.widget-tabs__content {
+  width: 100%;
+}
+
+/* Вкладка с контентом */
+.widget-tabs__pane {
+  display: none;
+}
+
+.widget-tabs__pane--active {
+  display: block;
+}
+
+/* ==========================================================================
+   МОДИФИКАТОРЫ (MODIFIERS)
+   ========================================================================== */
+
+/* 1. Модификатор: Пилюли (Pills) - круглые очерченные кнопки */
+.widget-tabs--pills .widget-tabs__nav-wrapper {
+  border-bottom: none;
+  margin-bottom: 8px;
+}
+
+.widget-tabs--pills .widget-tabs__nav {
+  gap: 16px;
+}
+
+.widget-tabs--pills .widget-tabs__trigger {
+  height: 40px;
+  padding-inline: 16px;
+  border-radius: 10px;
+  background-color: #f4f4f4;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  color: #7f7f7f;
+}
+
+.widget-tabs--pills .widget-tabs__trigger:hover {
+  background-color: #eaeaea;
+}
+
+.widget-tabs--pills .widget-tabs__trigger--active {
+  background-color: var(--color-accent);
+  color: var(--color-light);
+}
+
+.widget-tabs--pills .widget-tabs__trigger--active::after {
+  display: none;
+}
+
+.widget-tabs--pills .widget-tabs__trigger--active:hover {
+  background-color: var(--color-accent-hover);
+}
+
+/* ==========================================================================
+   АДАПТИВНОСТЬ (RESPONSIVENESS)
+   ========================================================================== */
+@media (max-width: 1023px) {
+  .widget-tabs__nav-wrapper {
+    margin-inline: -20px; /* Offset standard container padding to stretch to screen edge */
+    overflow-y: hidden;
+  }
+  
+  .widget-tabs__nav {
+    gap: 24px;
+    padding-inline: 20px; /* Set padding on the inner scrollable container */
+    width: max-content; /* Ensure padding is scrollable and not ignored */
+  }
+}
+
+@media (max-width: 767px) {
+  .widget-tabs__nav {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 479px) {
+  .widget-tabs__nav-wrapper {
+    margin-inline: -10px; /* Offset mobile container padding */
+  }
+  .widget-tabs__nav {
+    padding-inline: 10px; /* Adjust inner padding on mobile */
+  }
+}

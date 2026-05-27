@@ -1,0 +1,11 @@
+/*
+ * Назначение: Главная точка входа для стилей страницы каталога (Catalog Page CSS)
+ * Собирает отдельные независимые блоки через нативные @import
+ */
+
+@import "./catalog/catalog-layout.css";
+@import "./catalog/catalog-sort.css";
+@import "./catalog/catalog-view-toggle.css";
+@import "./catalog/catalog-grid.css";
+@import "./catalog/catalog-list.css";
+@import "./catalog/promo-block.css";

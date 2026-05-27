@@ -1,0 +1,352 @@
+/*
+ * Назначение файла: Стили для хедера (шапки сайта)
+ */
+
+.header {
+  display: contents;
+}
+
+/* ================== TOP ================== */
+.header__top {
+  border-bottom: 1px solid #f2f2f2;
+  font-size: 12px;
+  background-color: var(--color-light);
+  position: relative;
+  z-index: 120;
+}
+
+.header__top-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 36px;
+}
+
+.header__location {
+  color: var(--color-gray);
+}
+
+.header__location strong {
+  color: var(--color-dark);
+  cursor: pointer;
+}
+
+.header__top-nav {
+  margin-left: 80px;
+  flex: 1;
+}
+
+.header__top-list {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header__top-link {
+  color: var(--color-gray);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.header__top-link:hover {
+  color: var(--color-accent);
+}
+
+.header__contacts {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 20px;
+}
+
+.header__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  text-decoration: none;
+}
+
+.header__social-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.header__phone {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  padding-block: 10px; /* Увеличиваем область наведения */
+}
+
+.header__phone-link {
+  color: var(--color-dark);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.header__phone-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.header__phone-popup {
+  position: absolute;
+  top: 100%;
+  right: -20px;
+  width: 240px;
+  background-color: var(--color-light);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-base);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 110;
+  cursor: default;
+}
+
+.header__phone:hover .header__phone-popup {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.header__phone-popup-text {
+  font-size: 14px;
+  color: var(--color-gray);
+}
+
+.header__phone-popup-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-dark);
+  text-decoration: none;
+}
+
+.header__phone-popup-schedule {
+  max-width: 150px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--color-gray);
+}
+
+.header__login {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-dark);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.header__login:hover {
+  color: var(--color-accent);
+}
+
+/* ================== MIDDLE ================== */
+.header__middle {
+  position: sticky;
+  top: 0;
+  z-index: 110;
+  background-color: var(--color-light);
+  transition: box-shadow 0.3s ease;
+}
+
+.header__middle--sticky {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Тень активна только при скролле (когда закреплено) */
+}
+
+.header__middle-inner {
+  display: flex;
+  align-items: center;
+  min-height: 60px;
+  gap: 32px;
+}
+
+.header__logo {
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.header__search {
+  flex: 1;
+  max-width: 600px;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-left: auto;
+}
+
+.header__action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-dark);
+  transition: color 0.3s ease;
+}
+
+.header__action-item:hover {
+  color: var(--color-accent);
+}
+
+.header__action-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.header__action-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.header__action-badge {
+  position: absolute;
+  top: 0px;
+  right: -16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-accent);
+  color: var(--color-light);
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.header__action-text {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.header__burger {
+  display: none;
+}
+
+/* ================== BOTTOM ================== */
+.header__bottom {
+  position: relative;
+  z-index: 106;
+  background-color: var(--color-light);
+}
+
+.header__bottom-inner {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.header__main-nav {
+  width: 100%;
+}
+
+.header__main-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.header__main-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.header__main-link:hover {
+  color: var(--color-accent);
+}
+
+.header__main-link--sale {
+  color: var(--color-accent);
+}
+
+/* ================== ADAPTIVE ================== */
+
+/* > Tablet (768 - 1023px) */
+@media (max-width: 1023px) {
+  .header__middle-inner {
+    gap: 16px;
+  }
+
+  .header__actions {
+    display: none;
+  }
+
+  .header__search {
+    max-width: none;
+  }
+
+  .header__main-link {
+    font-size: 12px;
+  }
+
+  .header__action-text {
+    display: none;
+  }
+}
+
+/* > Mobile Large (480 - 767px) */
+@media (max-width: 767px) {
+  .header__bottom,
+  .header__contact,
+  .header__logo,
+  .header__contacts,
+  #catalog-btn {
+    display: none;
+  }
+
+  .header__top-nav {
+    display: none;
+  }
+
+  .header__middle-inner {
+    gap: 10px;
+  }
+
+  .header__burger {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: var(--color-accent);
+    border-radius: var(--radius-base);
+  }
+}

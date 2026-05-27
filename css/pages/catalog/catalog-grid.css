@@ -1,0 +1,23 @@
+/* ======================================================
+   СЕТКА ТОВАРОВ (GRID VIEW - ПО УМОЛЧАНИЮ)
+   ====================================================== */
+.catalog__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap-base);
+}
+@media (max-width: 1539px) {
+  .catalog__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 1023px) {
+  .catalog__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .catalog__grid {
+    gap: 8px;
+  }
+}

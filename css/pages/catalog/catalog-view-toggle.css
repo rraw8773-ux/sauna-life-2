@@ -1,0 +1,49 @@
+/* ======================================================
+   ПЕРЕКЛЮЧАТЕЛИ ВИДА (GRID / LIST)
+   ====================================================== */
+.catalog__view-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-light);
+  border-radius: var(--radius-base);
+  padding: 8px;
+}
+@media (max-width: 767px) {
+  .catalog__view-toggle {
+    gap: 4px;
+    padding: 4px 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.catalog__view-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  color: var(--color-gray);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.catalog__view-btn svg {
+  width: 19px;
+  height: 19px;
+}
+.catalog__view-btn:not(.catalog__view-btn--active):hover {
+  color: var(--color-dark);
+  background-color: var(--color-gray-lighter);
+}
+.catalog__view-btn.is-active,
+.catalog__view-btn--active {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+.catalog__view-btn--active:hover {
+  background-color: #333;
+}

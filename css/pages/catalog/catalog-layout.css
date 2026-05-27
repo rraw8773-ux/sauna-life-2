@@ -1,0 +1,31 @@
+/* ======================================================
+   БАЗОВАЯ СЕТКА КАТАЛОГА И ОБЕРТКА
+   ====================================================== */
+.catalog {
+  margin-top: 40px;
+  padding-bottom: 60px;
+}
+
+@media (max-width: 767px) {
+  .catalog {
+    margin-top: 20px;
+  }
+}
+
+.catalog__layout {
+  display: grid;
+  grid-template-columns: 3fr 9fr; /* 3 колонки сайдбар, 9 колонок контент */
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 1023px) {
+  .catalog__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: var(--gap-base);
+  }
+}
+@media (max-width: 767px) {
+  .catalog__layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,271 @@
+/*
+ * Назначение: Свободно переиспользуемый компонент кастомного выпадающего списка (Custom Dropdown)
+ * Поддерживает стандартные селекты, сортировку каталога и списки с чекбоксами (stones-dropdown)
+ */
+
+.custom-dropdown {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.custom-dropdown__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--color-light);
+  border: 1px solid var(--border-color-base);
+  border-radius: var(--radius-base);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-dark);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.custom-dropdown__trigger:hover {
+  border-color: var(--color-blue);
+}
+
+.custom-dropdown.is-open .custom-dropdown__trigger {
+  border-color: var(--color-blue);
+  box-shadow: 0 0 0 3px rgba(54, 150, 197, 0.15);
+}
+
+.custom-dropdown__value-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+}
+
+.custom-dropdown__value {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.custom-dropdown__chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+  pointer-events: none;
+  margin-left: 8px;
+}
+
+.custom-dropdown.is-open .custom-dropdown__chevron {
+  transform: rotate(180deg);
+}
+
+/* Выпадающий список */
+.custom-dropdown__list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 150;
+  margin: 0;
+  padding: 8px 0;
+  background: var(--color-light);
+  border: 1px solid var(--border-color-base);
+  border-radius: var(--radius-base);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+  overflow-y: auto;
+  max-height: 280px;
+}
+
+.custom-dropdown.is-open .custom-dropdown__list {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Опция списка */
+.custom-dropdown__option {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: var(--color-dark);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.custom-dropdown__option:hover {
+  background-color: var(--color-gray-light);
+  color: var(--color-blue-hover);
+}
+
+.custom-dropdown__option--selected {
+  font-weight: 600;
+  background-color: var(--color-gray-light);
+  color: var(--color-blue);
+}
+
+/* ──────────────────────────────────────────────────────
+   Модификатор: Сортировка каталога (--sort)
+   ────────────────────────────────────────────────────── */
+.custom-dropdown--sort {
+  width: auto;
+  display: inline-block;
+}
+
+.custom-dropdown--sort .custom-dropdown__trigger {
+  padding: 8px 12px;
+  background-color: var(--color-light);
+  border-radius: var(--radius-base);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.custom-dropdown--sort .custom-dropdown__trigger:hover {
+  box-shadow: var(--shadow-soft);
+}
+
+.custom-dropdown--sort.is-open .custom-dropdown__trigger {
+  box-shadow: var(--shadow-soft);
+}
+
+.custom-dropdown--sort .custom-dropdown__list {
+  min-width: 190px;
+  right: auto;
+}
+
+.custom-dropdown--sort .custom-dropdown__option {
+  padding: 9px 16px;
+  font-size: 14px;
+}
+
+.custom-dropdown--sort .custom-dropdown__option--selected {
+  font-weight: 600;
+  background: none;
+  color: var(--color-dark);
+}
+
+.custom-dropdown--sort .custom-dropdown__option--selected:hover {
+  background: none;
+  cursor: default;
+}
+
+/* ──────────────────────────────────────────────────────
+   Модификатор: Выбор камней в карточке товара (--stones)
+   ────────────────────────────────────────────────────── */
+.custom-dropdown--stones .custom-dropdown__trigger {
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  border: 1px solid var(--border-color-base);
+  background: #ffffff;
+}
+
+.custom-dropdown--stones .custom-dropdown__list {
+  padding: 6px;
+  max-height: 300px;
+  border-radius: 8px;
+}
+
+/* Расстояние между элементами в раскрытом списке 6px */
+.custom-dropdown--stones .custom-dropdown__option {
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+  background: transparent;
+  color: var(--color-gray); /* По умолчанию серый текст для невыбранных */
+  font-size: 12px; /* Текст рядом с чекбоксом 12px */
+}
+
+.custom-dropdown--stones .custom-dropdown__option:last-child {
+  margin-bottom: 0;
+}
+
+/* Кастомный чекбокс 16х16px */
+.custom-dropdown__checkbox {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #d5d8dc;
+  border-radius: 4px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+/* Ховер на опцию */
+.custom-dropdown--stones .custom-dropdown__option:hover {
+  background-color: var(--color-gray-light);
+  color: var(--color-dark);
+}
+
+.custom-dropdown--stones .custom-dropdown__option:hover .custom-dropdown__checkbox {
+  border-color: var(--color-blue);
+}
+
+/* Выбранное состояние опции */
+.custom-dropdown--stones .custom-dropdown__option--selected {
+  font-weight: 500;
+  color: var(--color-dark); /* Текст выбранного элемента черный */
+  background-color: transparent; /* Не красим плашку в синий, только чекбокс */
+}
+
+.custom-dropdown--stones .custom-dropdown__option--selected:hover {
+  background-color: var(--color-gray-light);
+}
+
+.custom-dropdown--stones .custom-dropdown__option--selected .custom-dropdown__checkbox {
+  background-color: var(--color-blue);
+  border-color: var(--color-blue);
+}
+
+/* Галочка внутри кастомного чекбокса */
+.custom-dropdown__checkbox::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-0.5px, -0.5px);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.custom-dropdown--stones .custom-dropdown__option--selected .custom-dropdown__checkbox::after {
+  opacity: 1;
+}
+
+@media (max-width: 767px) {
+  .custom-dropdown--sort .custom-dropdown__trigger {
+    font-size: 12px;
+  }
+  .custom-dropdown--sort .custom-dropdown__option {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 479px) {
+  .custom-dropdown--sort .custom-dropdown__trigger {
+    font-size: 10px;
+    padding: 6px 8px;
+  }
+}

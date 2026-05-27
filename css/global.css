@@ -1,0 +1,30 @@
+/*
+ * Назначение файла: Подключение всех базовых стилей и модулей
+ */
+
+/* Base */
+@import "base/variables.css";
+@import "base/typography.css";
+@import "base/layout.css";
+@import "base/utilities.css";
+
+/* Modules */
+@import "modules/header.css";
+@import "modules/footer.css";
+@import "modules/buttons.css";
+@import "modules/product-card.css";
+@import "modules/forms.css";
+@import "modules/breadcrumbs.css";
+@import "modules/tags.css";
+@import "modules/badge.css";
+@import "modules/inputs.css";
+@import "modules/search.css";
+@import "modules/offcanvas.css";
+@import "modules/catalog-modal.css";
+@import "modules/mobile-nav.css";
+@import "modules/mobile-menu.css";
+@import "modules/mobile-catalog-menu.css";
+@import "modules/pagination.css";
+@import "modules/custom-dropdown.css";
+@import "modules/tooltip.css";
+

@@ -1,0 +1,44 @@
+/*
+ * Назначение файла: Базовая сетка, контейнер и структура страниц
+ */
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-dark);
+}
+
+.main {
+  padding-top: 32px;
+}
+
+.container {
+  max-width: 1440px; /* Для больших экранов */
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+@media (max-width: 1539px) {
+  /* Ноутбуки */
+  .container {
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 1023px) {
+  /* Планшеты и ниже - обычно 100% ширина с padding */
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 479px) {
+  .container {
+    padding-inline: 10px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gap-base);
+}

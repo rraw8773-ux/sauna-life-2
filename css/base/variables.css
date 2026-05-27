@@ -1,0 +1,31 @@
+/*
+ * Назначение файла: CSS переменные (цвета, тени, отступы, сетка)
+ */
+
+:root {
+  --color-dark: #0a0a0a;
+  --color-light: #ffffff;
+  --color-bg: #f5f9fc;
+  --color-accent: #ff2e47;
+  --color-accent-hover: #e6233b;
+  --color-star: #ffa500;
+  --color-star-hover: #ffc14d;
+  --color-gray: #717182;
+  --color-gray-light: #ebf5fa;
+  --color-gray-lighter: #f9fafb;
+  --color-blue: #3696c5;
+  --color-blue-hover: #27779e;
+
+  --badge-green: #00c950;
+  --badge-purple: #8f36c5;
+  --badge-orange: #ff7d45;
+  --badge-red: #e62d43;
+
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --radius-base: 8px;
+  --gap-base: 16px;
+  --border-color-base: #e3e3e6;
+  --border-color-base-light: #F4F4F4;
+  --border-base: 1px solid var(--border-color-base);
+  --border-base-light: 1px solid var(--border-color-base-light);
+}

@@ -1,0 +1,13 @@
+/*
+ * Назначение: Главная точка входа для стилей детальной страницы товара (Product Page CSS)
+ * Собирает отдельные независимые блоки через нативные @import
+ */
+
+@import "../modules/tabs.css";
+@import "../modules/product-card.css";
+@import "./product/product-hero.css";
+@import "./product/product-addons.css";
+@import "./product/product-promo.css";
+@import "../modules/products-widget.css";
+@import "./product/product-slider.css";
+@import "./product/product-tabs.css";

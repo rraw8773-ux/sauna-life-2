@@ -1,0 +1,29 @@
+/*
+ * Назначение файла: Стили для бейджей
+ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 4px;
+  font-weight: 600;
+  line-height: 1.2;
+  font-size: 10px;
+}
+
+.badge--new {
+  background-color: var(--badge-green);
+  color: var(--color-light);
+}
+
+.badge--hit {
+  background-color: var(--badge-orange);
+  color: var(--color-light);
+}
+
+.badge--sale {
+  background-color: var(--badge-purple);
+  color: var(--color-light);
+}

@@ -1,0 +1,79 @@
+/*
+ * Назначение файла: Стили для кнопок
+ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: var(--radius-base);
+  padding: 12px 24px;
+}
+
+@media (max-width: 767px) {
+  .button {
+    padding: 8px 12px;
+  }
+}
+
+.button__icon {
+  margin-right: 8px;
+}
+
+.button--catalog {
+  padding: 12px;
+  background-color: var(--color-accent);
+  color: var(--color-light);
+}
+
+.button--catalog:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.button--primary {
+  background-color: var(--color-accent);
+  color: var(--color-light);
+}
+
+.button--primary:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.button--outline {
+  background-color: transparent;
+  color: var(--color-dark);
+  border: var(--border-base);
+  padding: 11px 23px; /* 1px border compensation */
+}
+
+.button--outline:hover {
+  border-color: var(--color-dark);
+}
+
+.button--ghost {
+  background-color: rgba(0, 148, 255, 0.1);
+  color: #0094ff;
+}
+
+.button--ghost:hover {
+  background-color: rgba(0, 148, 255, 0.2);
+}
+
+.button--blue {
+  background-color: var(--color-blue);
+  color: var(--color-light);
+}
+
+.button--blue:hover {
+  background-color: var(--color-blue-hover);
+}
+
+.button--full {
+  width: 100%;
+}

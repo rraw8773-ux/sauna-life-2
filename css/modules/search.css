@@ -1,0 +1,65 @@
+/*
+ * Назначение файла: Стили для строки поиска
+ */
+
+.search {
+  width: 100%;
+}
+
+.search__form {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.search__input {
+  width: 100%;
+  height: 40px;
+  padding: 8px 16px;
+  padding-right: 48px;
+  border: var(--border-base);
+  border-radius: var(--radius-base);
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--color-dark);
+  background-color: var(--color-light);
+  transition: border-color 0.3s ease;
+}
+
+.search__input:focus {
+  outline: none;
+  border-color: var(--color-gray);
+}
+
+.search__input::placeholder {
+  color: var(--color-gray);
+}
+
+.search__button {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  /* background-color: var(--color-accent); */
+  border-radius: var(--radius-base);
+  border: none;
+  cursor: pointer;
+  color: var(--color-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  padding: 0;
+}
+
+.search__button:hover {
+  background-color: var(--color-gray-light); /* чуть темнее accent */
+}
+
+.search__button-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

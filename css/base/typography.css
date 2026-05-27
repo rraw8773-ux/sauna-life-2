@@ -1,0 +1,208 @@
+/*
+ * Назначение файла: Базовая типографика
+ */
+
+@font-face {
+  font-family: "Gilroy";
+  src:
+    url("../../assets/fonts/Gilroy/Gilroy-Regular.woff2") format("woff2"),
+    url("../../assets/fonts/Gilroy/Gilroy-Regular.woff") format("woff"),
+    url("../../assets/fonts/Gilroy/Gilroy-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src:
+    url("../../assets/fonts/Gilroy/Gilroy-Medium.woff2") format("woff2"),
+    url("../../assets/fonts/Gilroy/Gilroy-Medium.woff") format("woff"),
+    url("../../assets/fonts/Gilroy/Gilroy-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src:
+    url("../../assets/fonts/Gilroy/Gilroy-SemiBold.woff2") format("woff2"),
+    url("../../assets/fonts/Gilroy/Gilroy-SemiBold.woff") format("woff"),
+    url("../../assets/fonts/Gilroy/Gilroy-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fallback for 700 if someone uses it */
+@font-face {
+  font-family: "Gilroy";
+  src:
+    url("../../assets/fonts/Gilroy/Gilroy-SemiBold.woff2") format("woff2"),
+    url("../../assets/fonts/Gilroy/Gilroy-SemiBold.woff") format("woff"),
+    url("../../assets/fonts/Gilroy/Gilroy-SemiBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "Gilroy", sans-serif;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+/* Стили заголовка страницы */
+.page-header {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+@media (max-width: 767px) {
+  .page-header {
+    margin-bottom: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+.page-header__code {
+  /* color: var(--color-gray); */
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.page-header__code-label {
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.page-header__code-value {
+  position: relative;
+  display: inline-block;
+  color: var(--color-blue);
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+  padding: 0 4px;
+}
+
+.page-header__code-value:hover {
+  color: var(--color-blue-hover);
+  border-bottom-color: var(--color-blue-hover);
+}
+
+/* .page-header__code-manager {} */
+
+/* Всплывашка уведомления о копировании */
+.page-header__code-tooltip {
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: var(--color-dark);
+  color: var(--color-light);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  z-index: 100;
+}
+
+.page-header__code-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px;
+  border-style: solid;
+  border-color: var(--color-dark) transparent transparent transparent;
+}
+
+.page-header__code-tooltip.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.page-header__title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* @media (max-width: 1023px) {
+  .page-header__title {
+    font-size: 24px;
+  }
+} */
+
+.page-header__count {
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-gray);
+  margin-top: 8px; /* Выравнивание счетчика по базовой линии, если нужно */
+}
+
+@media (max-width: 1023px) {
+  .page-header__count {
+    font-size: 14px;
+  }
+  .page-header {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-header__title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 479px) {
+  .page-header__count {
+    font-size: 12px;
+  }
+}

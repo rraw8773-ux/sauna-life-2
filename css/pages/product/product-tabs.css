@@ -1,0 +1,637 @@
+/*
+ * Назначение: Стили табов описания, характеристик, таблицы параметров и отзывов (Tabs section)
+ */
+
+.product-tabs {
+  /* padding-top: 16px; */
+  padding-bottom: 30px;
+  background-color: var(--color-light);
+}
+
+.product-tabs__nav-wrapper {
+  border-bottom: 2px solid #f4f4f4;
+  margin-bottom: 32px;
+}
+
+.product-tabs__nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  white-space: nowrap;
+}
+
+.product-tabs__trigger {
+  background: none;
+  border: none;
+  padding: 16px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #848484;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.product-tabs__trigger:hover,
+.product-tabs__trigger .product-tabs__count {
+  color: var(--color-dark);
+}
+
+.product-tabs__trigger--active,
+.product-tabs__trigger--active .product-tabs__count {
+  color: var(--color-dark);
+}
+
+.product-tabs__trigger--active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+}
+
+.product-tabs__count {
+  color: #848484;
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.product-tabs__panel {
+  display: none;
+}
+
+.product-tabs__panel--active {
+  display: block;
+}
+
+/* Typography (Description) */
+.product-tabs__content {
+  max-width: 900px;
+}
+
+.product-tabs__content h2 {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.product-tabs__content p {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.product-tabs__content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-block: 16px;
+}
+
+.product-tabs__content li {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* Specs Table */
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specs-table__group td {
+  height: 24px;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 4px 16px;
+  background-color: #f3f4f6;
+  border-radius: 6px;
+  color: var(--color-dark);
+}
+
+/* .specs-table__group:not(:first-child) td {
+  border-top: 24px solid var(--color-light, #ffffff);
+} */
+
+.specs-table tr:not(.specs-table__group) td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 14px;
+}
+
+.specs-table__group + tr td {
+  padding-top: 16px;
+}
+
+.specs-table tr:not(.specs-table__group) td:first-child {
+  color: var(--text-color-secondary, #848484);
+  width: 50%;
+}
+
+.specs-table tr:not(.specs-table__group) td:last-child {
+  color: var(--color-dark, #0a0a0a);
+  font-weight: 600;
+}
+
+.specs-table tr:last-child td {
+  border-bottom: none;
+}
+
+.specs-table a {
+  color: #3696c5;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.specs-table a:hover {
+  color: var(--color-blue-hover, #27779e);
+  text-decoration: underline;
+}
+
+/* Reviews Summary */
+.reviews-summary {
+  display: flex;
+  gap: 40px;
+  padding: 20px 40px;
+  border: 1px solid #f4f4f4;
+  border-radius: var(--radius-base);
+}
+
+.reviews-summary__score {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-star);
+}
+
+.reviews-summary__breakdown {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.rating-stars {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  flex-shrink: 0;
+  width: 78px;
+  justify-content: flex-end;
+}
+
+.rating-star {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+}
+
+.rating-star path {
+  transition:
+    fill 0.2s ease,
+    stroke 0.2s ease;
+}
+
+.rating-star--empty {
+  display: none !important;
+}
+
+.rating-bar {
+  flex-grow: 1;
+  height: 4px;
+  background-color: #f4f4f4;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.rating-bar__fill {
+  height: 100%;
+  background-color: #ffa500;
+  border-radius: 4px;
+  width: var(--rating-width, 0%);
+  transition: width 0.3s ease;
+}
+
+.rating-count {
+  font-size: 12px;
+  color: var(--color-gray);
+  min-width: 24px;
+  text-align: right;
+}
+
+/* Responsiveness */
+@media (max-width: 1023px) {
+  .product-tabs__nav-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    margin-inline: -20px; /* Offset standard container padding to stretch to screen edge */
+  }
+
+  .product-tabs__nav-wrapper::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+  }
+
+  .product-tabs__nav {
+    justify-content: flex-start;
+    gap: 50px;
+    padding-inline: 20px; /* Set padding on the inner scrollable container */
+    width: max-content; /* Ensure the padding and content width is fully calculated and scrollable */
+  }
+
+  .product-tabs__trigger {
+    font-size: 18px;
+    flex-shrink: 0; /* Prevent triggers from compressing */
+  }
+}
+
+@media (max-width: 767px) {
+  .product-tabs__nav {
+    gap: 24px;
+  }
+
+  .product-tabs__trigger {
+    font-size: 16px;
+  }
+
+  .reviews-summary {
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px;
+  }
+  .reviews-summary__score {
+    font-size: 40px;
+  }
+
+  .specs-table tr:not(.specs-table__group) td {
+    display: block;
+    width: 100% !important;
+    border-bottom: none;
+    padding: 6px 0;
+  }
+
+  .specs-table tr:not(.specs-table__group) td:first-child {
+    padding-top: 16px;
+    padding-bottom: 2px;
+  }
+
+  .specs-table tr:not(.specs-table__group) td:last-child {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+  }
+}
+
+@media (max-width: 479px) {
+  .product-tabs__nav-wrapper {
+    margin-inline: -10px; /* Offset mobile container padding */
+  }
+  .product-tabs__nav {
+    padding-inline: 10px; /* Adjust inner padding on mobile */
+  }
+}
+
+/* ==========================================================================
+   NEW PREMIUM TABS STYLES (Mods, Guarantee, Delivery, FAQ)
+   ========================================================================== */
+
+/* Mods Tab */
+.product-mods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 8px;
+}
+
+.product-mod-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  background-color: var(--bg-color-alt);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+.product-mod-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-accent);
+}
+
+.product-mod-card--current {
+  border: 2px solid var(--color-accent);
+  background-color: var(--bg-color);
+  cursor: default;
+}
+
+.product-mod-card--current:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--color-accent);
+}
+
+.product-mod-card__badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: var(--color-accent);
+  color: white;
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.product-mod-card__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-color-primary);
+  margin-bottom: 8px;
+  margin-top: 0;
+  padding-right: 90px;
+}
+
+.product-mod-card__price {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-accent);
+  margin-bottom: 20px;
+}
+
+.product-mod-card__specs {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  border-top: 1px dashed var(--border-color);
+}
+
+.product-mod-card__specs li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--border-color);
+  font-size: 14px;
+}
+
+.product-mod-card__specs li span {
+  color: var(--text-color-secondary);
+}
+
+.product-mod-card__specs li strong {
+  color: var(--text-color-primary);
+  font-weight: 600;
+}
+
+.product-mod-card__status {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-color-secondary);
+  text-align: center;
+  margin-top: auto;
+  padding: 10px;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s;
+}
+
+.product-mod-card__status--instock {
+  color: #34c759;
+  border-color: rgba(52, 199, 89, 0.2);
+  background-color: rgba(52, 199, 89, 0.05);
+}
+
+.product-mod-card__status--preorder {
+  color: #ffb800;
+  border-color: rgba(255, 184, 0, 0.2);
+  background-color: rgba(255, 184, 0, 0.05);
+}
+
+.product-mod-card:hover .product-mod-card__status {
+  background-color: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+.product-mod-card--current .product-mod-card__status {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: transparent;
+}
+
+/* Guarantee Tab */
+.guarantee-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin-top: 8px;
+}
+
+.guarantee-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px;
+  background: var(--bg-color-alt);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+}
+
+.guarantee-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(40, 150, 200, 0.08);
+  color: var(--color-accent);
+  margin-bottom: 4px;
+}
+
+.guarantee-card__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-color-primary);
+  margin: 0;
+}
+
+.guarantee-card__text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-color-secondary);
+  margin: 0;
+}
+
+/* Delivery Tab */
+.delivery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  margin-top: 8px;
+}
+
+.delivery-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.delivery-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-color-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.delivery-title svg {
+  color: var(--color-accent);
+}
+
+.delivery-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.delivery-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.delivery-list li strong {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-color-primary);
+}
+
+.delivery-list li span {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-color-secondary);
+}
+
+/* FAQ/Questions Tab */
+.faq-section {
+  max-width: 850px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 8px;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 24px;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.faq-item__question {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-color-primary);
+  margin: 0 0 12px 0;
+}
+
+.faq-item__answer {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-color-secondary);
+  margin: 0;
+}
+
+.faq-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px;
+  background: var(--bg-color-alt);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+  margin-top: 16px;
+}
+
+.faq-footer__text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-color-secondary);
+  max-width: 520px;
+  margin: 0;
+}
+
+.faq-footer__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-accent);
+  color: white;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: all 0.2s ease;
+  border: 1px solid var(--color-accent);
+  white-space: nowrap;
+}
+
+.faq-footer__btn:hover {
+  background-color: transparent;
+  color: var(--color-accent);
+}
+
+@media (max-width: 767px) {
+  .product-mods-grid,
+  .guarantee-grid,
+  .delivery-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .faq-footer {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .faq-footer__text {
+    max-width: 100%;
+  }
+}
