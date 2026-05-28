@@ -1,91 +1,93 @@
-# 📑 Документация компонента: Универсальные Табы (`sl-tabs` / `product-tabs`)
+# 📑 Документация компонента: Универсальные Табы (`product-tabs` / `widget-tabs`)
 
-Универсальный, независимый и масштабируемый компонент вкладок (табов), разработанный по методологии BEM (Block, Element, Modifier). Поддерживает как универсальный блок `.sl-tabs`, так и премиальный компонент вкладок для карточек товаров `.product-tabs`. Позволяет организовывать любые переключаемые блоки контента без использования инлайн-скриптов (`onclick`) и автоматически выбирает активную вкладку по умолчанию при загрузке страницы.
+Универсальный, независимый и масштабируемый компонент вкладок (табов), разработанный по методологии BEM (Block, Element, Modifier). Поддерживает два ключевых блока:
+1. `.product-tabs` — премиальный адаптивный блок для главной секции описания и характеристик товара.
+2. `.widget-tabs` — универсальный компонент для виджетов, дополнительных товаров (слайдеров) и личного кабинета.
+
+Компонент позволяет организовывать любые переключаемые блоки контента без использования инлайн-скриптов (`onclick`), автоматически активирует вкладку по умолчанию при загрузке страницы и имеет встроенную интеллектуальную прокрутку на мобильных устройствах.
 
 ---
 
 ## 🛠 1. Структура Папок и Файлов
 
-- **Стили:** [css/modules/tabs.css](file:///s:/3.%20%D0%A1%D0%B0%D1%83%D0%BD%D1%8B/%21SITE/%21FILES/NEW-HTML/css/modules/tabs.css)
-- **Логика:** [js/modules/tabs.js](file:///s:/3.%20%D0%A1%D0%B0%D1%83%D0%BD%D1%8B/%21SITE/%21FILES/NEW-HTML/js/modules/tabs.js)
+- **Стили (Базовые/Виджеты):** [css/modules/tabs.css](file:///s:/3.%20Сауны/!SITE/css/modules/tabs.css)
+- **Стили (Страница товара):** [css/pages/product/product-tabs.css](file:///s:/3.%20Сауны/!SITE/css/pages/product/product-tabs.css)
+- **Логика работы:** [js/modules/tabs.js](file:///s:/3.%20Сауны/!SITE/js/modules/tabs.js)
 
 ---
 
 ## 📐 2. Разметка (HTML)
 
-Для создания табов оберните кнопки и панели в контейнер `.sl-tabs`. Связь кнопок с панелями осуществляется через дата-атрибуты `data-tab-trigger="[ID]"` и `data-tab-pane="[ID]"`.
+Для создания табов оберните кнопки и панели в контейнер `.product-tabs` или `.widget-tabs`. Связь кнопок с панелями осуществляется через дата-атрибуты `data-tab-trigger="[ID]"` и `data-tab-panel="[ID]"` (или `data-tab-pane="[ID]"` для виджетов).
 
-### Вариант А: Стандартные табы с линией снизу (Default Tabs)
+### Вариант А: Премиальные табы товара (`.product-tabs`)
 
 ```html
-<div class="sl-tabs">
-  <!-- Навигация -->
-  <div class="sl-tabs__nav-wrapper">
-    <div class="sl-tabs__nav">
-      <button
-        class="sl-tabs__trigger sl-tabs__trigger--active"
-        data-tab-trigger="desc"
-      >
-        Описание
-      </button>
-      <button class="sl-tabs__trigger" data-tab-trigger="specs">
-        Характеристики
-      </button>
-      <button class="sl-tabs__trigger" data-tab-trigger="reviews">
-        Отзывы <span class="sl-tabs__count">8</span>
-      </button>
+<section class="product-tabs">
+  <div class="container">
+    <!-- Обертка для мобильного скролла -->
+    <div class="product-tabs__nav-wrapper">
+      <div class="product-tabs__nav">
+        <button class="product-tabs__trigger product-tabs__trigger--active" data-tab-trigger="desc">
+          Описание
+        </button>
+        <button class="product-tabs__trigger" data-tab-trigger="specs">
+          Характеристики
+        </button>
+        <button class="product-tabs__trigger" data-tab-trigger="reviews">
+          Отзывы <span class="product-tabs__count">8</span>
+        </button>
+      </div>
     </div>
-  </div>
 
-  <!-- Содержимое -->
-  <div class="sl-tabs__content">
-    <div class="sl-tabs__pane sl-tabs__pane--active" data-tab-pane="desc">
-      <h3>Описание товара</h3>
-      <p>Текст описания...</p>
-    </div>
-    <div class="sl-tabs__pane" data-tab-pane="specs">
-      <h3>Характеристики</h3>
-      <p>Таблица характеристик...</p>
-    </div>
-    <div class="sl-tabs__pane" data-tab-pane="reviews">
-      <h3>Отзывы пользователей</h3>
-      <p>Список отзывов...</p>
+    <!-- Контентные панели -->
+    <div class="product-tabs__panels">
+      <div class="product-tabs__panel product-tabs__panel--active" data-tab-panel="desc" id="tab-desc">
+        <h2>Описание товара</h2>
+        <p>Контент описания...</p>
+      </div>
+      <div class="product-tabs__panel" data-tab-panel="specs" id="tab-specs">
+        <h2>Характеристики</h2>
+        <p>Таблица параметров...</p>
+      </div>
+      <div class="product-tabs__panel" data-tab-panel="reviews" id="tab-reviews">
+        <h2>Отзывы пользователей</h2>
+        <p>Список отзывов...</p>
+      </div>
     </div>
   </div>
-</div>
+</section>
 ```
 
 ---
 
-### Вариант Б: Круглые кнопки-пилюли (Pill Tabs)
+### Вариант Б: Круглые кнопки-пилюли виджетов (`.widget-tabs--pills`)
 
-Для изменения визуального стиля на круглые очерченные кнопки добавьте класс-модификатор `.sl-tabs--pills` к главному контейнеру:
+Для изменения визуального стиля на круглые очерченные кнопки-пилюли добавьте класс-модификатор `.widget-tabs--pills` к главному контейнеру `.widget-tabs`:
 
 ```html
-<div class="sl-tabs sl-tabs--pills">
-  <div class="sl-tabs__nav-wrapper">
-    <div class="sl-tabs__nav">
-      <button
-        class="sl-tabs__trigger sl-tabs__trigger--active"
-        data-tab-trigger="cat-1"
-      >
-        Категория 1
+<div class="widget-tabs widget-tabs--pills">
+  <div class="widget-tabs__nav-wrapper">
+    <div class="widget-tabs__nav">
+      <button class="widget-tabs__trigger widget-tabs__trigger--active btn-tab" data-tab-trigger="upsell-wires">
+        Покупают вместе
       </button>
-      <button class="sl-tabs__trigger" data-tab-trigger="cat-2">
-        Категория 2
+      <button class="widget-tabs__trigger btn-tab" data-tab-trigger="upsell-tens">
+        Вы смотрели
       </button>
     </div>
   </div>
 </div>
 ```
 
-_Этот вариант идеально подходит для категорий в слайдерах товаров, где панели отсутствуют, а требуется только визуальное переключение фильтра._
+> [!TIP]
+> Модификатор `--pills` идеально подходит для фильтрации товаров в слайдерах и виджетах, где панели отсутствуют, а требуется только визуальное переключение фильтра.
 
 ---
 
 ## ⚡ 3. Инициализация (JavaScript)
 
-Компонент работает через ES Modules без зависимостей от сторонних библиотек (jQuery).
+Компонент работает через нативные ES Modules без каких-либо внешних библиотек (чистый JavaScript).
 
 Импортируйте и вызовите функцию `initTabs()` в точке входа страницы:
 
@@ -98,19 +100,46 @@ document.addEventListener("DOMContentLoaded", () => {
 ```
 
 ### Принцип работы логики:
-
-- Скрипт находит все элементы `.sl-tabs`.
+- Скрипт находит все контейнеры `.product-tabs` и `.widget-tabs` на странице.
 - Слушает клики по элементам `[data-tab-trigger]` индивидуально внутри каждого контейнера.
 - При клике снимает класс активности с текущих кнопок/панелей **только внутри этого контейнера** и вешает на новые.
 - Это позволяет безопасно размещать **несколько независимых блоков табов на одной странице** без риска их пересечения!
+- Если при загрузке страницы ни одна вкладка не помечена как активная, скрипт автоматически активирует первую вкладку.
 
 ---
 
-## 🎨 4. Кастомизация СТИЛЕЙ (CSS Variables)
+## 📱 4. Мобильный UX: Умный автоскролл (Premium Auto-Scroll)
+
+Для обеспечения идеального пользовательского опыта на мобильных экранах, где вкладки выстраиваются в горизонтально прокручиваемый ряд, модуль оснащен **автоматической интеллектуальной прокруткой**.
+
+> [!IMPORTANT]
+> При активации вкладки (кликом или внешним триггером) контейнер плавно скроллит панель навигации так, чтобы активный элемент аккуратно прибивался к левому краю экрана, сохраняя эстетичный отступ.
+
+### Механика расчета:
+1. Скрипт находит горизонтальный скролл-контейнер (`.product-tabs__nav-wrapper` или `.widget-tabs__nav-wrapper`).
+2. С помощью `getBoundingClientRect()` вычисляется точная координата X активной вкладки относительно видимой области скроллера:
+   $$\text{relativeLeft} = \text{triggerRect.left} - \text{wrapperRect.left} + \text{wrapper.scrollLeft}$$
+3. Считывается текущий отступ навигационной панели через `window.getComputedStyle(nav).paddingLeft`. На мобильных телефонах он равен `10px`, на планшетах — `20px`. Это позволяет гибко адаптироваться к сетке дизайна.
+4. Выполняется плавное прокручивание:
+   ```javascript
+   wrapper.scrollTo({
+     left: relativeLeft - offset,
+     behavior: "smooth"
+   });
+   ```
+
+### Сценарии работы:
+- **Прямой клик:** Пользователь кликает по вкладке на мобильном устройстве — панель плавно центрирует её слева.
+- **Внешние ссылки:** Клик по кнопке «Все характеристики» вверху страницы скроллит экран к секции вкладок и автоматически прокручивает мобильный таб-бар до вкладки «Характеристики».
+- **Инфо-карточки:** Клик по «Подробнее» у блоков доставки или оплаты в правом сайдбаре мгновенно активирует вкладку «Доставка и оплата» и скроллит таб-бар к этой позиции.
+
+---
+
+## 🎨 5. Кастомизация стилей (CSS Variables)
 
 Компонент построен на CSS переменных проекта, что обеспечивает автоматическую поддержку темной темы:
 
-- `--color-accent` — цвет нижней линии активного таба и активной кнопки-пилюли (по умолчанию оранжевый).
+- `--color-accent` — цвет нижней линии активного таба и активной кнопки-пилюли.
 - `--text-color-primary` — цвет текста активного таба.
 - `--text-color-secondary` — цвет текста неактивного таба.
 - `--border-color` — цвет разделительной линии снизу.

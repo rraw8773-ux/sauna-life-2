@@ -59,6 +59,30 @@ export function initTabs() {
             }
           }
         }
+
+        // 5. Автоматическая плавная прокрутка табов на мобильных устройствах
+        const wrapper = trigger.closest(
+          ".product-tabs__nav-wrapper, .widget-tabs__nav-wrapper, .sl-tabs__nav-wrapper"
+        );
+        if (wrapper) {
+          requestAnimationFrame(() => {
+            const nav = trigger.parentElement;
+            if (!nav) return;
+            const wrapperRect = wrapper.getBoundingClientRect();
+            const triggerRect = trigger.getBoundingClientRect();
+            
+            // Вычисляем положение триггера относительно прокручиваемого контейнера
+            const relativeLeft = triggerRect.left - wrapperRect.left + wrapper.scrollLeft;
+            
+            // Получаем динамический отступ (padding-left) для красивого выравнивания
+            const offset = parseFloat(window.getComputedStyle(nav).paddingLeft) || 20;
+            
+            wrapper.scrollTo({
+              left: relativeLeft - offset,
+              behavior: "smooth"
+            });
+          });
+        }
       });
     });
 

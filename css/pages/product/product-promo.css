@@ -121,7 +121,7 @@
   .product-usp-promo__title-col {
     padding-right: 0;
     flex-direction: initial;
-    align-items: center;
+    align-items: baseline;
     gap: 10px;
   }
 
