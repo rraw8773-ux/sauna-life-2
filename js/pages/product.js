@@ -21,6 +21,7 @@ import { initProductTabs } from "./product/tabs.js";
 import { initProductSlider } from "./product/slider.js";
 import { initProductsWidget } from "../modules/products-widget.js";
 import { initProductDetails } from "./product/product-details.js";
+import { initProductGallery } from "./product/gallery.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Запуск глобальных модулей общего интерфейса
@@ -51,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initProductTabs();
   initProductSlider();
   initProductsWidget();
+  initProductGallery();
 
   if (document.querySelector(".js-product-card-slider")) {
     initSliders();

@@ -70,6 +70,7 @@ project-root/
     modules/
     pages/
       product.js
+      wishlist.js
       product/
 
   documentation/

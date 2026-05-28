@@ -3,9 +3,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <!-- <link rel="preconnect" href="https://cdn.diginetica.net/" />
+    <link rel="preconnect" href="https://cdn.diginetica.net/" />
     <link rel="preconnect" href="https://tracking.diginetica.net/" />
-    <link rel="preconnect" href="https://tracking-app.diginetica.net/" /> -->
+    <link rel="preconnect" href="https://tracking-app.diginetica.net/" />
 
     <meta name="Copyright" content="Магазин для бань и саун Sauna-Life.ru" />
     <meta name="Distribution" content="Global" />
@@ -16,23 +16,19 @@
     />
 
     <!-- Google tag (gtag.js) -->
-    <!-- <script
+    <script type="text/javascript" async="" src="./js/legacy/media.js"></script>
+    <script async="" src="./js/legacy/tag.js"></script>
+    <script
       type="text/javascript"
       async=""
-      src="./!FILES/catalog-pechi_files/media.js"
-    ></script> -->
-    <!-- <script async="" src="./!FILES/catalog-pechi_files/tag.js"></script> -->
-    <!-- <script
-      type="text/javascript"
-      async=""
-      src="./!FILES/catalog-pechi_files/top100.js"
-    ></script> -->
-    <!-- <script async="" src="./!FILES/catalog-pechi_files/gtm.js"></script> -->
-    <!-- <script
+      src="./js/legacy/top100.js"
+    ></script>
+    <script async="" src="./js/legacy/gtm.js"></script>
+    <script
       async=""
       src="https://mod.calltouch.ru/init-min.js?id=o5i4wq1e"
-    ></script> -->
-    <script async="" src="./!FILES/catalog-pechi_files/js.js"></script>
+    ></script>
+    <script async="" src="./js/legacy/js.js"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -54,36 +50,20 @@
     />
 
     <!-- ===== LEGACY CSS (шрифты, normalize, jquery-ui, плагины) ===== -->
-    <link href="./!FILES/catalog-pechi_files/stylesheet.css" rel="stylesheet" />
+    <link href="./css/legacy/stylesheet.css" rel="stylesheet" />
+    <link href="./css/legacy/normalize.min.css" rel="stylesheet" />
+    <link href="./css/legacy/jquery-ui.min.css" rel="stylesheet" />
+    <link href="./css/legacy/slick.min.css" rel="stylesheet" media="screen" />
     <link
-      href="./!FILES/catalog-pechi_files/normalize.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="./!FILES/catalog-pechi_files/jquery-ui.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="./!FILES/catalog-pechi_files/slick.min.css"
+      href="./css/legacy/jquery.fancybox.min.css"
       rel="stylesheet"
       media="screen"
     />
-    <link
-      href="./!FILES/catalog-pechi_files/jquery.fancybox.min.css"
-      rel="stylesheet"
-      media="screen"
-    />
-
-    <!-- ===== NEW CSS (Swiper, noUiSlider CDN) ===== -->
-    <!-- Not needed for wishlist -->
-
-    <!-- ===== LEGACY CSS (style, style2, style3 — переопределения) ===== -->
 
     <!-- Подключение CSS проекта -->
     <link rel="stylesheet" href="./css/custom-normalize.css" />
     <link rel="stylesheet" href="./css/global.css" />
     <!-- Стили страницы -->
-    <link rel="stylesheet" href="./css/pages/product-page.css" />
     <link rel="stylesheet" href="./css/pages/wishlist-page.css" />
 
     <base href="." />
@@ -105,10 +85,9 @@
     </script>
 
     <meta name="yandex-verification" content="481909b7efccfdb0" />
-    <link href="./!FILES/catalog-pechi_files/snow.min.css" rel="stylesheet" />
 
     <!-- calltouch -->
-    <!-- <script>
+    <script>
       (function (w, d, n, c) {
         w.CalltouchDataObject = n;
         w[n] = function () {
@@ -142,7 +121,7 @@
           }
         }
       })(window, document, "ct", "o5i4wq1e");
-    </script> -->
+    </script>
     <!-- calltouch -->
 
     <!-- Google Tag Manager -->
@@ -169,7 +148,7 @@
     </script>
 
     <!-- Top100 (Kraken) Counter -->
-    <!-- <script>
+    <script>
       (function (w, d, c) {
         (w[c] = w[c] || []).push(function () {
           var options = {
@@ -199,7 +178,7 @@
     </script>
     <noscript>
       <img src="//counter.rambler.ru/top100.cnt?pid=7750630" alt="Топ-100" />
-    </noscript> -->
+    </noscript>
     <!-- END Top100 (Kraken) Counter -->
 
     <meta name="robots" content="index, follow" />
@@ -237,7 +216,7 @@
       <div class="overlay"></div>
 
       <!-- =====================================================
-           НОВЫЙ HEADER (из NEW-HTML/catalog.html)
+           НОВЫЙ HEADER 
            ===================================================== -->
       <header class="header">
         <!-- Верхняя полоса -->
@@ -2172,43 +2151,24 @@
     <!-- ==========================================================
          LEGACY JAVASCRIPT (порядок загрузки критичен!)
          ========================================================== -->
+    <script src="./js/legacy/jquery.min.js" type="text/javascript"></script>
     <script
-      src="./!FILES/catalog-pechi_files/jquery.min.js"
+      src="./js/legacy/jquery.maskedinput.min.js"
       type="text/javascript"
     ></script>
-    <script
-      src="./!FILES/catalog-pechi_files/jquery.maskedinput.min.js"
-      type="text/javascript"
-    ></script>
-    <script
-      src="./!FILES/catalog-pechi_files/jquery-ui.min.js"
-      type="text/javascript"
-    ></script>
+    <script src="./js/legacy/jquery-ui.min.js" type="text/javascript"></script>
     <!-- Slick и Fancybox ДОЛЖНЫ быть загружены ДО вызова .slick() в $(document).ready() -->
-    <script src="./!FILES/catalog-pechi_files/slick.min.js"></script>
-    <script src="./!FILES/catalog-pechi_files/jquery.fancybox.min.js"></script>
-    <script
-      src="./!FILES/catalog-pechi_files/script.js"
-      type="text/javascript"
-    ></script>
-    <script
-      src="./!FILES/catalog-pechi_files/script2.js"
-      type="text/javascript"
-    ></script>
-    <script
-      src="./!FILES/catalog-pechi_files/script3.js"
-      type="text/javascript"
-    ></script>
-
-    <!-- ===== NEW JS (Swiper, noUiSlider CDN) ===== -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.js"></script> -->
+    <script src="./js/legacy/slick.min.js"></script>
+    <script src="./js/legacy/jquery.fancybox.min.js"></script>
+    <!-- <script src="./js/legacy/script.js" type="text/javascript"></script> -->
+    <!-- <script src="./js/legacy/script2.js" type="text/javascript"></script> -->
+    <!-- <script src="./js/legacy/script3.js" type="text/javascript"></script> -->
 
     <!-- ===== NEW JS (модульная система) ===== -->
-    <script src="./js/pages/product.js" type="module"></script>
+    <script src="./js/pages/wishlist.js" type="module"></script>
 
     <!-- Yandex.Metrika counter (отложенная загрузка) -->
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
       (function () {
         "use strict";
         var loadedMetrica = false,
@@ -2278,13 +2238,8 @@
           style="position: absolute; left: -9999px"
           alt=""
         /></div
-    ></noscript> -->
+    ></noscript>
     <!-- /Yandex.Metrika counter -->
-
-    <!-- LEGACY: filter.js + плагины -->
-    <!-- <script src="./!FILES/catalog-pechi_files/filter.js"></script> -->
-    <!-- <script src="./!FILES/catalog-pechi_files/ion.rangeSlider.min.js"></script> -->
-    <!-- slick.min.js и jquery.fancybox.min.js перемещены выше (после jquery-ui.min.js) для правильного порядка загрузки -->
 
     <!-- LEGACY: глобальная переменная для модуля сравнения -->
     <script>
@@ -2294,63 +2249,6 @@
     <div id="cookie_notification">
       <div class="cookie_accept"></div>
     </div>
-
-    <!-- LEGACY: инлайн-скрипт инициализации бизнес-логики -->
-    <script>
-      jQuery(document).ready(function () {
-        jQuery(window).on("resize", function () {
-          let ww = $(document).width();
-          setCookie("ww", ww, 1);
-          controlPromo();
-        });
-        setTimeout(function () {
-          controlPromo();
-        }, 300);
-
-        historyCats();
-        filterRange();
-
-        // Slick для legacy-элемента — безопасно проигнорируется если элемент отсутствует
-        jQuery(".goods-2_labels-2-slick").slick({
-          slidesToShow: 3,
-          responsive: [
-            { breakpoint: 1024, settings: { slidesToShow: 2 } },
-            { breakpoint: 768, settings: { slidesToShow: 1 } },
-          ],
-        });
-
-        controlShowMoreCategories();
-
-        jQuery(".js-open-sort").click(function () {
-          window.scrollTo(0, 0);
-          jQuery("body").addClass("sort-actived");
-        });
-        jQuery(".js-close-sort").click(function () {
-          jQuery("body").removeClass("sort-actived");
-        });
-
-        addToCart();
-        contrlolQuantity();
-        comparison();
-
-        $("body").on("click", ".city-btn", function (e) {
-          e.preventDefault();
-          $.fancybox.open({
-            type: "ajax",
-            src: "/index.php?component=getmodule&tmpl=ajax&mid=48",
-            touch: false,
-            opts: {
-              afterShow: function (instance, current) {
-                controlCities();
-              },
-            },
-          });
-        });
-      });
-    </script>
-
-    <!-- ===== SLICK GALLERY INIT ===== -->
-    <script src="./js/pages/product/gallery.js"></script>
 
     <!-- Rivox tracking -->
     <script

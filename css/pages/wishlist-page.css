@@ -3,5 +3,9 @@
  * Собирает независимые блоки через нативные @import
  */
 
+@import "../modules/tabs.css";
+@import "../modules/products-widget.css";
+@import "./product/product-slider.css";
+@import "./product/product-promo.css";
 @import "./wishlist/wishlist-empty.css";
 @import "./wishlist/wishlist-list.css";

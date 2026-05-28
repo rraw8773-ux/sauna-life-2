@@ -6,14 +6,16 @@
  * Зависимости: jQuery, slick.min.js, jquery.fancybox.min.js
  */
 
-jQuery(document).ready(function () {
+export function initProductGallery() {
   try {
+    var $mainSlider = jQuery(".card-main_slick-one");
+    if ($mainSlider.length === 0) return;
+
     if (typeof jQuery.fn.slick === "undefined") {
       console.error("[SLICK] slick.min.js не загрузился.");
       return;
     }
 
-    var $mainSlider = jQuery(".card-main_slick-one");
     var $navItems   = jQuery(".gallery-nav__item");
     var $prevArrow  = jQuery(".gallery-nav__arrow--prev");
     var $nextArrow  = jQuery(".gallery-nav__arrow--next");
@@ -262,4 +264,4 @@ jQuery(document).ready(function () {
   } catch (e) {
     console.error("[SLICK] Ошибка:", e);
   }
-});
+}

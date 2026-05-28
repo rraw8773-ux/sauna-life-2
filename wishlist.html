@@ -3,9 +3,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <!-- <link rel="preconnect" href="https://cdn.diginetica.net/" />
+    <link rel="preconnect" href="https://cdn.diginetica.net/" />
     <link rel="preconnect" href="https://tracking.diginetica.net/" />
-    <link rel="preconnect" href="https://tracking-app.diginetica.net/" /> -->
+    <link rel="preconnect" href="https://tracking-app.diginetica.net/" />
 
     <meta name="Copyright" content="Магазин для бань и саун Sauna-Life.ru" />
     <meta name="Distribution" content="Global" />
@@ -16,23 +16,19 @@
     />
 
     <!-- Google tag (gtag.js) -->
-    <!-- <script
+    <script type="text/javascript" async="" src="./js/legacy/media.js"></script>
+    <script async="" src="./js/legacy/tag.js"></script>
+    <script
       type="text/javascript"
       async=""
-      src="./!FILES/catalog-pechi_files/media.js"
-    ></script> -->
-    <!-- <script async="" src="./!FILES/catalog-pechi_files/tag.js"></script> -->
-    <!-- <script
-      type="text/javascript"
-      async=""
-      src="./!FILES/catalog-pechi_files/top100.js"
-    ></script> -->
-    <!-- <script async="" src="./!FILES/catalog-pechi_files/gtm.js"></script> -->
-    <!-- <script
+      src="./js/legacy/top100.js"
+    ></script>
+    <script async="" src="./js/legacy/gtm.js"></script>
+    <script
       async=""
       src="https://mod.calltouch.ru/init-min.js?id=o5i4wq1e"
-    ></script> -->
-    <script async="" src="./!FILES/catalog-pechi_files/js.js"></script>
+    ></script>
+    <script async="" src="./js/legacy/js.js"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -54,28 +50,16 @@
     />
 
     <!-- ===== LEGACY CSS (шрифты, normalize, jquery-ui, плагины) ===== -->
-    <link href="./!FILES/catalog-pechi_files/stylesheet.css" rel="stylesheet" />
+    <link href="./css/legacy/stylesheet.css" rel="stylesheet" />
+    <link href="./css/legacy/normalize.min.css" rel="stylesheet" />
+    <link href="./css/legacy/jquery-ui.min.css" rel="stylesheet" />
+    <link href="./css/legacy/slick.min.css" rel="stylesheet" media="screen" />
     <link
-      href="./!FILES/catalog-pechi_files/normalize.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="./!FILES/catalog-pechi_files/jquery-ui.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="./!FILES/catalog-pechi_files/slick.min.css"
-      rel="stylesheet"
-      media="screen"
-    />
-    <link
-      href="./!FILES/catalog-pechi_files/jquery.fancybox.min.css"
+      href="./css/legacy/jquery.fancybox.min.css"
       rel="stylesheet"
       media="screen"
     />
 
-    <!-- ===== NEW CSS (Swiper, noUiSlider CDN) ===== -->
-    <!-- Not needed for wishlist -->
 
     <!-- ===== LEGACY CSS (style, style2, style3 — переопределения) ===== -->
 
@@ -83,7 +67,6 @@
     <link rel="stylesheet" href="./css/custom-normalize.css" />
     <link rel="stylesheet" href="./css/global.css" />
     <!-- Стили страницы -->
-    <link rel="stylesheet" href="./css/pages/product-page.css" />
     <link rel="stylesheet" href="./css/pages/wishlist-page.css" />
 
     <base href="." />
@@ -105,10 +88,9 @@
     </script>
 
     <meta name="yandex-verification" content="481909b7efccfdb0" />
-    <link href="./!FILES/catalog-pechi_files/snow.min.css" rel="stylesheet" />
 
     <!-- calltouch -->
-    <!-- <script>
+    <script>
       (function (w, d, n, c) {
         w.CalltouchDataObject = n;
         w[n] = function () {
@@ -142,7 +124,7 @@
           }
         }
       })(window, document, "ct", "o5i4wq1e");
-    </script> -->
+    </script>
     <!-- calltouch -->
 
     <!-- Google Tag Manager -->
@@ -169,7 +151,7 @@
     </script>
 
     <!-- Top100 (Kraken) Counter -->
-    <!-- <script>
+    <script>
       (function (w, d, c) {
         (w[c] = w[c] || []).push(function () {
           var options = {
@@ -199,7 +181,7 @@
     </script>
     <noscript>
       <img src="//counter.rambler.ru/top100.cnt?pid=7750630" alt="Топ-100" />
-    </noscript> -->
+    </noscript>
     <!-- END Top100 (Kraken) Counter -->
 
     <meta name="robots" content="index, follow" />
@@ -237,7 +219,7 @@
       <div class="overlay"></div>
 
       <!-- =====================================================
-           НОВЫЙ HEADER (из NEW-HTML/catalog.html)
+           НОВЫЙ HEADER 
            ===================================================== -->
       <header class="header">
         <!-- Верхняя полоса -->
@@ -1602,7 +1584,10 @@
             <div class="wishlist-list__items">
               <!-- Карточка 1 -->
               <div class="wishlist-card">
-                <a href="./new-product-pechi.html" class="wishlist-card__image-link">
+                <a
+                  href="./new-product-pechi.html"
+                  class="wishlist-card__image-link"
+                >
                   <img
                     src="./assets/images/product/prod1-1.jpg"
                     alt="Печь"
@@ -1610,15 +1595,15 @@
                   />
                 </a>
                 <div class="wishlist-card__info">
-                  <a href="./new-product-pechi.html" class="wishlist-card__title"
+                  <a
+                    href="./new-product-pechi.html"
+                    class="wishlist-card__title"
                     >Печь-каменка Гефест Гром 30</a
                   >
                 </div>
                 <div class="wishlist-card__specs">
                   <div class="wishlist-card__spec">Мощность: 18 кВт</div>
-                  <div class="wishlist-card__spec">
-                    Объем парилки: до 30 м³
-                  </div>
+                  <div class="wishlist-card__spec">Объем парилки: до 30 м³</div>
                 </div>
                 <div class="wishlist-card__prices">
                   <div class="wishlist-card__price-current">134.500 ₽</div>
@@ -1650,7 +1635,10 @@
 
               <!-- Карточка 2 -->
               <div class="wishlist-card">
-                <a href="./new-product-kupeli.html" class="wishlist-card__image-link">
+                <a
+                  href="./new-product-kupeli.html"
+                  class="wishlist-card__image-link"
+                >
                   <img
                     src="./assets/images/product/kupel-1.png"
                     alt="Купель"
@@ -1658,7 +1646,9 @@
                   />
                 </a>
                 <div class="wishlist-card__info">
-                  <a href="./new-product-kupeli.html" class="wishlist-card__title"
+                  <a
+                    href="./new-product-kupeli.html"
+                    class="wishlist-card__title"
                     >Купель овальная, сращенные ламели из лиственницы,
                     0,76х1,16</a
                   >
@@ -1699,7 +1689,10 @@
 
               <!-- Карточка 3 -->
               <div class="wishlist-card">
-                <a href="./new-product-vagonka.html" class="wishlist-card__image-link">
+                <a
+                  href="./new-product-vagonka.html"
+                  class="wishlist-card__image-link"
+                >
                   <img
                     src="./assets/images/product/vagonka-1.jpg"
                     alt="Вагонка"
@@ -1707,48 +1700,124 @@
                   />
                 </a>
                 <div class="wishlist-card__info">
-                  <a href="./new-product-vagonka.html" class="wishlist-card__title"
+                  <a
+                    href="./new-product-vagonka.html"
+                    class="wishlist-card__title"
                     >Вагонка из канадского кедра Экстра</a
                   >
                 </div>
                 <div class="wishlist-card__specs">
                   <div class="wishlist-card__spec">Размер: 14x90x2130 мм</div>
-                  <div class="wishlist-card__spec">
-                    Сорт: Экстра
-                  </div>
+                  <div class="wishlist-card__spec">Сорт: Экстра</div>
                 </div>
                 <div class="wishlist-card__prices">
                   <div class="wishlist-card__price-item">
-                    <span class="wishlist-card__price-label">Цена за упак. (6 шт.)</span>
+                    <span class="wishlist-card__price-label"
+                      >Цена за упак. (6 шт.)</span
+                    >
                     <div class="wishlist-card__prices">
                       <div class="wishlist-card__price-current">4 341 ₽</div>
                       <div class="wishlist-card__price-old">6 610 ₽</div>
                     </div>
                   </div>
                   <div class="wishlist-card__price-item">
-                    <span class="wishlist-card__price-label">Цена за пог.м.</span>
+                    <span class="wishlist-card__price-label"
+                      >Цена за пог.м.</span
+                    >
                     <div class="wishlist-card__prices">
                       <div class="wishlist-card__price-current">2 732 ₽</div>
                     </div>
                   </div>
                 </div>
                 <div class="wishlist-card__actions">
-                  <form method="post" class="product" style="flex:1;">
-                    <div class="card-main_buttons goods-2_item-buttons show-hide-qnt in-cart">
-                      <button class="button button--primary button--full product-card__buy-btn js-card-add_item card-main_button-two addtocart in-cart" type="button" data-product-id="12345">
-                        <img src="./assets/icons/interfaces/cart-light.svg" alt="" class="button__icon">
+                  <form method="post" class="product" style="flex: 1">
+                    <div
+                      class="card-main_buttons goods-2_item-buttons show-hide-qnt in-cart"
+                    >
+                      <button
+                        class="button button--primary button--full product-card__buy-btn js-card-add_item card-main_button-two addtocart in-cart"
+                        type="button"
+                        data-product-id="12345"
+                      >
+                        <img
+                          src="./assets/icons/interfaces/cart-light.svg"
+                          alt=""
+                          class="button__icon"
+                        />
                         В корзину
                       </button>
-                      <div class="card-main_calc-form wrap-quantity product-card-counter">
-                        <button class="product-card-counter__btn product-card-counter__btn--dec quantity-minus" type="button" aria-label="Уменьшить количество">    <svg width="14" height="2" viewBox="0 0 14 2" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="13.1923" y1="0.807692" x2="0.807692" y2="0.807691" stroke="black" stroke-width="1.61538" stroke-linecap="round"></line></svg></button>
-                        <input class="product-card-counter__input quantity-input need-calc" type="text" inputmode="numeric" name="quantity[0]" value="1" data-minval="0" aria-label="количество">
-                        <button class="quantity-plus product-card-counter__btn product-card-counter__btn--inc" type="button" aria-label="Увеличить количество">
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="6.73054" y1="0.807692" x2="6.73054" y2="13.1923" stroke="black" stroke-width="1.61538" stroke-linecap="round"></line>
-                            <line x1="13.1923" y1="6.73079" x2="0.807692" y2="6.73079" stroke="black" stroke-width="1.61538" stroke-linecap="round"></line>
+                      <div
+                        class="card-main_calc-form wrap-quantity product-card-counter"
+                      >
+                        <button
+                          class="product-card-counter__btn product-card-counter__btn--dec quantity-minus"
+                          type="button"
+                          aria-label="Уменьшить количество"
+                        >
+                          <svg
+                            width="14"
+                            height="2"
+                            viewBox="0 0 14 2"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <line
+                              x1="13.1923"
+                              y1="0.807692"
+                              x2="0.807692"
+                              y2="0.807691"
+                              stroke="black"
+                              stroke-width="1.61538"
+                              stroke-linecap="round"
+                            ></line>
                           </svg>
                         </button>
-                        <input type="hidden" name="product_id[0]" value="13501">
+                        <input
+                          class="product-card-counter__input quantity-input need-calc"
+                          type="text"
+                          inputmode="numeric"
+                          name="quantity[0]"
+                          value="1"
+                          data-minval="0"
+                          aria-label="количество"
+                        />
+                        <button
+                          class="quantity-plus product-card-counter__btn product-card-counter__btn--inc"
+                          type="button"
+                          aria-label="Увеличить количество"
+                        >
+                          <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 14 14"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <line
+                              x1="6.73054"
+                              y1="0.807692"
+                              x2="6.73054"
+                              y2="13.1923"
+                              stroke="black"
+                              stroke-width="1.61538"
+                              stroke-linecap="round"
+                            ></line>
+                            <line
+                              x1="13.1923"
+                              y1="6.73079"
+                              x2="0.807692"
+                              y2="6.73079"
+                              stroke="black"
+                              stroke-width="1.61538"
+                              stroke-linecap="round"
+                            ></line>
+                          </svg>
+                        </button>
+                        <input
+                          type="hidden"
+                          name="product_id[0]"
+                          value="13501"
+                        />
                       </div>
                     </div>
                   </form>
@@ -2346,24 +2415,23 @@
          LEGACY JAVASCRIPT (порядок загрузки критичен!)
          ========================================================== -->
     <script src="./js/legacy/jquery.min.js" type="text/javascript"></script>
-    <script src="./js/legacy/jquery.maskedinput.min.js" type="text/javascript"></script>
+    <script
+      src="./js/legacy/jquery.maskedinput.min.js"
+      type="text/javascript"
+    ></script>
     <script src="./js/legacy/jquery-ui.min.js" type="text/javascript"></script>
     <!-- Slick и Fancybox ДОЛЖНЫ быть загружены ДО вызова .slick() в $(document).ready() -->
     <script src="./js/legacy/slick.min.js"></script>
     <script src="./js/legacy/jquery.fancybox.min.js"></script>
-    <script src="./js/legacy/script.js" type="text/javascript"></script>
-    <script src="./js/legacy/script2.js" type="text/javascript"></script>
-    <script src="./js/legacy/script3.js" type="text/javascript"></script>
-
-    <!-- ===== NEW JS (Swiper, noUiSlider CDN) ===== -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.js"></script> -->
+    <!-- <script src="./js/legacy/script.js" type="text/javascript"></script> -->
+    <!-- <script src="./js/legacy/script2.js" type="text/javascript"></script> -->
+    <!-- <script src="./js/legacy/script3.js" type="text/javascript"></script> -->
 
     <!-- ===== NEW JS (модульная система) ===== -->
-    <script src="./js/pages/product.js" type="module"></script>
+    <script src="./js/pages/wishlist.js" type="module"></script>
 
     <!-- Yandex.Metrika counter (отложенная загрузка) -->
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
       (function () {
         "use strict";
         var loadedMetrica = false,
@@ -2433,79 +2501,12 @@
           style="position: absolute; left: -9999px"
           alt=""
         /></div
-    ></noscript> -->
+    ></noscript>
     <!-- /Yandex.Metrika counter -->
-
-    <!-- LEGACY: filter.js + плагины -->
-    <!-- <script src="./!FILES/catalog-pechi_files/filter.js"></script> -->
-    <!-- <script src="./!FILES/catalog-pechi_files/ion.rangeSlider.min.js"></script> -->
-    <!-- slick.min.js и jquery.fancybox.min.js перемещены выше (после jquery-ui.min.js) для правильного порядка загрузки -->
-
-    <!-- LEGACY: глобальная переменная для модуля сравнения -->
-    <script>
-      var comparUrl = "/sravnenie-tovarov";
-    </script>
 
     <div id="cookie_notification">
       <div class="cookie_accept"></div>
     </div>
-
-    <!-- LEGACY: инлайн-скрипт инициализации бизнес-логики -->
-    <script>
-      jQuery(document).ready(function () {
-        jQuery(window).on("resize", function () {
-          let ww = $(document).width();
-          setCookie("ww", ww, 1);
-          controlPromo();
-        });
-        setTimeout(function () {
-          controlPromo();
-        }, 300);
-
-        historyCats();
-        filterRange();
-
-        // Slick для legacy-элемента — безопасно проигнорируется если элемент отсутствует
-        jQuery(".goods-2_labels-2-slick").slick({
-          slidesToShow: 3,
-          responsive: [
-            { breakpoint: 1024, settings: { slidesToShow: 2 } },
-            { breakpoint: 768, settings: { slidesToShow: 1 } },
-          ],
-        });
-
-        controlShowMoreCategories();
-
-        jQuery(".js-open-sort").click(function () {
-          window.scrollTo(0, 0);
-          jQuery("body").addClass("sort-actived");
-        });
-        jQuery(".js-close-sort").click(function () {
-          jQuery("body").removeClass("sort-actived");
-        });
-
-        addToCart();
-        contrlolQuantity();
-        comparison();
-
-        $("body").on("click", ".city-btn", function (e) {
-          e.preventDefault();
-          $.fancybox.open({
-            type: "ajax",
-            src: "/index.php?component=getmodule&tmpl=ajax&mid=48",
-            touch: false,
-            opts: {
-              afterShow: function (instance, current) {
-                controlCities();
-              },
-            },
-          });
-        });
-      });
-    </script>
-
-    <!-- ===== SLICK GALLERY INIT ===== -->
-    <script src="./js/pages/product/gallery.js"></script>
 
     <!-- Rivox tracking -->
     <script
