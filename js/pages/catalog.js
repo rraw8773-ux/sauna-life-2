@@ -212,4 +212,124 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.querySelector(".tags")) {
     initTags();
   }
+
+  // Всплывающие тултипы валидации количества для кнопок "В корзину" в каталоге (Event Delegation)
+  let activeTooltipTimeout = null;
+  let activeTooltip = null;
+
+  // 1. Обработка клика по кнопке "В корзину" в фазе перехвата (capture phase)
+  // Это необходимо, чтобы перехватить событие ДО того, как jQuery-обработчик на body вернет false (stopPropagation)
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".product-card__buy-btn.addtocart");
+    if (btn) {
+      const container = btn.closest(".card-main_buttons");
+      if (!container) return;
+
+      const form = btn.closest("form");
+      if (!form) return;
+
+      const quantityInputs = form.querySelectorAll(".quantity-input.need-calc");
+      if (quantityInputs.length > 0) {
+        const hasPositiveQty = Array.from(quantityInputs).some((input) => (parseInt(input.value, 10) || 0) > 0);
+        if (!hasPositiveQty) {
+          // Полностью останавливаем событие на этапе погружения
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+
+          // Получаем или динамически создаем тултип, если его нет в разметке карточки
+          let tooltip = container.querySelector(".cart-tooltip");
+          if (!tooltip) {
+            tooltip = document.createElement("div");
+            tooltip.className = "cart-tooltip";
+            tooltip.innerHTML = `
+              <div class="cart-tooltip__inner">
+                <div class="cart-tooltip__icon">
+                  <img
+                    src="./assets/icons/interfaces/info-circle.svg"
+                    alt=""
+                    width="14"
+                    height="14"
+                  />
+                </div>
+                <div class="cart-tooltip__text">
+                  Укажите<br />необходимое кол-во
+                </div>
+              </div>
+            `;
+            container.appendChild(tooltip);
+          }
+
+          // Скрываем ранее открытый тултип, если он есть
+          if (activeTooltip && activeTooltip !== tooltip) {
+            activeTooltip.classList.remove("is-visible");
+            clearTimeout(activeTooltipTimeout);
+          }
+
+          tooltip.classList.add("is-visible");
+          activeTooltip = tooltip;
+
+          clearTimeout(activeTooltipTimeout);
+          activeTooltipTimeout = setTimeout(() => {
+            tooltip.classList.remove("is-visible");
+            if (activeTooltip === tooltip) {
+              activeTooltip = null;
+            }
+          }, 3000);
+        }
+      }
+    }
+  }, true);
+
+  // 2. Обработка клика по кнопкам изменения количества счетчика (+/-) (bubbling phase)
+  document.addEventListener("click", (e) => {
+    const counterBtn = e.target.closest(".product-card-counter__btn, .quantity-plus, .quantity-minus");
+    if (counterBtn) {
+      const container = counterBtn.closest(".card-main_buttons");
+      if (container) {
+        const tooltip = container.querySelector(".cart-tooltip");
+        if (tooltip && tooltip.classList.contains("is-visible")) {
+          // Даем микропаузу для обновления значения input в DOM
+          setTimeout(() => {
+            const form = counterBtn.closest("form");
+            if (form) {
+              const inputs = form.querySelectorAll(".quantity-input.need-calc");
+              const hasPositiveQty = Array.from(inputs).some((input) => (parseInt(input.value, 10) || 0) > 0);
+              if (hasPositiveQty) {
+                tooltip.classList.remove("is-visible");
+                if (activeTooltip === tooltip) {
+                  clearTimeout(activeTooltipTimeout);
+                  activeTooltip = null;
+                }
+              }
+            }
+          }, 10);
+        }
+      }
+    }
+  });
+
+  // 3. Скрываем тултип при ручном изменении количества
+  document.addEventListener("input", (e) => {
+    if (e.target.matches(".quantity-input.need-calc")) {
+      const container = e.target.closest(".card-main_buttons");
+      if (container) {
+        const tooltip = container.querySelector(".cart-tooltip");
+        if (tooltip && tooltip.classList.contains("is-visible")) {
+          const form = e.target.closest("form");
+          if (form) {
+            const inputs = form.querySelectorAll(".quantity-input.need-calc");
+            const hasPositiveQty = Array.from(inputs).some((input) => (parseInt(input.value, 10) || 0) > 0);
+            if (hasPositiveQty) {
+              tooltip.classList.remove("is-visible");
+              if (activeTooltip === tooltip) {
+                clearTimeout(activeTooltipTimeout);
+                activeTooltip = null;
+              }
+            }
+          }
+        }
+      }
+    }
+  });
 });

@@ -1176,3 +1176,92 @@ body {
     font-size: 11px;
   }
 }
+
+/* ======================================================
+   Cart Add-To-Cart Tooltip styles
+   ====================================================== */
+.addtocart-bar {
+  position: relative;
+}
+
+.cart-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%) translateY(8px);
+  z-index: 99;
+  background-color: var(--color-light, #ffffff);
+  border: 1px solid var(--border-color-base, #e3e3e6);
+  border-radius: 2px;
+  padding: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08), var(--shadow-soft, 0 4px 20px rgba(0, 0, 0, 0.06));
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+    transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+    visibility 0.3s ease;
+  width: max-content;
+}
+
+.cart-tooltip.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.cart-tooltip__inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-tooltip__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.cart-tooltip__icon img {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.cart-tooltip__text {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-dark, #0a0a0a);
+  text-align: left;
+  white-space: normal;
+}
+
+/* Arrow pointing down */
+.cart-tooltip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--color-light, #ffffff) transparent transparent transparent;
+}
+
+.cart-tooltip::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--border-color-base, #e3e3e6) transparent transparent transparent;
+  margin-top: -1px;
+}
+

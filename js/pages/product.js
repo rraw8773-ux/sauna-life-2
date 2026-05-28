@@ -346,5 +346,79 @@ document.addEventListener("DOMContentLoaded", () => {
       updateSelectedAddons();
     }
   }
+
+  // Логика всплывающего тултипа для кнопки "В корзину" (при нулевом кол-ве)
+  const addToCartBtn = document.querySelector(".product-hero__add-to-cart");
+  const cartTooltip = document.getElementById("cart-tooltip");
+
+  if (addToCartBtn && cartTooltip) {
+    let tooltipTimeout;
+
+    addToCartBtn.addEventListener("click", (e) => {
+      const form = addToCartBtn.closest("form");
+      if (form) {
+        const needCalcInputs = form.querySelectorAll(".need-calc");
+        let hasQuantity = false;
+
+        needCalcInputs.forEach((input) => {
+          if (parseInt(input.value, 10) > 0) {
+            hasQuantity = true;
+          }
+        });
+
+        if (!hasQuantity) {
+          // Предотвращаем стандартную отправку и показываем тултип
+          e.preventDefault();
+          e.stopPropagation();
+
+          clearTimeout(tooltipTimeout);
+          cartTooltip.classList.add("is-visible");
+
+          // Скрываем тултип через 3 секунды
+          tooltipTimeout = setTimeout(() => {
+            cartTooltip.classList.remove("is-visible");
+          }, 3000);
+        }
+      }
+    });
+
+    // Скрываем тултип при изменении кол-ва на значение больше нуля (ввод текста)
+    const quantityInputs = document.querySelectorAll(".need-calc");
+    quantityInputs.forEach((input) => {
+      input.addEventListener("input", () => {
+        let hasQuantity = false;
+        quantityInputs.forEach((inp) => {
+          if (parseInt(inp.value, 10) > 0) {
+            hasQuantity = true;
+          }
+        });
+
+        if (hasQuantity) {
+          clearTimeout(tooltipTimeout);
+          cartTooltip.classList.remove("is-visible");
+        }
+      });
+    });
+
+    // Скрываем тултип при клике по кнопкам изменения кол-ва (+/-)
+    const counterButtons = document.querySelectorAll(".product-hero__counter-btn");
+    counterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setTimeout(() => {
+          let hasQuantity = false;
+          quantityInputs.forEach((inp) => {
+            if (parseInt(inp.value, 10) > 0) {
+              hasQuantity = true;
+            }
+          });
+
+          if (hasQuantity) {
+            clearTimeout(tooltipTimeout);
+            cartTooltip.classList.remove("is-visible");
+          }
+        }, 10);
+      });
+    });
+  }
 });
 
