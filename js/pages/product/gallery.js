@@ -80,6 +80,108 @@ jQuery(document).ready(function () {
       syncNav(nextSlide);
     });
 
+    // ── Синхронизация опций (Цвет, Размер) с галереей ──
+    document.addEventListener("pc:dropdown-change", function (e) {
+      const detail = e.detail;
+      if (!detail) return;
+
+      // Собираем текущие выбранные значения всех опций на странице
+      const activeSpecs = {};
+      jQuery(".product-hero__field").each(function () {
+        const $field = jQuery(this);
+        const label = $field.find(".product-hero__field-label").text().trim().toLowerCase();
+        const selectedOption = $field.find(".product-hero__dropdown-option.is-selected");
+        if (selectedOption.length) {
+          const val = String(selectedOption.attr("data-value") || "").toLowerCase();
+          const text = selectedOption.text().trim().toLowerCase();
+
+          if (label.includes("цвет") || label.includes("дерево") || label.includes("материал")) {
+            activeSpecs.color = { val: val, text: text };
+          } else if (label.includes("размер")) {
+            activeSpecs.size = { val: val, text: text };
+          }
+        }
+      });
+
+      let bestSlideIndex = -1;
+      let highestScore = -1;
+
+      // Поиск слайда напрямую по ссылкам галереи
+      const $slides = $mainSlider.find("a[data-slider-fancybox='gallery']").not(".slick-cloned, .slick-cloned *");
+
+      $slides.each(function (index) {
+        const $a = jQuery(this);
+        const $img = $a.find("img");
+
+        // Характеристики слайда из data-атрибутов
+        const slideColor = String($a.attr("data-color") || $a.attr("data-option-value") || $img.attr("data-color") || $img.attr("data-option-value") || "").toLowerCase();
+        const slideSize = String($a.attr("data-size") || $img.attr("data-size") || "").toLowerCase();
+
+        const imgTitle = ($img.attr("title") || "").toLowerCase();
+        const imgAlt = ($img.attr("alt") || "").toLowerCase();
+
+        let isDisqualified = false;
+        let score = 0;
+
+        // 1. Сравнение по ЦВЕТУ
+        if (slideColor) {
+          if (activeSpecs.color) {
+            if (slideColor === activeSpecs.color.val || slideColor === activeSpecs.color.text) {
+              score += 10; // Явное совпадение по цвету имеет высокий приоритет
+            } else {
+              isDisqualified = true; // Конфликт цвета — дисквалификация слайда
+            }
+          } else {
+            // Слайд привязан к конкретному цвету, но цвет еще не выбран — дисквалификация
+            isDisqualified = true;
+          }
+        }
+
+        // 2. Сравнение по РАЗМЕРУ
+        if (slideSize) {
+          if (activeSpecs.size) {
+            if (slideSize === activeSpecs.size.val || slideSize === activeSpecs.size.text) {
+              score += 5; // Совпадение по размеру добавляет веса
+            } else {
+              isDisqualified = true; // Конфликт размера — дисквалификация слайда
+            }
+          } else {
+            // Слайд привязан к конкретному размеру, но размер еще не выбран — дисквалификация
+            isDisqualified = true;
+          }
+        }
+
+        // 3. Текстовый фолбэк по title/alt (если слайд не дисквалифицирован и не имеет явных data-атрибутов)
+        let textScore = 0;
+        if (score === 0 && !isDisqualified) {
+          if (activeSpecs.color) {
+            const cText = activeSpecs.color.text;
+            if (cText && (imgTitle.includes(cText) || imgAlt.includes(cText))) {
+              textScore += 2;
+            }
+          }
+          if (activeSpecs.size) {
+            const sText = activeSpecs.size.text;
+            if (sText && (imgTitle.includes(sText) || imgAlt.includes(sText))) {
+              textScore += 1;
+            }
+          }
+        }
+
+        const finalScore = score > 0 ? score : textScore;
+
+        if (!isDisqualified && finalScore > highestScore) {
+          highestScore = finalScore;
+          bestSlideIndex = index;
+        }
+      });
+
+      // Переключаем слайдер на лучший совпавший индекс
+      if (bestSlideIndex !== -1 && highestScore >= 0) {
+        $mainSlider.slick("slickGoTo", bestSlideIndex);
+      }
+    });
+
     // Начальное состояние стрелок
     $prevArrow.addClass("is-disabled");
 
