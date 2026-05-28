@@ -60,6 +60,119 @@ document.addEventListener("DOMContentLoaded", () => {
     initSliders();
   }
 
+  // Синхронизация опций карточек товара (Размер, Цвет) с их локальной галереей слайдера и ценой
+  document.addEventListener("pc:dropdown-change", (e) => {
+    const card = e.target.closest(".product-card");
+    if (!card) return;
+
+    // 1. Запуск пересчета цены для карточки через адаптированную calcCatPrice
+    const selectedOption = e.target.closest(".product-card-dropdown")?.querySelector(".product-card-dropdown__option.is-selected");
+    if (selectedOption && typeof window.calcCatPrice === "function") {
+      window.calcCatPrice(selectedOption);
+    }
+
+    // 2. Синхронизация слайдов галереи с выбранными спецификациями
+    syncCardGallery(card);
+  });
+
+  function syncCardGallery(card) {
+    const $slider = $(card).find(".js-product-card-slider");
+    if (!$slider.length || !$slider.hasClass("slick-initialized")) return;
+
+    // Сбор текущих выбранных опций карточки
+    const activeSpecs = {};
+    $(card).find(".product-card-field").each(function () {
+      const $field = $(this);
+      const label = $field.find(".product-card-field__label").text().trim().toLowerCase();
+      const selectedOption = $field.find(".product-card-dropdown__option.is-selected");
+      
+      if (selectedOption.length) {
+        const val = String(selectedOption.attr("data-value") || selectedOption.text().trim()).toLowerCase().trim();
+        const text = selectedOption.text().trim().toLowerCase();
+
+        if (label.includes("цвет") || label.includes("дерево") || label.includes("материал")) {
+          activeSpecs.color = { val: val, text: text };
+        } else if (label.includes("размер")) {
+          activeSpecs.size = { val: val, text: text };
+        }
+      }
+    });
+
+    let bestSlideIndex = -1;
+    let highestScore = -1;
+
+    // Извлекаем только оригинальные слайды (без slick-cloned)
+    const $slides = $slider.find(".product-card__slide").not(".slick-cloned, .slick-cloned *");
+
+    $slides.each(function (index) {
+      const $slide = $(this);
+      const $img = $slide.find("img");
+
+      const slideColor = String($slide.attr("data-color") || $slide.attr("data-option-value") || $img.attr("data-color") || $img.attr("data-option-value") || "").toLowerCase().trim();
+      const slideSize = String($slide.attr("data-size") || $img.attr("data-size") || "").toLowerCase().trim();
+
+      const imgTitle = ($img.attr("title") || "").toLowerCase();
+      const imgAlt = ($img.attr("alt") || "").toLowerCase();
+
+      let isDisqualified = false;
+      let score = 0;
+
+      // Оценка по ЦВЕТУ
+      if (slideColor) {
+        if (activeSpecs.color) {
+          if (slideColor === activeSpecs.color.val || slideColor === activeSpecs.color.text) {
+            score += 10;
+          } else {
+            isDisqualified = true;
+          }
+        } else {
+          isDisqualified = true;
+        }
+      }
+
+      // Оценка по РАЗМЕРУ
+      if (slideSize) {
+        if (activeSpecs.size) {
+          if (slideSize === activeSpecs.size.val || slideSize === activeSpecs.size.text) {
+            score += 5;
+          } else {
+            isDisqualified = true;
+          }
+        } else {
+          isDisqualified = true;
+        }
+      }
+
+      // Оценка по вхождению подстроки в alt/title (текстовый фолбек)
+      let textScore = 0;
+      if (score === 0 && !isDisqualified) {
+        if (activeSpecs.color) {
+          const cText = activeSpecs.color.text;
+          if (cText && (imgTitle.includes(cText) || imgAlt.includes(cText))) {
+            textScore += 2;
+          }
+        }
+        if (activeSpecs.size) {
+          const sText = activeSpecs.size.text;
+          if (sText && (imgTitle.includes(sText) || imgAlt.includes(sText))) {
+            textScore += 1;
+          }
+        }
+      }
+
+      const finalScore = score > 0 ? score : textScore;
+
+      if (!isDisqualified && finalScore > highestScore) {
+        highestScore = finalScore;
+        bestSlideIndex = index;
+      }
+    });
+
+    if (bestSlideIndex !== -1 && highestScore >= 0) {
+      $slider.slick("slickGoTo", bestSlideIndex);
+    }
+  }
+
   // Поддержка динамически добавляемых элементов в DOM (фильтрация, пагинация)
   document.addEventListener("catalog:products-appended", (event) => {
     const root = event.detail?.root instanceof Element ? event.detail.root : document;

@@ -608,7 +608,11 @@ function calcCatPrice(t) {
     var e = t.closest(".goods-2_flat").find(".PricesalesPrice"),
       i = t.closest("form").find(".product-fields .select"),
       a = t.closest("form");
-  else
+  else if (t.closest(".product-card").length) {
+    var e = t.closest(".product-card").find(".PricesalesPrice"),
+      i = t.closest(".product-card").find(".product-fields .select, .product-fields .product-card-dropdown"),
+      a = t.closest(".product-card").find("form");
+  } else
     ((e = t.closest(".goods-2_item").find(".PricesalesPrice")),
       (i = t.closest(".goods-2_item").find(".product-fields .select")),
       (a = t.closest(".goods-2_item").find("form")),
@@ -651,7 +655,8 @@ function calcCatPrice(t) {
   if (
     (i.length &&
       i.each(function () {
-        var t = $(this).find("option:selected").data("price");
+        var selected = $(this).is("select") ? $(this).find("option:selected") : $(this).find(".product-card-dropdown__option.is-selected, .product-hero__dropdown-option.is-selected");
+        var t = selected.length ? selected.data("price") : undefined;
         if (null != t && void 0 !== t) {
           var e = (t = t.toString()).substr(0, 1);
           ((pr2 = t.substr(1)),
@@ -667,7 +672,7 @@ function calcCatPrice(t) {
                   ? ((o = parseInt(pr2)), (s = 0))
                   : (o += parseInt(t)));
         }
-        var i = $(this).find("option:selected").data("undprice");
+        var i = selected.length ? selected.data("undprice") : undefined;
         null != i &&
           void 0 !== i &&
           ((e = i.substr(0, 1)),
