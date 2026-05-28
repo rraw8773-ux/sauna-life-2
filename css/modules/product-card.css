@@ -709,7 +709,19 @@
   grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
+@media (max-width: 767px) {
+  .product-card__price {
+    font-size: 16px;
+  }
+  .product-card__price-old {
+    font-size: 10px;
+  }
+}
+
 @media (max-width: 479px) {
+  .product-card__price-old {
+    font-size: 10px;
+  }
   .product-card__buttons {
     grid-template-columns: 1fr;
   }

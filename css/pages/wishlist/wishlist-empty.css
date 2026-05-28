@@ -1,5 +1,6 @@
 .wishlist-empty {
-  padding: 80px 20px;
+  padding-top: 40px;
+  padding-bottom: 100px;
 }
 
 .wishlist-empty .container {
@@ -55,12 +56,13 @@
 
 @media (max-width: 767px) {
   .wishlist-empty {
-    padding: 60px 16px;
+    padding-bottom: 60px;
   }
   .wishlist-empty__title {
     font-size: 20px;
   }
-  .wishlist-empty__text {
+  .wishlist-empty__text,
+  .wishlist-empty__link {
     font-size: 14px;
   }
 }
