@@ -13,6 +13,7 @@ import { initCatalogModal } from "../modules/catalog-modal.js";
 // Глобальные переиспользуемые модули (DRY)
 import { initTabs } from "../modules/tabs.js";
 import { initProductsWidget } from "../modules/products-widget.js";
+import { initFavoritesToastController } from "../modules/favorites-toast-controller.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Запуск глобальных модулей общего интерфейса
@@ -39,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Запуск общего переиспользуемого функционала (табы и слайдеры в блоке дополнительных товаров)
   initTabs();
   initProductsWidget();
+  initFavoritesToastController();
 
   // Локальный интерактивный функционал для страницы Избранного
   initWishlistPage();

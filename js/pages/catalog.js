@@ -15,6 +15,7 @@ import { initCustomDropdown } from "../modules/custom-dropdown.js";
 import { initProductCards } from "../modules/product-card.js";
 import { initProductsWidget } from "../modules/products-widget.js";
 import { initSliders } from "../modules/sliders.js";
+import { initFavoritesToastController } from "../modules/favorites-toast-controller.js";
 
 // Локальные страничные модули каталога
 import { initFiltersMore } from "./catalog/filters-more.js";
@@ -55,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCustomDropdown();
   initProductCards();
   initProductsWidget();
+  initFavoritesToastController();
 
   if (document.querySelector(".js-product-card-slider")) {
     initSliders();

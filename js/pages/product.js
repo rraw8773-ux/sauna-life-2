@@ -15,6 +15,7 @@ import { initTabs } from "../modules/tabs.js";
 import { initCustomDropdown } from "../modules/custom-dropdown.js";
 import { initProductCards } from "../modules/product-card.js";
 import { initSliders } from "../modules/sliders.js";
+import { initFavoritesToastController } from "../modules/favorites-toast-controller.js";
 
 // Локальные страничные модули страницы товара
 import { initProductTabs } from "./product/tabs.js";
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTabs();
   initCustomDropdown();
   initProductCards();
+  initFavoritesToastController();
   initProductTabs();
   initProductSlider();
   initProductsWidget();
