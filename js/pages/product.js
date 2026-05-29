@@ -25,6 +25,12 @@ import { initProductDetails } from "./product/product-details.js";
 import { initProductGallery } from "./product/gallery.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Предзагрузка системного эмодзи-шрифта для исключения 1-секундной задержки рендеринга при первом клике
+  const emojiPreloader = document.createElement("div");
+  emojiPreloader.style.cssText = "position:absolute;width:0;height:0;overflow:hidden;opacity:0;pointer-events:none;will-change:transform;";
+  emojiPreloader.innerText = "✨🎉🌟🥳💛🔥🤩👑💥🚀⚡👍❤️😊👏👌🥰🎈🌸⭐🧡😢😭👎💔💧🌧️😩🥀😿";
+  document.body.appendChild(emojiPreloader);
+
   // Запуск глобальных модулей общего интерфейса
   if (document.querySelector(".header")) {
     initStickyHeader();
@@ -75,12 +81,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (feedbackOptions.length > 0 && feedbackContainer) {
     let thankyouTimeout;
+    let lastTriggerTime = 0; // Глобальный таймер для предотвращения призрачных и двойных кликов
 
     // Списки эмодзи для каждой реакции
     const emojis = {
-      excellent: ["✨", "🎉", "🌟", "🥳", "💛", "💥", "🤩", "👑"],
-      good: ["👍", "❤️", "😊", "👏", "👌", "💙", "🥰", "🎈"],
-      bad: ["😢", "💧", "💔", "😭", "😿", "🌧️", "💔", "👎"]
+      excellent: ["✨", "🎉", "🌟", "🥳", "💛", "🔥", "🤩", "👑", "💥", "🚀", "⚡", "✨", "👑"],
+      good: ["👍", "❤️", "😊", "👏", "👌", "🥰", "🎈", "🌸", "⭐", "🧡"],
+      bad: ["😢", "😭", "👎", "💔", "💧", "🌧️", "😩", "🥀", "😿"]
     };
 
     function spawnFeedbackParticles(type, containerRect, buttonRect) {
@@ -88,61 +95,133 @@ document.addEventListener("DOMContentLoaded", () => {
       const spawnX = buttonRect.left - containerRect.left + buttonRect.width / 2;
       const spawnY = buttonRect.top - containerRect.top + buttonRect.height / 2;
 
-      // Количество создаваемых частиц
-      const count = type === "excellent" ? 20 : 12;
       const emojiPool = emojis[type] || ["✨"];
+
+      // Физические параметры под каждую эмоцию для создания уникальных ощущений
+      let count = 10;
+      let durationMin = 0.4;
+      let durationMax = 0.7;
+      let sizeMin = 18;
+      let sizeMax = 28;
+      let gravity = 0;
+      let angleSpread = Math.PI * 2;
+      let angleOffset = 0;
+
+      if (type === "excellent") {
+        // "пуух вообще пушка, очень здорово" — мощный праздничный радиальный взрыв
+        count = 32;
+        durationMin = 0.45;
+        durationMax = 0.75;
+        sizeMin = 22;
+        sizeMax = 36;
+      } else if (type === "good") {
+        // "вау круто" — умеренный гармоничный теплый всплеск
+        count = 20;
+        durationMin = 0.4;
+        durationMax = 0.65;
+        sizeMin = 18;
+        sizeMax = 30;
+      } else if (type === "bad") {
+        // "плохо" — теперь тоже разлетаются радиально по кругу из центра
+        count = 14;
+        durationMin = 0.55;
+        durationMax = 0.85;
+        sizeMin = 16;
+        sizeMax = 26;
+      }
+
+      // Создаем DocumentFragment для снижения количества перерисовок DOM (Reflow)
+      const fragment = document.createDocumentFragment();
+      const particlesToAnimate = [];
 
       for (let i = 0; i < count; i++) {
         const particle = document.createElement("span");
         particle.className = "feedback-particle";
-        
-        // Случайный эмодзи из пула
         particle.innerText = emojiPool[Math.floor(Math.random() * emojiPool.length)];
 
-        // Случайные параметры анимации (быстрее и динамичнее!)
-        let rot = (Math.random() * 360 - 180) + "deg"; // Полный оборот для зрелищности
-        let duration = (0.5 + Math.random() * 0.4) + "s"; // Быстрее: от 0.5 до 0.9 секунд
-        let size = (16 + Math.random() * 14) + "px"; // Крупнее
-        let endScale = (0.3 + Math.random() * 0.5).toFixed(2);
-
-        // Все анимации теперь взрываются из центра во все стороны (радиально)
-        const angle = Math.random() * Math.PI * 2;
-        let distance = 50;
+        // Вычисляем угол и дистанцию разлета
+        let angle = angleOffset + Math.random() * angleSpread;
+        let distance;
 
         if (type === "excellent") {
-          distance = 60 + Math.random() * 90; // Большой праздничный взрыв
+          // Двуслойное распределение для красивого объемного "POW" эффекта
+          distance = Math.random() > 0.4
+            ? (75 + Math.random() * 65)  // 60% летят далеко: 75px - 140px
+            : (35 + Math.random() * 35); // 40% остаются ближе для плотного ядра
         } else if (type === "good") {
-          distance = 50 + Math.random() * 70; // Средний взрыв тепла
-        } else if (type === "bad") {
-          distance = 40 + Math.random() * 60; // Небольшой грустный всплеск
+          distance = 45 + Math.random() * 40; // 45px - 85px
+        } else {
+          distance = 30 + Math.random() * 35; // 30px - 65px (плохо)
         }
 
         const tx = Math.cos(angle) * distance;
-        const ty = Math.sin(angle) * distance;
+        const ty = Math.sin(angle) * distance + gravity;
 
-        // Задаем CSS-переменные для Keyframes
-        particle.style.setProperty("--tx", tx + "px");
-        particle.style.setProperty("--ty", ty + "px");
-        particle.style.setProperty("--rot", rot);
-        particle.style.setProperty("--duration", duration);
-        particle.style.setProperty("--size", size);
-        particle.style.setProperty("--end-scale", endScale);
+        const rot = (Math.random() * 360 - 180) + "deg";
+        const duration = (durationMin + Math.random() * (durationMax - durationMin)) * 1000;
+        const size = (sizeMin + Math.random() * (sizeMax - sizeMin)) + "px";
+        const endScale = (0.3 + Math.random() * 0.5).toFixed(2);
 
-        // Устанавливаем координаты спауна
+        // Устанавливаем статические координаты и размер
+        particle.style.fontSize = size;
         particle.style.left = spawnX + "px";
         particle.style.top = spawnY + "px";
 
-        feedbackContainer.appendChild(particle);
+        fragment.appendChild(particle);
 
-        // Удаляем частицу после окончания анимации
-        setTimeout(() => {
-          particle.remove();
-        }, parseFloat(duration) * 1000);
+        particlesToAnimate.push({
+          element: particle,
+          tx,
+          ty,
+          rot,
+          endScale,
+          duration
+        });
       }
+
+      // Вставляем все частицы за один раз
+      feedbackContainer.appendChild(fragment);
+
+      // Запускаем высокопроизводительные аппаратные анимации без дерганий и лагов
+      particlesToAnimate.forEach(({ element, tx, ty, rot, endScale, duration }) => {
+        const animation = element.animate([
+          {
+            transform: "translate(-50%, -50%) translate(0, 0) scale(0.4) rotate(0deg)",
+            opacity: 1,
+            offset: 0
+          },
+          {
+            opacity: 1,
+            offset: 0.6 // Эмодзи сохраняют полную яркость и цвет 60% времени полета (не бледные!)
+          },
+          {
+            transform: `translate(-50%, -50%) translate(${tx}px, ${ty}px) scale(${endScale}) rotate(${rot})`,
+            opacity: 0,
+            offset: 1
+          }
+        ], {
+          duration: duration,
+          easing: "cubic-bezier(0.1, 0.8, 0.25, 1)",
+          fill: "forwards"
+        });
+
+        // Чистим DOM по завершению анимации
+        animation.onfinish = () => {
+          element.remove();
+        };
+      });
     }
 
     feedbackOptions.forEach((option) => {
-      option.addEventListener("click", () => {
+      const triggerFeedback = (e) => {
+        const now = Date.now();
+        // Защита от дублирования вызовов (pointerdown + ghost click) в течение 600мс
+        if (now - lastTriggerTime < 600) {
+          if (e) e.preventDefault();
+          return;
+        }
+        lastTriggerTime = now;
+
         const type = option.getAttribute("data-feedback");
 
         // 1. Получаем геометрические параметры ДО изменения классов для избежания Forced Reflow
@@ -169,7 +248,21 @@ document.addEventListener("DOMContentLoaded", () => {
             feedbackThankyou.classList.remove("is-visible");
           }, 3500);
         }
+      };
+
+      // pointerdown срабатывает в момент касания / нажатия мыши (мгновенный отклик 0мс!)
+      option.addEventListener("pointerdown", triggerFeedback);
+      
+      // Обработка клавиш (Enter / Пробел) для доступности
+      option.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          triggerFeedback(e);
+        }
       });
+
+      // Резервный обработчик клика для старых систем
+      option.addEventListener("click", triggerFeedback);
     });
   }
 

@@ -820,6 +820,7 @@ body {
   transition:
     transform 0.2s ease,
     opacity 0.2s ease;
+  touch-action: manipulation; /* Убирает задержку тапа в 300мс на мобильных устройствах */
 }
 
 .product-feedback__option:hover {
@@ -913,24 +914,10 @@ body {
 .feedback-particle {
   position: absolute;
   pointer-events: none;
-  font-size: var(--size);
   z-index: 1020;
   will-change: transform, opacity;
-  transform: translate(-50%, -50%);
-  animation: feedback-particle-anim var(--duration)
-    cubic-bezier(0.1, 0.8, 0.25, 1) forwards;
-}
-
-@keyframes feedback-particle-anim {
-  0% {
-    transform: translate(-50%, -50%) translate(0, 0) scale(0.4) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, -50%) translate(var(--tx), var(--ty))
-      scale(var(--end-scale)) rotate(var(--rot));
-    opacity: 0;
-  }
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
 }
 
 /* ======================================================
