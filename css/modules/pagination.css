@@ -15,13 +15,19 @@
   margin-top: 40px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .goods-2_footer {
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
     gap: 16px;
     padding: 16px;
     margin-top: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .goods-2_footer {
+    align-items: stretch;
   }
 }
 

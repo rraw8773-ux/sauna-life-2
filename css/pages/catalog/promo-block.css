@@ -290,92 +290,63 @@
 
 /* 3. Планшеты (Tablet Portrait) - до 1023px */
 @media (max-width: 1023px) {
-  .promo-block__title {
-    font-size: 20px;
-  }
-
-  .promo-block__body {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 24px;
-  }
-
-  .promo-block__image-wrapper {
-    width: 100%;
-    max-width: 180px;
-    margin: 0 auto;
-  }
-
-  .promo-block__info {
-    width: 100%;
-    align-items: center;
-    text-align: center;
-  }
-
-  .promo-block__product-title {
-    max-width: 100%;
-    font-size: 20px;
-  }
-
-  .promo-block__prices {
-    justify-content: center;
-  }
-
-  .promo-block__actions {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    background-color: var(--color-gray-lighter);
-    border: var(--border-base-light);
-    padding: 16px 20px;
-    border-radius: var(--radius-base);
-  }
-
-  .promo-block__buy-btn {
-    flex-grow: 0;
-    width: auto;
-    min-width: 160px;
-  }
-
-  .promo-block__timer {
-    margin-left: 0;
-  }
-
-  .promo-timer {
-    align-items: flex-end;
-  }
-}
-
-/* 4. Мобильные устройства (Mobile) - до 767px */
-@media (max-width: 767px) {
   .promo-block {
-    padding: 16px;
+    padding: 24px;
   }
 
   .promo-block__header {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     padding-bottom: 12px;
   }
 
   .promo-block__title {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .promo-block__body {
-    gap: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 24px;
   }
 
   .promo-block__image-wrapper {
-    max-width: 140px;
+    width: 160px;
+    height: 160px;
+    flex-shrink: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-light);
+  }
+
+  .promo-block__image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .promo-block__info {
+    flex-grow: 1;
+    width: auto;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .promo-block__discount {
+    margin-bottom: 8px;
   }
 
   .promo-block__product-title {
+    max-width: 100%;
     font-size: 18px;
+    line-height: 1.4;
     margin-bottom: 12px;
   }
 
   .promo-block__prices {
+    justify-content: flex-start;
     margin-bottom: 16px;
     gap: 12px;
   }
@@ -389,34 +360,250 @@
   }
 
   .promo-block__actions {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    gap: 16px;
+    background-color: var(--color-gray-lighter);
+    border: var(--border-base-light);
+    padding: 12px 16px;
+    border-radius: var(--radius-base);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .promo-block__buy-btn {
+    flex-grow: 0;
+    width: 100%;
+    min-width: 140px;
+  }
+
+  .promo-block__timer {
+    margin-left: 0;
+  }
+
+  .promo-timer {
+    align-items: center;
+    flex: 1;
+  }
+}
+
+/* 4. Мобильные устройства - до 767px */
+@media (max-width: 767px) {
+  .promo-block {
+    grid-column: 1 / -1 !important; /* Всегда занимает две колонки в сетке каталога */
+    padding: 16px;
+    background-color: var(--color-light);
+    border-radius: 16px;
+  }
+
+  .promo-block__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    border-bottom: var(--border-base-light);
+    padding-bottom: 8px;
+    gap: 8px;
+  }
+
+  .promo-block__title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .promo-block__badge-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .promo-block__body {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .promo-block__image-wrapper {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-light);
+  }
+
+  .promo-block__image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .promo-block__info {
+    display: flex;
     flex-direction: column;
     align-items: stretch;
-    padding: 16px;
-    gap: 16px;
+    text-align: left;
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  .promo-block__discount {
+    align-self: flex-start;
+    font-size: 10px;
+    margin-bottom: 6px;
+  }
+
+  .promo-block__product-title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0 0 8px 0;
+    max-width: 100%;
+    color: var(--color-dark);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .promo-block__prices {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .promo-block__price {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-blue);
+  }
+
+  .promo-block__price-old {
+    font-size: 12px;
+  }
+
+  .promo-block__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    width: 100%;
+    background-color: var(--color-gray-lighter);
+    border: var(--border-base-light);
+    padding: 10px 12px;
+    border-radius: var(--radius-base);
+    box-sizing: border-box;
   }
 
   .promo-block__buy-btn {
     width: 100%;
     max-width: 100%;
+    min-height: 36px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .promo-block__buy-btn .button__icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .promo-block__timer {
+    margin-left: 0;
+    width: 100%;
   }
 
   .promo-timer {
-    align-items: center;
-    width: 100%;
+    gap: 4px;
   }
-}
 
-/* 5. Ультра-малые мобильные устройства - до 375px */
-@media (max-width: 375px) {
-  .promo-block__title {
-    font-size: 16px;
+  .promo-timer__label {
+    font-size: 9px;
+    letter-spacing: 0.05em;
+  }
+
+  .promo-timer__grid {
+    gap: 4px;
   }
 
   .promo-timer__digit {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .promo-timer__unit {
-    font-size: 12px;
+    font-size: 11px;
+  }
+
+  .promo-timer__divider {
+    font-size: 14px;
+    margin: 0 1px;
+  }
+}
+
+/* 5. Ультра-малые мобильные устройства - до 479px */
+@media (max-width: 479px) {
+  .promo-block {
+    padding: 12px;
+  }
+
+  .promo-block__header {
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+  }
+
+  .promo-block__title {
+    font-size: 14px;
+  }
+
+  .promo-block__body {
+    gap: 12px;
+  }
+
+  .promo-block__image-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .promo-block__product-title {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .promo-block__price {
+    font-size: 16px;
+  }
+
+  .promo-block__price-old {
+    font-size: 10px;
+  }
+
+  .promo-block__actions {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .promo-block__buy-btn {
+    min-height: 32px;
+    font-size: 11px;
+  }
+
+  .promo-timer__digit {
+    font-size: 14px;
+  }
+
+  .promo-timer__unit {
+    font-size: 9px;
   }
 }
