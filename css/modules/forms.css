@@ -111,3 +111,51 @@
 .filters__item--hidden {
   display: none !important;
 }
+
+/* ==========================================================================
+   Оптимизация загрузки фильтров (Предотвращение Layout Shift и скелетоны)
+   ========================================================================== */
+
+/* 1. Скрытие лишних элементов до загрузки скриптов (JS) */
+
+/* Для категорий (data-visible="3"): скрываем с 4-го элемента, кроме последнего (кнопка) */
+.filters__group[data-visible="3"]:not(.is-initialized) .filters__category-item:nth-last-child(n+2):nth-child(n+4) {
+  display: none !important;
+}
+
+/* Для чекбоксов производителей (data-visible="4"): скрываем с 5-го чекбокса */
+.filters__group[data-visible="4"]:not(.is-initialized) .filters__checkbox-list .checkbox:nth-child(n+5) {
+  display: none !important;
+}
+
+/* 2. Премиальный скелетон-эффект для динамических фильтров до инициализации */
+.filters__group[data-visible]:not(.is-initialized) {
+  position: relative;
+  opacity: 0.8;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.filters__group[data-visible]:not(.is-initialized)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: filters-shimmer 1.8s infinite ease-in-out;
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+
+@keyframes filters-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}

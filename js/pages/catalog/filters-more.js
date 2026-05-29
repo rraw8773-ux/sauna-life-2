@@ -60,5 +60,8 @@ export function initFiltersMore() {
         btn.closest("li").style.display = "none";
       }
     }
+
+    // Отмечаем группу как успешно инициализированную
+    group.classList.add("is-initialized");
   });
 }

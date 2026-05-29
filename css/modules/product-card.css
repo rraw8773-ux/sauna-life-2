@@ -117,6 +117,41 @@
   display: block;
 }
 
+/* Стили для предотвращения вертикального списка картинок при загрузке (до инициализации Slick) */
+.product-card__slider:not(.slick-initialized) .product-card__slide:not(:first-child) {
+  display: none !important;
+}
+
+/* Аккуратный эффект мерцания (shimmer) до инициализации */
+.product-card__slider:not(.slick-initialized) .product-card__image-frame {
+  position: relative;
+  overflow: hidden;
+  opacity: 0.9;
+}
+
+.product-card__slider:not(.slick-initialized) .product-card__image-frame::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: product-card-shimmer 1.8s infinite ease-in-out;
+  transform: translateX(-100%);
+}
+
+@keyframes product-card-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 .product-card__image-frame {
   position: relative;
   width: 100%;

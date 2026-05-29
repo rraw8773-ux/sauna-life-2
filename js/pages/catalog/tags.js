@@ -77,6 +77,12 @@ export function initTags() {
     );
 
     function updateTagsVisibility() {
+      // 1. Сначала временно разрешаем отображение, чтобы браузер мог посчитать высоты offsetTop
+      const parentTags = list.closest(".tags");
+      if (parentTags) {
+        parentTags.classList.add("is-initialized");
+      }
+
       items.forEach((item) => item.classList.remove("tags__item--hidden"));
 
       if (list.classList.contains("tags__list--expanded")) {
