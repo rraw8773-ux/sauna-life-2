@@ -13,7 +13,9 @@ export function initViewToggle() {
 
   if (!toggleWrapper || !grid) return;
 
-  const buttons = Array.from(toggleWrapper.querySelectorAll(".catalog__view-btn"));
+  const buttons = Array.from(
+    toggleWrapper.querySelectorAll(".catalog__view-btn"),
+  );
   if (!buttons.length) return;
 
   function applyView(view) {
@@ -26,14 +28,36 @@ export function initViewToggle() {
     buttons.forEach((btn) => {
       const isListBtn = btn.classList.contains("catalog__view-btn--list");
       const isGridBtn = btn.classList.contains("catalog__view-btn--grid");
-      
-      let viewType = isListBtn ? "list" : (isGridBtn ? "grid" : null);
+
+      let viewType = isListBtn ? "list" : isGridBtn ? "grid" : null;
       if (!viewType) return;
-      
+
       const isActive = viewType === view;
       btn.classList.toggle("is-active", isActive);
       btn.classList.toggle("catalog__view-btn--active", isActive);
     });
+
+    // Recalculate Slick Slider positions continuously during CSS transition
+    if (window.jQuery && window.jQuery.fn.slick) {
+      const $sliders = window.jQuery(
+        ".js-product-card-slider.slick-initialized",
+      );
+      if ($sliders.length) {
+        const startTime = performance.now();
+        const duration = 400; // CSS transitions take 200ms, 400ms guarantees settling
+
+        function updateSlickPositions(now) {
+          $sliders.slick("setPosition");
+
+          const elapsed = now - startTime;
+          if (elapsed < duration) {
+            requestAnimationFrame(updateSlickPositions);
+          }
+        }
+
+        requestAnimationFrame(updateSlickPositions);
+      }
+    }
   }
 
   const savedView = localStorage.getItem(STORAGE_KEY) || DEFAULT_VIEW;
@@ -43,8 +67,8 @@ export function initViewToggle() {
     btn.addEventListener("click", () => {
       const isListBtn = btn.classList.contains("catalog__view-btn--list");
       const isGridBtn = btn.classList.contains("catalog__view-btn--grid");
-      
-      let view = isListBtn ? "list" : (isGridBtn ? "grid" : null);
+
+      let view = isListBtn ? "list" : isGridBtn ? "grid" : null;
       if (!view) return;
 
       applyView(view);
