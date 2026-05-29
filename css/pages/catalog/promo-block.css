@@ -9,7 +9,15 @@
   padding: 32px;
   display: flex;
   flex-direction: column;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
+
+/* .promo-block:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+} */
 
 .promo-block--span-1 {
   grid-column: span 1;
@@ -43,9 +51,7 @@
   .promo-block--md-2 {
     grid-column: span 2;
   }
-}
 
-@media (max-width: 767px) {
   .promo-block[class*="--span-"],
   .promo-block[class*="--lg-"],
   .promo-block[class*="--md-"] {
@@ -57,19 +63,24 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 24px;
+  border-bottom: var(--border-base-light);
   padding-bottom: 16px;
 }
+
+.promo-block__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
 .promo-block__badge-icon {
   width: 24px;
   height: 24px;
-}
-
-@media (max-width: 1023px) {
-  .promo-block__title {
-    font-size: 28px;
-  }
+  flex-shrink: 0;
 }
 
 .promo-block__body {
@@ -81,11 +92,22 @@
 .promo-block__image-wrapper {
   width: 200px;
   flex-shrink: 0;
+  overflow: hidden;
+  border-radius: var(--radius-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .promo-block__image {
   width: 100%;
   height: auto;
   object-fit: contain;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.promo-block:hover .promo-block__image {
+  transform: scale(1.04);
 }
 
 .promo-block__info {
@@ -101,13 +123,16 @@
 
 .promo-block__product-title {
   font-size: 24px;
-  margin-bottom: 16px;
-  max-width: 400px;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0 0 16px 0;
+  max-width: 550px;
+  color: var(--color-dark);
+  transition: color 0.2s ease;
 }
-@media (max-width: 767px) {
-  .promo-block__product-title {
-    font-size: 20px;
-  }
+
+.promo-block__product-title:hover {
+  color: var(--color-blue);
 }
 
 .promo-block__prices {
@@ -116,11 +141,13 @@
   gap: 16px;
   margin-bottom: 24px;
 }
+
 .promo-block__price {
   font-size: 28px;
   font-weight: 700;
   color: var(--color-blue);
 }
+
 .promo-block__price-old {
   font-size: 16px;
   color: var(--color-gray);
@@ -130,6 +157,8 @@
 .promo-block__actions {
   display: flex;
   align-items: center;
+  align-self: stretch;
+  flex-wrap: wrap;
   gap: 24px;
 }
 
@@ -137,22 +166,23 @@
   flex-shrink: 0;
 }
 
-.promo-block__timer {
+/* .promo-block__timer {
   margin-left: auto;
-}
+} */
 
-/* Элегантный, спокойный дизайн таймера акции (в строчку) */
+/* --- Таймер акции --- */
 .promo-timer {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
+  transition: all 0.3s ease;
 }
 
 .promo-timer__label {
   font-size: 10px;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   color: var(--color-gray);
 }
 
@@ -165,27 +195,27 @@
 .promo-timer__item {
   display: flex;
   align-items: baseline;
-  gap: 4px;
+  gap: 2px;
 }
 
 .promo-timer__digit {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-dark);
   font-variant-numeric: tabular-nums;
   line-height: 1;
 }
 
 .promo-timer__unit {
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--color-gray);
   line-height: 1;
 }
 
 .promo-timer__divider {
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 500;
   color: var(--color-gray);
   opacity: 0.4;
   line-height: 1;
@@ -201,27 +231,192 @@
   opacity: 0.7;
 }
 
-@media (max-width: 767px) {
+/* ======================================================
+   АДАПТИВНЫЙ ДИЗАЙН (RESPONSIVE)
+   ====================================================== */
+
+/* 1. Большие ноутбуки (Laptop Large / Medium) - до 1440px */
+@media (max-width: 1440px) {
+  .promo-block {
+    padding: 24px;
+  }
+
   .promo-block__body {
-    flex-direction: column;
-    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .promo-block__product-title {
+    font-size: 22px;
+    max-width: 480px;
+  }
+
+  .promo-block__actions {
+    gap: 20px;
+  }
+}
+
+/* 2. Малые ноутбуки / Ландшафтные планшеты - до 1199px */
+@media (max-width: 1199px) {
+  .promo-block {
+    padding: 20px;
+  }
+
+  .promo-block__body {
     gap: 24px;
   }
+
   .promo-block__image-wrapper {
-    width: 100%;
-    max-width: 200px;
-    margin: 0 auto;
+    width: 160px;
   }
+
+  .promo-block__product-title {
+    font-size: 20px;
+    max-width: 420px;
+    margin-bottom: 12px;
+  }
+
+  .promo-block__prices {
+    margin-bottom: 20px;
+  }
+
   .promo-block__actions {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
     gap: 16px;
   }
+
+  .promo-block__timer {
+    margin-left: 0; /* Выравнивание влево при переносе для визуальной целостности */
+  }
+}
+
+/* 3. Планшеты (Tablet Portrait) - до 1023px */
+@media (max-width: 1023px) {
+  .promo-block__title {
+    font-size: 20px;
+  }
+
+  .promo-block__body {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .promo-block__image-wrapper {
+    width: 100%;
+    max-width: 180px;
+    margin: 0 auto;
+  }
+
+  .promo-block__info {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .promo-block__product-title {
+    max-width: 100%;
+    font-size: 20px;
+  }
+
+  .promo-block__prices {
+    justify-content: center;
+  }
+
+  .promo-block__actions {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--color-gray-lighter);
+    border: var(--border-base-light);
+    padding: 16px 20px;
+    border-radius: var(--radius-base);
+  }
+
+  .promo-block__buy-btn {
+    flex-grow: 0;
+    width: auto;
+    min-width: 160px;
+  }
+
   .promo-block__timer {
     margin-left: 0;
   }
+
+  .promo-timer {
+    align-items: flex-end;
+  }
+}
+
+/* 4. Мобильные устройства (Mobile) - до 767px */
+@media (max-width: 767px) {
+  .promo-block {
+    padding: 16px;
+  }
+
+  .promo-block__header {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+  }
+
+  .promo-block__title {
+    font-size: 18px;
+  }
+
+  .promo-block__body {
+    gap: 16px;
+  }
+
+  .promo-block__image-wrapper {
+    max-width: 140px;
+  }
+
+  .promo-block__product-title {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .promo-block__prices {
+    margin-bottom: 16px;
+    gap: 12px;
+  }
+
+  .promo-block__price {
+    font-size: 24px;
+  }
+
+  .promo-block__price-old {
+    font-size: 14px;
+  }
+
+  .promo-block__actions {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .promo-block__buy-btn {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .promo-timer {
     align-items: center;
+    width: 100%;
+  }
+}
+
+/* 5. Ультра-малые мобильные устройства - до 375px */
+@media (max-width: 375px) {
+  .promo-block__title {
+    font-size: 16px;
+  }
+
+  .promo-timer__digit {
+    font-size: 18px;
+  }
+
+  .promo-timer__unit {
+    font-size: 12px;
   }
 }

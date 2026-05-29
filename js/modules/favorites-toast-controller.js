@@ -39,13 +39,11 @@ export function initFavoritesToastController() {
     // 3. Ищем кнопку удаления в избранном на странице wishlist.html
     const wishlistLikeBtn = e.target.closest(".wishlist-card__like-btn");
     if (wishlistLikeBtn) {
-      // На странице избранного карточка удаляется, просто выводим уведомление
-      Toast.show({
-        message: "Товар удалён из избранного",
-        type: "remove",
-        duration: 3000
-      });
-      return;
+      const likeImg = wishlistLikeBtn.querySelector("img[src*='like']");
+      if (likeImg) {
+        handleLikeToggle(wishlistLikeBtn, likeImg);
+        return;
+      }
     }
   });
 }

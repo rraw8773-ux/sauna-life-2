@@ -2,7 +2,7 @@
  * File purpose: initialize product card galleries with SlickSlider.
  */
 
-const DESKTOP_MEDIA_QUERY = "(min-width: 1024px) and (hover: hover)";
+const DESKTOP_MEDIA_QUERY = "(hover: hover)";
 const ZOOM_SCALE = 3;
 const sliderStates = new WeakMap();
 const zoomedSliders = new Set();
@@ -28,8 +28,20 @@ const clampPercent = (value) => Math.max(0, Math.min(100, value));
 
 const getFramePercent = (frame, event) => {
   const rect = frame.getBoundingClientRect();
-  const x = rect.width ? ((event.clientX - rect.left) / rect.width) * 100 : 50;
-  const y = rect.height ? ((event.clientY - rect.top) / rect.height) * 100 : 50;
+  
+  let clientX = event.clientX;
+  let clientY = event.clientY;
+
+  if (event.touches && event.touches[0]) {
+    clientX = event.touches[0].clientX;
+    clientY = event.touches[0].clientY;
+  } else if (event.changedTouches && event.changedTouches[0]) {
+    clientX = event.changedTouches[0].clientX;
+    clientY = event.changedTouches[0].clientY;
+  }
+
+  const x = rect.width ? ((clientX - rect.left) / rect.width) * 100 : 50;
+  const y = rect.height ? ((clientY - rect.top) / rect.height) * 100 : 50;
 
   return {
     x: clampPercent(x),
@@ -55,6 +67,19 @@ const ensureEscapeHandler = () => {
     zoomedSliders.forEach((slider) => resetZoom(slider));
   });
 
+  // Tap or click outside active zoomed frame to reset zoom
+  const dismissZoom = (event) => {
+    zoomedSliders.forEach((slider) => {
+      const state = sliderStates.get(slider);
+      if (state?.isZoomed && state.activeFrame && !state.activeFrame.contains(event.target)) {
+        resetZoom(slider);
+      }
+    });
+  };
+
+  document.addEventListener("touchstart", dismissZoom);
+  document.addEventListener("mousedown", dismissZoom);
+
   escapeHandlerBound = true;
 };
 
@@ -67,6 +92,7 @@ function resetZoom(slider) {
 
   if (state.activeFrame && state.handleZoomMove) {
     state.activeFrame.removeEventListener("mousemove", state.handleZoomMove);
+    state.activeFrame.removeEventListener("touchmove", state.handleZoomMove);
   }
 
   if (state.activeFrame && state.handleZoomLeave) {
@@ -102,6 +128,9 @@ const activateZoom = (slider, image, frame, event) => {
   resetZoom(slider);
 
   state.handleZoomMove = (moveEvent) => {
+    if (moveEvent.type === "touchmove" && moveEvent.cancelable) {
+      moveEvent.preventDefault(); // Stop webpage scrolling during zoom navigation
+    }
     applyZoomOrigin(image, frame, moveEvent);
   };
   state.handleZoomLeave = () => {
@@ -112,8 +141,10 @@ const activateZoom = (slider, image, frame, event) => {
   image.style.transform = `scale(${ZOOM_SCALE})`;
   frame.classList.add("is-zoomed");
   state.card?.classList.add("is-zooming");
+  
   frame.addEventListener("mousemove", state.handleZoomMove);
   frame.addEventListener("mouseleave", state.handleZoomLeave);
+  frame.addEventListener("touchmove", state.handleZoomMove, { passive: false });
 
   state.isZoomed = true;
   state.activeFrame = frame;
@@ -144,6 +175,38 @@ const bindZoom = (slider) => {
 
     activateZoom(slider, image, frame, event);
   });
+
+  // Custom double tap for mobile touch screens
+  let lastTapTime = 0;
+  slider.addEventListener("touchstart", (event) => {
+    const image = event.target.closest(".product-card__image");
+    if (!image || !slider.contains(image)) {
+      return;
+    }
+
+    if (event.touches.length > 1) return; // ignore multi-touch pinch
+    const now = performance.now();
+    const timespan = now - lastTapTime;
+
+    if (timespan < 300 && timespan > 0) {
+      event.preventDefault(); // prevent native double-tap page zoom
+      
+      const frame = image.closest(".product-card__image-frame");
+      const state = sliderStates.get(slider);
+
+      if (!frame || !state) {
+        return;
+      }
+
+      if (state.isZoomed && state.activeImage === image) {
+        resetZoom(slider);
+        return;
+      }
+
+      activateZoom(slider, image, frame, event);
+    }
+    lastTapTime = now;
+  }, { passive: false });
 };
 
 const bindHoverPreview = (gallery, slider, $slider, state) => {
@@ -229,7 +292,7 @@ const initSingleSlider = (slider) => {
     appendDots: pagination,
     adaptiveHeight: false,
     waitForAnimate: false,
-    speed: 0,
+    speed: 300,
     swipe: !state.isDesktop,
     draggable: !state.isDesktop,
     touchMove: !state.isDesktop,

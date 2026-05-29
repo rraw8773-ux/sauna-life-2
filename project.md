@@ -60,6 +60,7 @@ project-root/
       tooltip.css
       tabs.css
       products-widget.css
+      toast.css
     pages/
       catalog.css
       product-page.css
