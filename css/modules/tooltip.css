@@ -138,6 +138,26 @@
     font-size: 10px;
   }
 }
+@media (max-width: 767px) {
+  /* Prevent right-positioned tooltips from overflowing the screen on mobile */
+  .tooltip--right .tooltip__content {
+    left: auto;
+    right: 0;
+    transform: translateY(0);
+    top: calc(100% + 8px);
+    margin-left: 0;
+  }
+  .tooltip--right .tooltip__content::after {
+    left: auto;
+    right: 4px;
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent var(--color-light) transparent;
+  }
+}
 @media (max-width: 479px) {
   .tooltip__content {
     width: 120px;

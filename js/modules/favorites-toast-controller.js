@@ -42,7 +42,7 @@ export function initFavoritesToastController() {
       // На странице избранного карточка удаляется, просто выводим уведомление
       Toast.show({
         message: "Товар удалён из избранного",
-        type: "info",
+        type: "remove",
         duration: 3000
       });
       return;
@@ -66,7 +66,7 @@ function handleLikeToggle(btnElement, imgElement) {
     
     Toast.show({
       message: "Товар удалён из избранного",
-      type: "info",
+      type: "remove",
       duration: 3000
     });
   } else {

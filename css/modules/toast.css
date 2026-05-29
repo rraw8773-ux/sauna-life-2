@@ -99,6 +99,10 @@
   background-color: var(--badge-orange);
 }
 
+.toast--remove .toast__icon {
+  background-color: var(--color-accent);
+}
+
 /* Адаптивность под медиа-запросы проекта */
 @media (max-width: 767px) {
   .toast-container {
