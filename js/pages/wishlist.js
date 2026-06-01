@@ -5,6 +5,7 @@
 
 // Глобальные модули общего интерфейса
 import { initStickyHeader } from "../modules/sticky-header.js";
+import "../modules/focus-visible.js";
 import { initOffcanvas } from "../modules/offcanvas.js";
 import { initMobileMenu } from "../modules/mobile-menu.js";
 import { initMobileCatalogMenu } from "../modules/mobile-catalog-menu.js";

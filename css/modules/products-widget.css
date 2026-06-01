@@ -201,7 +201,7 @@
 }
 
 /* Адаптивность */
-@media (max-width: 1300px) {
+@media (max-width: 1539px) {
   .products-widget__slider-arrow--prev {
     left: -10px;
   }

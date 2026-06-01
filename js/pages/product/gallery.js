@@ -12,7 +12,6 @@ export function initProductGallery() {
     if ($mainSlider.length === 0) return;
 
     if (typeof jQuery.fn.slick === "undefined") {
-      console.error("[SLICK] slick.min.js не загрузился.");
       return;
     }
 
@@ -256,12 +255,8 @@ export function initProductGallery() {
           }
         });
       });
-    } else {
-      console.warn("[FANCYBOX] jquery.fancybox.min.js не загрузился.");
     }
-
-    console.log("[SLICK] Галерея инициализирована успешно.");
   } catch (e) {
-    console.error("[SLICK] Ошибка:", e);
+    // Gallery init error silenced
   }
 }

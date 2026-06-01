@@ -21,7 +21,6 @@ export function initPromoTimer(root = document) {
     const targetDate = new Date(countdownTarget).getTime();
 
     if (isNaN(targetDate)) {
-      console.warn("Невалидная дата для таймера в формате ISO/UTC:", countdownTarget);
       return;
     }
 

@@ -10,8 +10,8 @@ export function initCatalogModal() {
   if (!btn || !modal) return;
 
   const btnIcon = btn.querySelector(".button__icon");
-  const iconOpen = "./!FILES/NEW-HTML/assets/icons/header/hamburger.svg";
-  const iconClose = "./!FILES/NEW-HTML/assets/icons/interfaces/close-light.svg";
+  const iconOpen = "./assets/icons/header/hamburger.svg";
+  const iconClose = "./assets/icons/interfaces/close-light.svg";
 
   const categoryLinks = modal.querySelectorAll(".catalog-modal__category-link");
   const panels = modal.querySelectorAll(".catalog-modal__panel");

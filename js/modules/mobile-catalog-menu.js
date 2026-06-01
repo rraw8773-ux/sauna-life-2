@@ -1376,7 +1376,7 @@ export function initMobileCatalogMenu() {
       const backBtn = document.createElement("button");
       backBtn.className = "mcm__back";
       backBtn.type = "button";
-      backBtn.innerHTML = `<img src="./!FILES/NEW-HTML/assets/icons/arrow/chevron-right.svg" alt="" class="mcm__back-icon" /> Назад`;
+      backBtn.innerHTML = `<img src="./assets/icons/arrow/chevron-right.svg" alt="" class="mcm__back-icon" /> Назад`;
       backBtn.addEventListener("click", backCallback);
       page.appendChild(backBtn);
     }
@@ -1431,7 +1431,7 @@ export function initMobileCatalogMenu() {
     if (hasChildren) {
       const chevron = document.createElement("img");
       chevron.className = "mcm__list-chevron";
-      chevron.src = "./!FILES/NEW-HTML/assets/icons/arrow/chevron-right.svg";
+      chevron.src = "./assets/icons/arrow/chevron-right.svg";
       chevron.alt = "";
       chevron.width = 14;
       chevron.height = 14;

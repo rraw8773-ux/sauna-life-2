@@ -328,6 +328,7 @@ document.addEventListener("DOMContentLoaded", () => {
 | `toast-notification.md`   | Toast-уведомления                     |
 | `visual-loading.md`       | Визуальная загрузка                   |
 | `wishlist-page.md`        | Страница избранного                   |
+| `focus-visible.md`        | Доступная клавиатурная навигация      |
 
 ---
 
@@ -393,3 +394,5 @@ document.addEventListener("DOMContentLoaded", () => {
 - [ ] Нет подключений к `!FILES/` или `legacy/` (без необходимости)
 - [ ] Проверено на desktop, tablet (`1023px`) и mobile (`767px`)
 - [ ] Breakpoints используют правильные значения: `1539`, `1023`, `767`, `479`
+- [ ] Все изображения (кроме тех, что на первом экране/above-the-fold) имеют `loading="lazy"`, а также `width`/`height` для оптимизации скорости и борьбы с CLS
+- [ ] HTML-страницы имеют уникальный тег `<meta name="description" content="..." />` в `<head>` для SEO-оптимизации

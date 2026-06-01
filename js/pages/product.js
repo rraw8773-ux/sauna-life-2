@@ -5,6 +5,7 @@
 
 // Глобальные модули
 import { initStickyHeader } from "../modules/sticky-header.js";
+import "../modules/focus-visible.js";
 import { initOffcanvas } from "../modules/offcanvas.js";
 import { initMobileMenu } from "../modules/mobile-menu.js";
 import { initMobileCatalogMenu } from "../modules/mobile-catalog-menu.js";
@@ -284,9 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
             tooltip.classList.remove("is-visible");
           }, 1500);
         }
-      }).catch(err => {
-        console.error("Не удалось скопировать код: ", err);
-      });
+      }).catch(() => {});
     });
   }
 

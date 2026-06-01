@@ -201,17 +201,24 @@
   position: relative;
   opacity: 0.85;
   pointer-events: none;
+  overflow: hidden;
+  max-height: 42px; /* Ровно одна строка тегов по умолчанию (десктоп/планшет) */
 }
 
-@media (min-width: 768px) {
+/* Для максимальной надежности скрываем элементы дальше 8-го */
+.tags:not(.is-initialized) .tags__list .tags__item:nth-child(n+9) {
+  display: none !important;
+}
+
+/* Сброс ограничений для мобильных (где у нас горизонтальный скролл) */
+@media (max-width: 767px) {
   .tags:not(.is-initialized) {
-    overflow: hidden;
-    max-height: 42px; /* Ровно одна строка тегов */
+    overflow: visible;
+    max-height: none;
   }
 
-  /* Для максимальной надежности скрываем элементы дальше 8-го */
   .tags:not(.is-initialized) .tags__list .tags__item:nth-child(n+9) {
-    display: none !important;
+    display: inline-flex !important;
   }
 }
 

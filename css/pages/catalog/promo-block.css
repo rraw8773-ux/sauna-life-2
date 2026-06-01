@@ -235,8 +235,8 @@
    АДАПТИВНЫЙ ДИЗАЙН (RESPONSIVE)
    ====================================================== */
 
-/* 1. Большие ноутбуки (Laptop Large / Medium) - до 1440px */
-@media (max-width: 1440px) {
+/* 1. Большие ноутбуки (Laptop Large / Medium) - до 1539px */
+@media (max-width: 1539px) {
   .promo-block {
     padding: 24px;
   }
@@ -255,8 +255,8 @@
   }
 }
 
-/* 2. Малые ноутбуки / Ландшафтные планшеты - до 1199px */
-@media (max-width: 1199px) {
+/* 2. Малые ноутбуки / Ландшафтные планшеты - до 1023px */
+@media (max-width: 1023px) {
   .promo-block {
     padding: 20px;
   }

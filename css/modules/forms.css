@@ -12,6 +12,10 @@
   .filters {
     padding: 0;
   }
+
+  .filters__button {
+    height: 36px;
+  }
 }
 
 .filters__group {
@@ -119,12 +123,15 @@
 /* 1. Скрытие лишних элементов до загрузки скриптов (JS) */
 
 /* Для категорий (data-visible="3"): скрываем с 4-го элемента, кроме последнего (кнопка) */
-.filters__group[data-visible="3"]:not(.is-initialized) .filters__category-item:nth-last-child(n+2):nth-child(n+4) {
+.filters__group[data-visible="3"]:not(.is-initialized)
+  .filters__category-item:nth-last-child(n + 2):nth-child(n + 4) {
   display: none !important;
 }
 
 /* Для чекбоксов производителей (data-visible="4"): скрываем с 5-го чекбокса */
-.filters__group[data-visible="4"]:not(.is-initialized) .filters__checkbox-list .checkbox:nth-child(n+5) {
+.filters__group[data-visible="4"]:not(.is-initialized)
+  .filters__checkbox-list
+  .checkbox:nth-child(n + 5) {
   display: none !important;
 }
 

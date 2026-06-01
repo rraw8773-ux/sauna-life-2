@@ -277,22 +277,7 @@ function addToCart() {
             (e -= $("header.header").height()),
           (e += 6) > 0 && $("body,html").animate({ scrollTop: e }, "slow"));
       }
-    }),
-    $("body").append('<div id="go-top" title="Вверх"></div>'),
-    ($.fn.scrollToTop = function () {
-      ($(this).hide().removeAttr("href"),
-        $(window).scrollTop() >= "250" && $(this).fadeIn("slow"));
-      var t = $(this);
-      ($(window).scroll(function () {
-        "250" >= $(window).scrollTop()
-          ? $(t).fadeOut("slow")
-          : $(t).fadeIn("slow");
-      }),
-        $(this).click(function () {
-          $("html, body").animate({ scrollTop: 0 }, "slow");
-        }));
-    }),
-    $("#go-top").scrollToTop());
+    });
   var e = !1,
     i = !1;
   ($("body")

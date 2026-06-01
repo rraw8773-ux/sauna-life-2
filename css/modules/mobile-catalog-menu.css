@@ -2,37 +2,35 @@
  * Назначение файла: Стили для мобильного полноэкранного меню каталога (drill-down)
  */
 
-/* ================== OVERLAY ================== */
 .mcm {
-  position: fixed;
-  /* top выставляется через JS: --mcm-top = header.getBoundingClientRect().bottom */
-  top: var(--mcm-top, 0px);
-  /* top: 0; */
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1050; /* Ниже mobile-nav (1060), поэтому плашка остаётся видимой */
-  background-color: var(--color-light);
-  display: flex;
-  flex-direction: column;
-  transform: translateY(110%);
-  visibility: hidden;
-  transition:
-    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 0.35s;
-  padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
-  will-change: transform;
+  display: none !important;
 }
 
-.mcm.is-open {
-  transform: translateY(0);
-  visibility: visible;
-}
-
-/* Показываем только на мобилке */
-@media (min-width: 768px) {
+@media (max-width: 1023px) {
   .mcm {
-    display: none !important;
+    position: fixed;
+    /* top выставляется через JS: --mcm-top = header.getBoundingClientRect().bottom */
+    top: var(--mcm-top, 0px);
+    /* top: 0; */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1050; /* Ниже mobile-nav (1060), поэтому плашка остаётся видимой */
+    background-color: var(--color-light);
+    display: flex !important;
+    flex-direction: column;
+    transform: translateY(110%);
+    visibility: hidden;
+    transition:
+      transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 0.35s;
+    padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
+    will-change: transform;
+  }
+
+  .mcm.is-open {
+    transform: translateY(0);
+    visibility: visible;
   }
 }
 

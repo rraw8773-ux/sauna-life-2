@@ -38,3 +38,34 @@
 .d-none {
   display: none !important;
 }
+
+/* ==========================================================================
+   Доступность и фокусные состояния (:focus-visible polyfill)
+   ========================================================================== */
+
+/* 1. Сбрасываем стандартный браузерный контур при обычном клике/таче (когда фокус не клавиатурный) */
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* 2. Задаем красивое, единое и премиальное фокусное состояние для клавиатурной навигации */
+.js-focus-visible .focus-visible {
+  outline: 2px solid var(--color-accent, #e3a93b) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(227, 169, 59, 0.15) !important;
+}
+
+/* Нативный фолбек для браузеров с поддержкой :focus-visible */
+@supports selector(:focus-visible) {
+  :focus:not(:focus-visible) {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent, #e3a93b) !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 4px rgba(227, 169, 59, 0.15) !important;
+  }
+}
+
