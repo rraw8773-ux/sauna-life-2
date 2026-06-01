@@ -101,7 +101,8 @@ project-root/
 │   │   ├── tabs.js              # Переключение табов
 │   │   ├── products-widget.js   # Виджет похожих товаров
 │   │   ├── toast.js             # Toast-система уведомлений
-│   │   └── favorites-toast-controller.js  # Контроллер toast для избранного
+│   │   ├── favorites-toast-controller.js  # Контроллер toast для избранного
+│   │   └── compare-toast-controller.js    # Контроллер toast для сравнения
 │   ├── pages/
 │   │   ├── catalog.js           # Точка входа каталога
 │   │   ├── catalog/
